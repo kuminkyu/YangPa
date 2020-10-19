@@ -1,0 +1,22 @@
+@responsive web design
+화면의 크기에 맞추어서 화면이 잡히는 디자인
+ -width 요소 지정시 : % 사용
+
+@meta tag: 웹브라우저/사용자 에게 정보를 주는 태그
+
+[면접65%질문]
+@ meta name = 'viewport': 브라우저에게 웹 페이지의 크기와 축소/확대 비율을 어떻게 조정해야하는지에 대한 지시자 역할
+@media queries: 화면의 크기에 따라 다른 스타일을 적용하는 기술^^
+
+
+
+@div=  영역나눌때
+@bootstrap: 짜여져 있는 틀을 쓸수 있음
+
+@Path Variable 요청할때 값을 주면 그 값을 return
+@
+
+
+
+
+https://www.linux.co.kr/home2/board/subbs/board.php?bo_table=free&wr_id=2829
