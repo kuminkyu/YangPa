@@ -9,3 +9,4 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Mbr` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   PRIMARY KEY (`mno`))
 ENGINE = InnoDB
+
