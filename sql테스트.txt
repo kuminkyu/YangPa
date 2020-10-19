@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Mbr` (
   PRIMARY KEY (`mno`))
 ENGINE = InnoDB
 
+에라이!!
