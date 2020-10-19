@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `mydb`.`Mbr` (
+  `mno` INT NULL AUTO_INCREMENT,
+  `id` VARCHAR(30) NOT NULL,
+  `pwd` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(30) NOT NULL,
+  `tel` VARCHAR(15) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `mbr_role` INT NOT NULL,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  PRIMARY KEY (`mno`))
+ENGINE = InnoDB
