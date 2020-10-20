@@ -12,6 +12,7 @@
 <body>
 	<div class = "container">
 		<%@ include file="./header.jsp" %>
+		123456
 	</div>
 </body>
 </html>
