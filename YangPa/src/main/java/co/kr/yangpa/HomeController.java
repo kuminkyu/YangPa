@@ -22,4 +22,15 @@ public class HomeController {
 		return "main";
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		
+		return "user/login";
+	}
+	
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	public String find1() {
+		
+		return "user/find";
+	}
 }
