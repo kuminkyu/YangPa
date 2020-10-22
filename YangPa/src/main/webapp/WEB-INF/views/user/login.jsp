@@ -9,19 +9,22 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>양파_로그인</title>
-<link rel="shortcut icon" href="/hp/icon/fav_hs_01.ico">
-<meta name="description" content="당신의 양도를 파세요, 양파" />
-<meta name="keywords" content="양파" />
-<meta property="og:url" content="helssg.com" />
-<meta property="og:title" content="양파" />
-<meta property="og:type" content="website" />
-<meta property="og:description" content="당신의 양도를 파세요, 양파" />
+
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
-<body class="PC">
-	<div style="background-color: #f4f5f7;">
+
+<body>
+
+<%@ include file="../header.jsp" %>
+	
 		<div class="ABA-wrap-box AB-cr ABA-layout-align" id="ABA-column-wrap"
-			style="padding: 150px 0 180px 0;">
+			style="padding: 50px 0 30px 0;">
+			
 			<div class="ABA-container-box-1080">
 				<table width=100% cellpadding=0 cellspacing=0 border=0>
 					<tr>
@@ -33,7 +36,7 @@
 
 									<div class="ABA-content-box pageMember"
 										style="padding-bottom: 0;">
-										<div
+										<div class="container p-3 my-3 border"
 											style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
 											<div
 												style="color: #617484; letter-spacing: -1px; margin-bottom: 22px;">"당신의
@@ -42,23 +45,23 @@
 												style="font-size: 30px; color: #000000; margin-bottom: 50px;">로그인
 												해주세요</div>
 											<div style="margin-bottom: 20px;">
-												<div class="-inputWrap" style="padding-right: 22px;">
+												<div class="-inputWrap" >
 													<input type="text" name="user_id" value=""
 														class="hs_txtline1"
-														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
+														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="아이디" maxlength="50" tabindex="1" />
 												</div>
-												<div class="-inputWrap" style="padding-right: 22px;">
+												<div class="-inputWrap" >
 													<input type="password" name="user_passwd" value=""
 														class="hs_txtline1"
-														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
+														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="비밀번호" maxlength="50" tabindex="2" />
 												</div>
 											</div>
 											<div>
 												<div class="-btnWrap">
 													<input type="submit" name="submit_OK" value="로그인"
-														exec-func="return TCSYSTEM_ETC_FORM_117_submit(this, '')"
+														
 														class="btn-tpl"
 														style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
 														tabindex="3" />
@@ -101,7 +104,6 @@
 
 			</div>
 		</div>
-	</div>
 
 
 </body>

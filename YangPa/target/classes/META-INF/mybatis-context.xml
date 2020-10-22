@@ -6,7 +6,7 @@
 <configuration>
 
 	<mappers>
-		
+		<mapper resource="META-INF/filter-mapper.xml" />
 	</mappers>
 
 </configuration>
