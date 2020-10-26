@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+
+	<select id="searchAll" parameterType="java.lang.String"
+		resultType="co.kr.yangpa.board.BoardDTO">
+	
+		SELECT bno, board.writer, type.tname as type, board.title,
+		board.contents, board.price, board.state, 
+		date_format(write_date, '%Y/%c/%d') as write_date,
+				board.view_cnt , addrmiddle.addrname
+		FROM board
+        INNER JOIN type
+        on board.type = type.tcode
+        RIGHT OUTER JOIN addrmiddle
+        ON board.addrcode = addrmiddle.addrcode 
+        WHERE type LIKE CONCAT(#{typeno},'%')     
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

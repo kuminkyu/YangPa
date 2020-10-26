@@ -7,6 +7,8 @@
 
 	<mappers>
 		<mapper resource="META-INF/filter-mapper.xml" />
+		<mapper resource="META-INF/board-mapper.xml" />
+		<mapper resource="META-INF/page-mapper.xml" />
 	</mappers>
 
 </configuration>
