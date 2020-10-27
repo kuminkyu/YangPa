@@ -38,12 +38,12 @@ a1 {
 
 				<td width=550>
 					<div id='AB_contents'
-						style="padding: 0 30px; background-color: #ffffff;">
+						style="padding: 50px 30px; background-color: #ffffff;">
 						<form>
 
 							<div class="ABA-content-box pageMember"
 								style="padding-bottom: 0;">
-								<div class="container p-3 my-3 border"
+								<div class="container p-2 my-3 border"
 									style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
 									<div
 										style="color: #FF9900; letter-spacing: -1px; background-color: #87CEFA; font-size: 20px; font-weight: bold; margin-bottom: 22px;"
@@ -123,7 +123,14 @@ a1 {
 
 											<div class="form-inline mt-1 mb-1 ml-3">
 												<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3">
-														<b>파일선택 : </b>
+														<form>
+															<div class="form-group">
+																<b><input
+																	type="file" class="form-control-file"
+																	id="exampleFormControlFile1"></b>
+															</div>
+														</form>
+														
 
 													</h6></label>
 											</div>

@@ -13,8 +13,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public List<BoardDTO> searchAll(String typeno) {
-		List<BoardDTO> list = dao.searchAll(typeno) ;
+	public List<BoardDTO> searchAll(String typeno , String reqNum) {
+		List<BoardDTO> list = dao.searchAll(typeno, reqNum) ;
 		
 		return list;
 	}

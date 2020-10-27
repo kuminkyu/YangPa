@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 <body>
 <%@ include file="../header.jsp"%>
 	<div class="container">
-		<h3 class="mt-5 mb-5">마이페이지</h3>
+		<h3 class="mt-3 mb-5">마이페이지</h3>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs">
 			<li class="nav-item">
@@ -42,9 +44,9 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>관심목록 데이터 불러오기-폼컨트롤?</td>
-								<td>관심목록 데이터 불러오기-폼컨트롤?</td>
-								<td>관심목록 데이터 불러오기-폼컨트롤?</td>
+								<td width="5%">bno</td>
+								<td width="50%" class="text-center">title</td>
+								<td width="10%" class="text-right">2020-10-27</td>
 							</tr>
 						</tbody>		
 					</table>
@@ -60,9 +62,9 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>내가쓴글 데이터 불러오기- 이것도?</td>
-								<td>내가쓴글 데이터 불러오기- 이것도?</td>
-								<td>내가쓴글 데이터 불러오기- 이것도?</td>
+								<td width="5%">bno</td>
+								<td width="50%" class="text-center">title</td>
+								<td width="10%" class="text-right">2020-10-27</td>
 							</tr>
 						</tbody>		
 					</table>

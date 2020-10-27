@@ -64,7 +64,7 @@ $(document).ready(function () {
 			switch (bunryu){
 		      case "운동" :
 		    	  bunryu = 1;
-		    	  kindvar = $("input:radio[name='ex_kind']").val();
+		    	  kindvar = $("input:radio[name='ex_kind']:checked").val();
 		          break;
 		      case "여행" :
 		    	  bunryu = 2;
@@ -94,10 +94,9 @@ $(document).ready(function () {
 				, useday : use_date
 			}
 			,function(data , status){
-				
+				alert(data);
 			}//function
 			,"json"
-			
 		);//get	
 		
 // 		alert(bunryu);

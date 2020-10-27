@@ -14,12 +14,16 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	
 	@Override
-	public List<BoardDTO> searchAll(String typeno) {
+	public List<BoardDTO> searchAll(String typeno , String reqNum) {
 		
 		if(typeno.equals("0")) {
 			typeno = "";
 		}
-		List<BoardDTO> list = sqlSession.selectList("BoardMapper.searchAll",typeno);
+		SearchDTO dto = new SearchDTO();
+		dto.setReqNum((Integer.parseInt(reqNum) - 1 )* 15);
+		dto.setTypeno(typeno);
+		System.out.println("reqNum : " + dto.getReqNum());
+		List<BoardDTO> list = sqlSession.selectList("BoardMapper.searchAll",dto);
 		
 		return list;
 	}

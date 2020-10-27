@@ -15,16 +15,16 @@ public class FilterRestController {
 	private FilterService service;
 	
 	@RequestMapping(value = "/selectLarge" , method = RequestMethod.GET)
-	public List<FilterDTO> selectLarge() {
+	public List<AddrDTO> selectLarge() {
 		
-		List<FilterDTO> list = service.selectLarge();
+		List<AddrDTO> list = service.selectLarge();
 		return list;
 	}
 	
 	@RequestMapping(value = "/selectMiddle" , method = RequestMethod.GET)
-	public List<FilterDTO> selectMiddle(String lcode) {
+	public List<AddrDTO> selectMiddle(String lcode) {
 		
-		List<FilterDTO> list = service.selectMiddle(lcode);
+		List<AddrDTO> list = service.selectMiddle(lcode);
 		return list;
 	}
 }

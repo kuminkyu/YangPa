@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import co.kr.yangpa.board.BoardDTO;
+
 @Repository
 public class FilterDAOImpl implements FilterDAO {
 
@@ -13,23 +15,27 @@ public class FilterDAOImpl implements FilterDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<FilterDTO> selectLarge() {
+	public List<AddrDTO> selectLarge() {
 		
-		List<FilterDTO> list = sqlSession.selectList("FilterMapper.selectLarge");
+		List<AddrDTO> list = sqlSession.selectList("FilterMapper.selectLarge");
 		
 		return list;
 	}
 
 	@Override
-	public List<FilterDTO> selectMiddle(String lcode) {
+	public List<AddrDTO> selectMiddle(String lcode) {
 		
 		System.out.println(lcode);
-		List<FilterDTO> list = sqlSession.selectList("FilterMapper.selectMiddle",lcode);
+		List<AddrDTO> list = sqlSession.selectList("FilterMapper.selectMiddle",lcode);
 		
-		for(int i = 0 ; i < list.size() ; i ++) {
-			System.out.println(list.get(i).getAddrcode());
-			System.out.println(list.get(i).getAddrname());
-		}
+		return list;
+	}
+
+	@Override
+	public List<BoardDTO> filterList(FilterDTO inDTO) {
+		
+		List<BoardDTO> list = sqlSession.selectList("FilterMapper.filterList",inDTO);
+		
 		return list;
 	}
 

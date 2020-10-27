@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.kr.yangpa.board.BoardDTO;
+
 @Service
 public class FilterServiceImpl implements FilterService {
 	
@@ -12,17 +14,25 @@ public class FilterServiceImpl implements FilterService {
 	private FilterDAO dao;
 	
 	@Override
-	public List<FilterDTO> selectLarge() {
+	public List<AddrDTO> selectLarge() {
 		
-		List<FilterDTO> list = dao.selectLarge();
+		List<AddrDTO> list = dao.selectLarge();
 		
 		return list;
 	}
 
 	@Override
-	public List<FilterDTO> selectMiddle(String lcode) {
+	public List<AddrDTO> selectMiddle(String lcode) {
 		
-		List<FilterDTO> list = dao.selectMiddle(lcode);
+		List<AddrDTO> list = dao.selectMiddle(lcode);
+		
+		return list;
+	}
+
+	@Override
+	public List<BoardDTO> filterList(FilterDTO inDTO) {
+		
+		List<BoardDTO> list = dao.filterList(inDTO);
 		
 		return list;
 	}

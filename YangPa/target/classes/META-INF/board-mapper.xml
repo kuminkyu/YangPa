@@ -5,9 +5,8 @@
 
 <mapper namespace="BoardMapper">
 
-	<select id="searchAll" parameterType="java.lang.String"
+	<select id="searchAll" parameterType="co.kr.yangpa.board.SearchDTO"
 		resultType="co.kr.yangpa.board.BoardDTO">
-	
 		SELECT bno, board.writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
@@ -17,7 +16,8 @@
         on board.type = type.tcode
         RIGHT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode 
-        WHERE type LIKE CONCAT(#{typeno},'%')     
+        WHERE type LIKE CONCAT(#{typeno},'%')
+        LIMIT #{reqNum} , 15   
 	</select>
 </mapper>
 

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,9 +79,9 @@
 							<script type="text/javascript">
 							$(document).ready(function() {
 								$("#btn_idchk").click(function() {
-								 alert();
-								}
-							}
+								 
+								});
+							});
 							</script>
 						</div>
 						<div  style="font-size: 11px;color: #767b86;letter-spacing: -0.6px;padding-top: 6px;padding-left: 3px;float: left;">

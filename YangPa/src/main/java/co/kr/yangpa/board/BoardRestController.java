@@ -15,9 +15,11 @@ public class BoardRestController {
 	@Autowired
 	private BoardService service;
 	
-	@RequestMapping(value = "/searchAll/{typeno}", method = RequestMethod.GET)
-	public List<BoardDTO> searchAll(@PathVariable("typeno") String typeno) {
-		List<BoardDTO> list = service.searchAll(typeno) ;
+	@RequestMapping(value = "/searchAll/{typeno}/{reqNum}", method = RequestMethod.GET)
+	public List<BoardDTO> searchAll(@PathVariable("typeno") String typeno,
+			@PathVariable("reqNum") String reqNum) {
+		System.out.println(reqNum);
+		List<BoardDTO> list = service.searchAll(typeno ,reqNum) ;
 		
 		return list;
 	}

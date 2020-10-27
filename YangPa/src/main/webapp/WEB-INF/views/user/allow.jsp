@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 </head>
 <body>
 <%@ include file="../header.jsp"%>
-	<div class="container" style="background-color: "#f2f2f2"; padding: 5%;">
+	<div class="container border" style="background-color: "#f2f2f2"; padding: 5%;">
 		<div class="text-center">
 		  <h1 style="font-weight: bold; margin-top: 10%; margin-bottom: 5%; ">회원가입 약관 동의</h1>
 		  <p>아래 필수 이용약관에 <span style="color: #ff33cc;font-weight: bold;">동의</span>해 주세요</p>
@@ -518,7 +521,7 @@
 	</ul>
 	</div><!-- 회원가입약관동의 -->
 
-		<div class="text-center">
+		<div class="text-center mb-3">
 			<button type="button" id="btn_jnext" class="btn btn-secondary" style="margin-top: 20%;"> 다음단계 </button>
 		</div>
 	
@@ -526,11 +529,21 @@
 		$(document).ready(function() {
 			$("#btn_jnext").click(function() {
 				if( $("input:checkbox[id='agree1']").is(":checked") == false ) {
-				alert("회원이용약관에 동의해주세요!");
+					alert("회원이용약관에 동의해주세요!");
 				} else if($("input:checkbox[id='agree2']").is(":checked") == false) {
-				alert("개인정보 처리방침에 동의해주세요!");
-				} 
-				//if
+					alert("개인정보 처리방침에 동의해주세요!");
+				} else if($("input:checkbox[id='agree2']").is(":checked") == true && $("input:checkbox[id='agree1']").is(":checked") == true){
+					$.get(
+						""
+						,{}
+						,function(data,status){
+							if(status == "success"){
+								location.assign("/yangpa/jform1/");
+							}
+						}
+						
+					)
+				}
 			}); //click
 		}); //ready
 		</script>

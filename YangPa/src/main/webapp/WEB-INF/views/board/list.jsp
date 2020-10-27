@@ -13,6 +13,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="${root}/resources/js/paging.js"></script>
+
 <script src="https://kit.fontawesome.com/6a4e36a028.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
@@ -21,6 +23,7 @@ $(document).ready(function() {
 	$(".tablesearch").click(function() {
 		$(".board-title").empty();
 		typeno = $(this).text();
+		reqNum = 1;
 		switch (typeno){
 	      case "운동" :
 	    	  typeno = 1;
@@ -61,80 +64,22 @@ $(document).ready(function() {
 	          break;
 	      default :
 	    	  alert("리스트 로딩중 오류 다시 시도해 주십시요");
+	      	  return;
 	    }
 		//페이징 //
 		$.ajax({
 			contentType : "application/json"
 			, url : "${root}/pageRest/pageCount/"+typeno
-			,success: function(totCnt, status){
-				$(".pagination").empty();
-				$(".pagination").append(
-					'<li class="page-item disabled"><a class="page-link" href="#" id = "prevpage"> 이전 </a></li>'		
-				);
-				alert(totCnt);
-				if(totCnt % 10 > 0){
-					totCnt = (totCnt / 10) +  1;
-				}else{
-					totCnt = totCnt/10;
-				}
-				let maxPage
-				if(totCnt >= 10){
-					maxPage = 10
-				}else{
-					maxPage = totCnt
-				}
-				for (let i = 1; i <= maxPage ; i++) {
-					$(".pagination").append(
-						'<li class="page-item">'
-						+'<a class="page-link" href="${root}/page?reqNum="' + i + '>'
-						+ i +'</a></li>'
-					);	
-				}
-				if(totCnt <= 10){
-					$(".pagination").append(
-							'<li class="page-item disabled"><a class="page-link" href="#" id = "prevpage"> 다음 </a></li>'		
-					);					
-				}else{
-					$(".pagination").append(
-							'<li class="page-item"><a class="page-link" href="#" id = "prevpage"> 다음 </a></li>'		
-					);		
-				}
-
+			,success: function(totresult, status){
+				totCnt = totresult;
+				paging(totCnt,1,10,typeno);
 			}
 		});//ajax
 		
 		//리스트 뽑아오기 // 
-		$.ajax({
-			contentType : "application/json"
-			, url : "${root}/boardRest/searchAll/"+typeno
-			, success : function(data, status) {
-				$("tbody").empty();
-				$.each(data, function(index, dto){
-					if(dto.state == "0"){
-						dto.state = "<span class='badge badge-pill badge-success'>판매중</span>";
-					}else if(dto.state == "1"){
-						dto.state = "<span class='badge badge-pill badge-light'>판매완료</span>";
-					}
-					$("tbody").append(
-							"<tr class='text-center'>"
-							+"<td><b>"+dto.bno+"</b></td>"
-							+"<td><b>"+dto.state+"</b></td>"
-							+"<td><b>"+dto.addrname+"</b></td>"
-							+"<td>"+dto.type+"</td>"
-							+"<td>"
-							+"<a href='${pageContext.request.contextPath}/free/detail?bno="
-							+dto.bno+"'>"+dto.title+"</a>"
-							+"</td>"
-							+"<td>"+dto.useday+"</td>"
-							+"<td>"+dto.price+"</td>"
-							+"<td>"+dto.write_date+"</td>"
-							+"</tr>"
-						);//append
-				});//each
-			}//function
-		});//ajax
+		
+		list(1,typeno);
 	});//click
-	
 });//ready
 
 </script>
@@ -142,13 +87,6 @@ $(document).ready(function() {
 <body>
 	<%@ include file="../header.jsp" %>
 	<div class="container-fluid">
-		<ul class="pagination">
-		  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-		  <li class="page-item"><a class="page-link" href="#">1</a></li>
-		  <li class="page-item"><a class="page-link" href="#">2</a></li>
-		  <li class="page-item"><a class="page-link" href="#">3</a></li>
-		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-		</ul>
 		<div class="row">
 			<div class="col-lg-2">
 		        <h3 class="mb-2">분류</h3>
@@ -194,11 +132,28 @@ $(document).ready(function() {
 					</tr>
 				</thead>
 				<tbody>
-				
+					<c:forEach var="dto" items="${filter_list}" varStatus="status">
+						<tr class="text-center">
+							<td>${dto.bno}</td>
+							<td>${dto.state}</td>
+							<td>${dto.addrname}</td>
+							<td>${dto.type}</td>
+							<td>
+								<a href="${pageContext.request.contextPath}/detail?bno=${dto.bno}">
+									${dto.title}
+								</a>
+							</td>
+							<td>${dto.useday}</td>
+							<td>${dto.price}</td>
+							<td>${dto.write_date}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
-		</div>
+				<ul class="pagination justify-content-center">
+				</ul>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

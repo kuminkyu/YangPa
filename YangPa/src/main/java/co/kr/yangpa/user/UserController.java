@@ -42,7 +42,7 @@ public class UserController {
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {
 		
-		return "user/write";
+		return "writing/write";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -65,5 +65,6 @@ public class UserController {
 	public String myPage() {
 		return "user/mypage";
 	} //myPage
- 
+
+	
 }
