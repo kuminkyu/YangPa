@@ -17,6 +17,22 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
+ 
+<script>
+                                 $(document).ready(function() {
+                                    $("#login").click(function() {
+                                       if( $.trim( $("#id").val() ) == "" ){
+                                          alert("아이디를 입력주세요.");
+                                          return;
+                                       }else if( $.trim( $("#pwd").val() ) == ""){
+                                          alert("패스워드를 입력주세요.");
+                                          return;
+                                       }
+                                       alert("성공");
+                                       $("join_form").submit();
+                                    });//click
+                                 });//ready
+                              </script>
 
 <body>
 
@@ -47,13 +63,13 @@
 											<div style="margin-bottom: 20px;">
 												<div class="-inputWrap" >
 													<input type="text" name="user_id" value=""
-														class="hs_txtline1"
+														class="hs_txtline1" id = "id"
 														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="아이디" maxlength="50" tabindex="1" />
 												</div>
 												<div class="-inputWrap" >
 													<input type="password" name="user_passwd" value=""
-														class="hs_txtline1"
+														class="hs_txtline1" pwd="pwd"
 														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="비밀번호" maxlength="50" tabindex="2" />
 												</div>
@@ -117,7 +133,7 @@
 																	,{}
 																	,function(data,status){
 																		if(status == "success"){
-																			location.assign("/yangpa/aform1/");
+																			location.assign("/yangpa/allow/");
 																		}
 																	}
 																)

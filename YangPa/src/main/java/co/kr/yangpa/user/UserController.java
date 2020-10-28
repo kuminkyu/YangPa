@@ -21,23 +21,6 @@ public class UserController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/allow", method = RequestMethod.GET)
-	public String home() {
-		
-		return "user/allow";
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-		
-		return "user/login";
-	}
-	
-	@RequestMapping(value = "/find", method = RequestMethod.GET)
-	public String find() {
-		
-		return "user/find";
-	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {
@@ -48,18 +31,8 @@ public class UserController {
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update() {
 		
-		return "user/update";
+		return "writing/update";
 	}
-	
-	@RequestMapping(value = "/aform1", method = RequestMethod.GET)
-	public String aform() {
-		return "user/allow";
-	} //aform
-	
-	@RequestMapping(value = "/jform1", method = RequestMethod.GET)
-	public String jform() {
-		return "user/join";
-	} //jform	
 	
 	@RequestMapping(value = "/mypg1", method = RequestMethod.GET)
 	public String myPage() {

@@ -9,6 +9,8 @@
 		<mapper resource="META-INF/filter-mapper.xml" />
 		<mapper resource="META-INF/board-mapper.xml" />
 		<mapper resource="META-INF/page-mapper.xml" />
+		<mapper resource="META-INF/customer-mapper.xml" />
+		<mapper resource="META-INF/member-mapper.xml"/>
 	</mappers>
 
 </configuration>

@@ -19,15 +19,32 @@
                   data-target="#filter_modal" href="${root}/" style="width: 280px;">
    
     <ul class="nav navbar-nav navbar-right">
-	  <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/login"> 로그인</a></li>
-	  
-      <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/aform1"> 회원가입</a></li>
+    
+    <%-- <c:choose>
+    	<c:when test = "${login_id_session != null && login_id_session.length()>0 }">
+    	
+    		 <!-- 로그인 여부 묻고 되었을 때만 -->
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/mypg1"> My페이지</a></li>
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/login"> 로그아웃</a></li>
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/board/search"> 리스트</a></li>
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/customer/notice">고객센터</a></li>
+    	</c:when>
+    	<c:otherwise>
+	    	
+		    <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/allow"> 회원가입</a></li>
+	      	<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/login"> 로그인</a></li>
+    		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/board/search"> 리스트</a></li>
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/customer/notice">고객센터</a></li>
+    	</c:otherwise>
+    
+    </c:choose> --%>
+    
+	  		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/allow"> 회원가입</a></li>
+	      	<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/login"> 로그인</a></li>
+	      	<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/mypg1"> My페이지</a></li>
+	 		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/board/search"> 리스트</a></li>
+      		<li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/customer/notice">고객센터</a></li>
       
-	  <!-- 로그인 여부 묻고 되었을 때만 -->
-      <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/mypg1"> My페이지</a></li>
-      
-      <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="${root}/board/search"> 리스트</a></li>
-      <li><a class="nav-link text-white font-weight-bold" style="font-size: 30px;" href="#">고객센터</a></li>
     </ul>
   </div>
 </nav>

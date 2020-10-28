@@ -557,7 +557,7 @@
 						,{}
 						,function(data,status){
 							if(status == "success"){
-								location.assign("/yangpa/jform1/");
+								location.assign("/yangpa/joinform/");
 							}
 						}
 						

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+	
+	<insert id="join" parameterType="co.kr.yangpa.member.MbrDTO">
+		insert into mbr (id, pwd, name, tel, email)
+		values (#{id}, #{pwd},#{name}, #{tel},#{email})
+	</insert>
+	
+	<!-- <select id = "login" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
+		select count(id) cnt from mbr where id = #{login_id} and pwd = #{login_pwd}
+	</select>
+	
+	<select id = "idCheck" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
+		select count(id) cnt from mbr where id = #{login_id}
+	</select> -->
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
