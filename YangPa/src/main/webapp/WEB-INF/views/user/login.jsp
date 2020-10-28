@@ -61,23 +61,41 @@
 											<div>
 												<div class="-btnWrap">
 													<input type="submit" name="submit_OK" value="로그인"
-														
+														id = "login"
 														class="btn-tpl"
 														style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
 														tabindex="3" />
 												</div>
+												
+												
 												<div style="padding-top: 10px; padding-bottom: 20px;">
 													<table width=100% cellpadding=0 cellspacing=0 border=0>
 														<tr>
 
 															<td style="text-align: right;">&nbsp;<a
 																href="insiter.php?design_file=find_id_pw.php"><span
-																	class="btn-tpl"
+																	class="btn-tpl" id = "id_pwd"
 																	style="font-size: 11px; color: #757c8a; padding: 3px 8px; letter-spacing: -1px; border: 1px solid #dbe0e5; border-radius: 30px;">ID/PW
 																		찾기</span></a></td>
 														</tr>
 													</table>
 												</div>
+												
+												<script>
+													$(document).ready(function() {
+														$("#id_pwd").click(function() {
+																$.get(
+																	""
+																	,{}
+																	,function(data,status){
+																		if(status == "success"){
+																			location.assign("/yangpa/find/");
+																		}
+																	}
+																)
+														}); //click
+													}); //ready
+												</script>
 											</div>
 										</div>
 									</div>
@@ -86,16 +104,33 @@
 									<div style="letter-spacing: -0.6px;"></div>
 									<div style="padding-bottom: 30px;">
 										<a href="insiter.php?design_file=MemJoinChs.php"><span
-											class="btn-tpl"
+											class="btn-tpl" id = "join_form"
 											style="font-size: 14px; color: #757c8a; padding: 3px 5px; letter-spacing: -1px; border-bottom: 1px solid #9b9da4;">회원가입</span></a>
 									</div>
 								</div>
+								
+												<script>
+													$(document).ready(function() {
+														$("#join_form").click(function() {
+																$.get(
+																	""
+																	,{}
+																	,function(data,status){
+																		if(status == "success"){
+																			location.assign("/yangpa/aform1/");
+																		}
+																	}
+																)
+														}); //click
+													}); //ready
+												</script>
 
 							</div>
 							<div style="text-align: center; padding-top: 16px;">
 								<div style="color: #a8a8a8; letter-spacing: -0.6px;">가입문의
 									0507-1412-7235</div>
-							</div></td>
+							</div>
+							</td>
 						<td></td>
 					</tr>
 

@@ -70,6 +70,25 @@
 					</table>
 				</div><!-- menu2 -->
 				<div class="tab-pane container fade" id="menu3">
+				
+				<div class="ABA-wrap-box AB-cr ABA-layout-align" id="ABA-column-wrap"
+			style="padding: 50px 0 30px 0;">
+			
+			<div class="ABA-container-box-1080">
+				<table width=100% cellpadding=0 cellspacing=0 border=0>
+					<tr>
+						<td></td>
+						
+						<td width=550><div id='AB_contents'
+								style="padding: 0 30px; background-color: #ffffff;">
+								<form>
+
+									<div class="ABA-content-box pageMember"
+										style="padding-bottom: 0;">
+										<div class="container p-3 my-3 border"
+											style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
+											
+	
 					<table class="table table-borderless" id="MyInfo">
 						<thead>
 							<th><h1 class="text-center mt-3 mb-3">Yang Pa<h1></h1>
@@ -131,6 +150,16 @@
 					<div class="text-center mb-3">
 					<button type="button" id="btn_edit" class="btn btn-primary" style="margin-top: 25px;">수정하기</button>
 			</div>
+					</div>
+					</div>
+					</form>
+					</div>
+					</td>
+					<td></td>
+					</tr>
+					</table>
+					
+					
 				</div><!-- menu3 -->
 			</div><!-- tab-content -->
 <!-- 			<div class="text-center"> -->

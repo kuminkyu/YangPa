@@ -17,7 +17,26 @@
 </head>
 <body>
 <%@ include file="../header.jsp"%>
-	<div class="container border" style="background-color: "#f2f2f2"; padding: 5%;">
+
+
+	
+	<div class="ABA-wrap-box AB-cr ABA-layout-align" id="ABA-column-wrap"
+			style="padding: 50px 0 30px 0;">
+			
+			<div class="ABA-container-box-1080">
+				<table width=100% cellpadding=0 cellspacing=0 border=0>
+					<tr>
+						<td></td>
+						
+						<td width=550><div id='AB_contents'
+								style="padding: 0 30px; background-color: #ffffff;">
+								<form>
+
+									<div class="ABA-content-box pageMember"
+										style="padding-bottom: 0;">
+										<div class="container p-3 my-3 border"
+											style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
+	
 		<div class="text-center">
 		  <h1 style="font-weight: bold; margin-top: 10%; margin-bottom: 5%; ">회원가입 약관 동의</h1>
 		  <p>아래 필수 이용약관에 <span style="color: #ff33cc;font-weight: bold;">동의</span>해 주세요</p>
@@ -547,6 +566,16 @@
 			}); //click
 		}); //ready
 		</script>
-	</div><!-- container -->
+	<!-- </div> --><!-- container -->
+
+	</div>
+	</div>
+	</form>
+	</div></td>
+	<td></td>
+	</tr>
+	</table>
+	</div>
+	</div>
 </body>
 </html>

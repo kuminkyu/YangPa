@@ -124,7 +124,7 @@
 
 		<div class="wrap col-lg-10">
 			<div class="card-columns">
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
@@ -141,7 +141,7 @@
 					</div>
 				</div>
 
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
@@ -158,7 +158,7 @@
 					</div>
 				</div>
 
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
@@ -175,7 +175,7 @@
 					</div>
 				</div>
 
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
@@ -192,7 +192,7 @@
 					</div>
 				</div>
 
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
@@ -209,7 +209,7 @@
 					</div>
 				</div>
 
-				<div class="card" style="width: 400px">
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
 					<img class="card-img-top"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
