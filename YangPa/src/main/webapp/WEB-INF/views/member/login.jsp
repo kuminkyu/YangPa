@@ -20,16 +20,16 @@
  
 <script>
                                  $(document).ready(function() {
-                                    $("#login").click(function() {
-                                       if( $.trim( $("#id").val() ) == "" ){
+                                    $("#btn_login").click(function() {
+                                       if( $.trim( $("#login_id").val() ) == "" ){
                                           alert("아이디를 입력주세요.");
                                           return;
-                                       }else if( $.trim( $("#pwd").val() ) == ""){
+                                       }else if( $.trim( $("#login_pwd").val() ) == ""){
                                           alert("패스워드를 입력주세요.");
                                           return;
                                        }
                                        alert("성공");
-                                       $("join_form").submit();
+                                       $("#loginForm").submit();
                                     });//click
                                  });//ready
                               </script>
@@ -48,12 +48,14 @@
 						
 						<td width=550><div id='AB_contents'
 								style="padding: 0 30px; background-color: #ffffff;">
-								<form>
+								<form id = "loginForm" method = "post" action="${pageContext.request.contextPath}/login">
 
 									<div class="ABA-content-box pageMember"
 										style="padding-bottom: 0;">
+										
 										<div class="container p-3 my-3 border"
 											style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
+											
 											<div
 												style="color: #617484; letter-spacing: -1px; margin-bottom: 22px;">"당신의
 												양도를 파세요, 양파"</div>
@@ -62,25 +64,25 @@
 												해주세요</div>
 											<div style="margin-bottom: 20px;">
 												<div class="-inputWrap" >
-													<input type="text" name="user_id" value=""
-														class="hs_txtline1" id = "id"
+													<input type="text"  value=""
+														class="hs_txtline1" id = "login_id" name="login_id"
 														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="아이디" maxlength="50" tabindex="1" />
 												</div>
 												<div class="-inputWrap" >
-													<input type="password" name="user_passwd" value=""
-														class="hs_txtline1" pwd="pwd"
+													<input type="password" value=""
+														class="hs_txtline1" id="login_pwd" name="login_pwd"
 														style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 														placeholder="비밀번호" maxlength="50" tabindex="2" />
 												</div>
 											</div>
 											<div>
 												<div class="-btnWrap">
-													<input type="submit" name="submit_OK" value="로그인"
-														id = "login"
-														class="btn-tpl"
+													<button type="button" value="로그인"
+														id = "btn_login"
+														
 														style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
-														tabindex="3" />
+														tabindex="3" >로그인</button>
 												</div>
 												
 												

@@ -29,19 +29,20 @@ public class FilterController {
 		System.out.println(inDTO.getOption());
 		System.out.println(inDTO.getUseday());
 
-		String where = inDTO.getOption().replace("[","");
-		where = where.replace("]", "");
-		
-		String[] whereList = where.split(",");
-		inDTO.setWhere(whereList);
+		System.out.println("=====옵션목록들=====");
+		for (int i = 0; i < inDTO.getOption().length; i++) {
+			System.out.println(inDTO.getOption()[i]);
+		}
+		if(inDTO.getOption().length == 0 ) inDTO.setOption(null);
+		if(inDTO.getLargelist().equals("0")) inDTO.setLargelist(null);
+		if(inDTO.getMiddlelist().equals("0")) inDTO.setMiddlelist(null);
+		if(inDTO.getMinprice().equals("")) inDTO.setMinprice(null);
+		if(inDTO.getMaxprice().equals("")) inDTO.setMaxprice(null);
+		if(inDTO.getUseday().equals("")) inDTO.setUseday(null);;
 		
 		List<BoardDTO> list = service.filterList(inDTO);
 		
 		model.addAttribute("filter_list", list);
-		System.out.println(list.get(0).getBno());
-		System.out.println(list.get(0).getType());
-		System.out.println(list.get(0).getTitle());
-		
 		return "board/list";
 	}
 	

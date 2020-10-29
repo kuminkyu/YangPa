@@ -18,20 +18,89 @@
 	
 	<select id="filterList" parameterType="co.kr.yangpa.filter.FilterDTO"
 	resultType="co.kr.yangpa.board.BoardDTO">
-		SELECT bno, board.writer, type.tname as type, board.title,
+		SELECT board.bno, board.writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname
+				board.view_cnt , addrmiddle.addrname ,
+		<choose>
+			<when test='bun.equals("1")'>
+				<if test='kind.equals("0")'>limit_date as useday</if>
+				<if test='kind.equals("1")'>limit_cnt as useday</if>
+			</when>
+			<when test='bun.equals("2")'>checkin_date as useday</when>
+			<when test='bun.equals("3")'>ticket_date as useday</when>
+			<when test='bun.equals("4")'>limit_date as useday</when>
+			<otherwise>"내용참조" as useday</otherwise>
+		</choose> 		
 		FROM board
-        INNER JOIN type
-        on board.type = type.tcode
-        RIGHT OUTER JOIN addrmiddle
+		<choose>
+			<when test='bun.equals("1")'>
+	        	INNER JOIN excercise
+		 		<if test='kind.equals("0")'>on board.bno = excercise.bno and limit_date</if>
+				<if test='kind.equals("1")'>on board.bno = excercise.bno and limit_cnt</if>
+			</when>
+			<when test='bun.equals("2")'>
+		        INNER JOIN travel
+       			ON board.bno = travel.bno
+			</when>
+			<when test='bun.equals("3")'>
+	      	    INNER JOIN ticket
+       			ON board.bno = ticket.bno
+			</when>
+			<when test='bun.equals("4")'>
+	      	    INNER JOIN etc
+       			ON board.bno = etc.bno
+			</when>
+		</choose>
+        LEFT OUTER JOIN type
+        ON board.type = type.tcode 
+        LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode 
-        WHERE type LIKE CONCAT(1,'%') 
-        or type in ("101" , "102")
-        LIMIT 1 , 15 
-	
+        <where>
+        <if test="option != null">
+        	AND type IN
+        	<foreach item="item" index="index" collection="option"
+        		open="(" separator="," close=")">
+        	#{item}
+        	</foreach>
+        </if>
+        <if test="largelist != null">
+        	AND board.addrcode
+        	<choose>
+        		<when test="middlelist != null">
+        			LIKE CONCAT(#{middlelist},'%') 
+        		</when>
+        		<otherwise>
+        			LIKE CONCAT(#{largelist},'%') 
+        		</otherwise>
+        	</choose>
+        </if>
+		<choose>
+			<when test="minprice !=null and maxprice != null">
+				AND price between #{minprice} and #{maxprice}
+			</when>
+			<when test="minprice !=null">
+				AND price >= #{minprice}
+			</when>
+			<when test="maxprice !=null">
+				AND price <![CDATA[<]]>= #{maxprice}
+			</when>
+		</choose>
+		<if test="useday != null">
+			<if test='bun.equals("2")'>
+			 and checkin_date <![CDATA[<]]>= str_to_date(#{useday},'%Y-%m-%d')
+			</if>
+			<if test='bun.equals("3")'>
+			 and ticket_date <![CDATA[<]]>= str_to_date(#{useday},'%Y-%m-%d')
+			</if>
+		</if>
+        </where>
+         LIMIT 0 , 15 
+        
 	</select>
+	
+	
+	
 </mapper>
 
 

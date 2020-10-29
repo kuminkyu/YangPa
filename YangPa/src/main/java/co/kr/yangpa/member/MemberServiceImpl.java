@@ -8,26 +8,28 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO dao;
-	
+
 	@Override
 	public int join(MbrDTO inDto) {
 
 		int successCnt = dao.join(inDto);
-		
+
 		return successCnt;
 	}
 
-	
-	/*
-	 * @Override public int login(MbrDTO inDto) {
-	 * 
-	 * int successCnt = dao.idCheck(inDto);
-	 * 
-	 * if(successCnt>0) { successCnt = dao.login(inDto);
-	 * 
-	 * return successCnt; } else { return -1;
-	 * 
-	 * } }
-	 */
+	@Override
+	public int login(MbrDTO inDto) {
+
+		int successCnt = dao.idCheck(inDto);
+
+		if (successCnt > 0) {
+			successCnt = dao.login(inDto);
+
+			return successCnt;
+		} else {
+			return -1;
+
+		}
+	}
 
 }

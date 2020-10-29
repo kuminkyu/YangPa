@@ -2,32 +2,40 @@ package co.kr.yangpa.board;
 
 public class BoardDTO {
 	
-	private String bno;
-	private String writer;
-	private String type;
-	private String title;
-	private String contents;
-	private String price;
-	private String state;
-	private String write_date;
-	public String getAddrname() {
-		return addrname;
-	}
-	public void setAddrname(String addrname) {
-		this.addrname = addrname;
-	}
-	private String view_cnt;
-	private String addrcode;
-	private String addrname;
-	private String useday;
-	private String ex_type;
+	private String bno;//게시글번호
+	private String writer;//작성자
+	private String type;//스키 헬스 모텔 호텔 등등
+	private String title;//제목
+	private String contents;//내용
+	private String price;//가격
+	private String state;//상태 판매, 판매완료
+	private String write_date;//작성일
+	private String view_cnt;//조회수
+	private String addrcode;// 지역코드
+	private String addrname;// 지역 이름
+	private String useday;// 사용일 , 남은사용회수
+	private String buy_type;
 	
+	public String getBuy_type() {
+		return buy_type;
+	}
+	public void setBuy_type(String buy_type) {
+		this.buy_type = buy_type;
+	}
 	public String getUseday() {
 		return useday;
 	}
 	public void setUseday(String useday) {
 		this.useday = useday;
 	}
+	
+	public String getAddrname() {
+		return addrname;
+	}
+	public void setAddrname(String addrname) {
+		this.addrname = addrname;
+	}
+	
 	public String getBno() {
 		return bno;
 	}

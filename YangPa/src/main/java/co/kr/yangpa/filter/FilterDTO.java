@@ -8,10 +8,11 @@ public class FilterDTO {
 	private String middlelist;//구 군 구분
 	private String minprice;//최소가격
 	private String maxprice;//최대가격
-	private String option;//옵션들
 	private String useday;//사용날짜
 	private String kind;//운동 회원권 , 정기권 같은것
 	private String[] where;
+	private String[] option;//옵션들
+
 	
 	public String[] getWhere() {
 		return where;
@@ -61,11 +62,13 @@ public class FilterDTO {
 	public void setMaxprice(String maxprice) {
 		this.maxprice = maxprice;
 	}
-	public String getOption() {
+	public String[] getOption() {
 		return option;
 	}
-	public void setOption(String option) {
+	public void setOption(String[] option) {
 		this.option = option;
 	}
+
+
 	
 }

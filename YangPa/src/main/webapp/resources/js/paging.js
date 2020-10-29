@@ -82,6 +82,10 @@ function list(reqNum,typeno){
 				}else if(dto.state == "1"){
 					dto.state = "<span class='badge badge-pill badge-light'>판매완료</span>";
 				}
+				if(dto.buy_type == "1"){
+					dto.useday = dto.useday + "회";
+				}
+				
 				$("tbody").append(
 						"<tr class='text-center'>"
 						+"<td><b>"+dto.bno+"</b></td>"
@@ -92,7 +96,7 @@ function list(reqNum,typeno){
 						+"<a href='${pageContext.request.contextPath}/free/detail?bno="
 						+dto.bno+"'>"+dto.title+"</a>"
 						+"</td>"
-						+"<td>"+dto.useday+"</td>"
+						+"<td><b>"+dto.useday+"</b></td>"
 						+"<td>"+dto.price+"</td>"
 						+"<td>"+dto.write_date+"</td>"
 						+"</tr>"

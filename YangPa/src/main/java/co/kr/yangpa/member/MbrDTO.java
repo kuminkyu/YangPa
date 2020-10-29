@@ -9,7 +9,21 @@ public class MbrDTO {
 	private String tel;
 	private String email;
 	private String mbr_role;
+	private String login_id;
+	private String login_pwd;
 	
+	public String getLogin_id() {
+		return login_id;
+	}
+	public void setLogin_id(String login_id) {
+		this.login_id = login_id;
+	}
+	public String getLogin_pwd() {
+		return login_pwd;
+	}
+	public void setLogin_pwd(String login_pwd) {
+		this.login_pwd = login_pwd;
+	}
 	public String getMno() {
 		return mno;
 	}

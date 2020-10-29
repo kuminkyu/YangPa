@@ -4,6 +4,6 @@ public interface MemberService {
 
 	int join(MbrDTO inDto);
 
-	/* int login(MbrDTO inDto); */
+	int login(MbrDTO inDto);
 
 }

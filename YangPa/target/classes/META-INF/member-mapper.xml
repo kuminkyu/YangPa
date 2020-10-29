@@ -10,13 +10,13 @@
 		values (#{id}, #{pwd},#{name}, #{tel},#{email})
 	</insert>
 	
-	<!-- <select id = "login" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
+	<select id = "login" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
 		select count(id) cnt from mbr where id = #{login_id} and pwd = #{login_pwd}
 	</select>
 	
 	<select id = "idCheck" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
 		select count(id) cnt from mbr where id = #{login_id}
-	</select> -->
+	</select>
 	
 	
 </mapper>

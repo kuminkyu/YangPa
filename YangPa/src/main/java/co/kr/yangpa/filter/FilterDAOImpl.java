@@ -34,6 +34,7 @@ public class FilterDAOImpl implements FilterDAO {
 	@Override
 	public List<BoardDTO> filterList(FilterDTO inDTO) {
 		
+		
 		List<BoardDTO> list = sqlSession.selectList("FilterMapper.filterList",inDTO);
 		
 		return list;

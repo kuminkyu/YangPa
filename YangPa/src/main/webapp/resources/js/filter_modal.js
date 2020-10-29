@@ -3,9 +3,9 @@ $(document).ready(function() {
 	   $(function() {
            //모든 datepicker에 대한 공통 옵션 설정
            $.datepicker.setDefaults({
-               dateFormat: 'yy/mm/dd' //Input Display Format 변경
-               ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-               ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+               dateFormat: 'yy-mm-dd' //Input Display Format 변경
+               ,showOtherMonths: false //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+               ,showMonthAfterYear:false//년도 먼저 나오고, 뒤에 월 표시
                ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
                ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
                ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
@@ -23,10 +23,6 @@ $(document).ready(function() {
            $("#datepicker1").datepicker();                    
            $("#datepicker2").datepicker();
            
-           //From의 초기값을 오늘 날짜로 설정
-           $('#datepicker1').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-           //To의 초기값을 내일로 설정
-           $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
        });
 	
 	   

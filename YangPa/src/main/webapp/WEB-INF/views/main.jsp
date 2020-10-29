@@ -2,16 +2,20 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <html>
 <head>
 <title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
 	rel="stylesheet">
+	
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -21,8 +25,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script src="https://kit.fontawesome.com/6a4e36a028.js"
-	crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <style type="text/css">
@@ -33,7 +36,7 @@
 
 * {
 	font-family: 'Nanum Pen Script', cursive;
-}
+} 
 
 #div-1>h5 {
 	color: lightskyblue;
@@ -110,7 +113,9 @@
 				<b><h3>
 						<a href="#" class="list-group-item text-dark tablesearch"><i
 							class="fas fa-seedling mr-2"></i>전체</a></b> <b><a href="#"
-					class="list-group-item text-dark tablesearch"><i
+					class="list-group-item text-dark tablesearch">
+					
+					<i
 						class="fas fa-dumbbell mr-2"></i>운동</a></b> <b><a href="#"
 					class="list-group-item text-dark tablesearch"><i
 						class="fas fa-umbrella-beach mr-2"></i>여행</a></b> <b><a href="#"

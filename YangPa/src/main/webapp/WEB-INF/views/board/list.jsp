@@ -12,10 +12,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="${root}/resources/js/paging.js"></script>
 
-<script src="https://kit.fontawesome.com/6a4e36a028.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -134,9 +134,16 @@ $(document).ready(function() {
 				<tbody>
 					<c:forEach var="dto" items="${filter_list}" varStatus="status">
 						<tr class="text-center">
-							<td>${dto.bno}</td>
-							<td>${dto.state}</td>
-							<td>${dto.addrname}</td>
+							<td><b>${dto.bno}</b></td>
+						<c:choose>
+							<c:when test="${dto.state == 0}">
+							<td><span class='badge badge-pill badge-success'>판매중</span></td>
+							</c:when>
+							<c:when test="${dto.state == 1}">
+							<td><span class='badge badge-pill badge-light'>판매완료</span></td>
+							</c:when>
+						</c:choose>
+							<td><b>${dto.addrname}</b></td>
 							<td>${dto.type}</td>
 							<td>
 								<a href="${pageContext.request.contextPath}/detail?bno=${dto.bno}">

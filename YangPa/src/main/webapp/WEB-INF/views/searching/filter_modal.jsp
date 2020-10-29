@@ -10,6 +10,16 @@
 <script>
 $(document).ready(function () {
 	
+	$("#bunText").val(null);		
+	$("#largelistText").val(null);		
+	$("#middlelistText").val(null);		
+	$("#minpriceText").val(null);		
+	$("#maxpriceText").val(null);		
+	$("#kindText").val(null);
+	$("#optionText").val(null);		
+	$("#usedayText").val(null);
+	
+	//필터모달 클릭시 시,도 로드
 	$("#filterlink").click(function() {
 		$.get(
 			"${pageContext.request.contextPath}/filterRest/selectLarge"
@@ -30,6 +40,7 @@ $(document).ready(function () {
 		);//get
 	});//click
 	
+	//시,도 값이 바뀌면 그에 맞는 구군 코드 반환
 	$("#largelist").change(function() {
 		$.get(
 			"${pageContext.request.contextPath}/filterRest/selectMiddle"
@@ -52,11 +63,16 @@ $(document).ready(function () {
 		
 	});//change
 	
+	//탭 넘어갈시 체크박스와 라디오박스를 해제하는 부분
    $(".bun").click(function() {
 	   $("input:checkbox[name='check']").attr("checked", false);
 	   $("input:radio[name='ex_kind']").attr("checked", false);
+	   $("#datepicker1").val(null);
+	    $("#datepicker2").val(null);
 	});
 	
+	
+	//검색 버튼 클릭시 히든 상자에 값을넣고 전송
    $("#filter_search_btn").click(function() {
 		let bunryu = $('[class="nav-link bun active"]').html();
 		let use_date = "";
@@ -81,23 +97,25 @@ $(document).ready(function () {
 		  $("input:checkbox[name=check]:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
 		   list.push($(this).val());
 		  });	
-		$.get(
-			"${pageContext.request.contextPath}/filter/filterselect"
-			,{
-				  bun : bunryu
-				, largelist : $("#largelist").val()
-				, middlelist : $("#middlelist").val()
-				, minprice : $("#minprice").val()
-				, maxprice :  $("#maxprice").val()
-				, kind : kindvar
-				, option : JSON.stringify(list)
-				, useday : use_date
-			}
-			,function(data , status){
-				alert(data);
-			}//function
-			,"json"
-		);//get	
+// 				  bun : bunryu
+// 				, largelist : $("#largelist").val()
+// 				, middlelist : $("#middlelist").val()
+// 				, minprice : $("#minprice").val()
+// 				, maxprice :  $("#maxprice").val()
+// 				, kind : kindvar
+// 				, option : JSON.stringify(list)
+// 				, useday : use_date
+
+		$("#bunText").val(bunryu);		
+		$("#largelistText").val($("#largelist").val());		
+		$("#middlelistText").val($("#middlelist").val());		
+		$("#minpriceText").val($("#minprice").val());		
+		$("#maxpriceText").val($("#maxprice").val());		
+		$("#kindText").val(kindvar);
+		$("#optionText").val(list);		
+		$("#usedayText").val(use_date);	
+
+		$("#filterform").submit();
 		
 // 		alert(bunryu);
 // 		alert($("#largelist").val());
@@ -111,6 +129,17 @@ $(document).ready(function () {
 	
 });//ready
 </script>
+<form id="filterform" method="get"
+ action="${root}/filter/filterselect" style ="display:none;" >
+<input type="text" id="bunText" name="bun">
+<input type="text" id="largelistText" name="largelist">
+<input type="text" id="middlelistText" name="middlelist">
+<input type="text" id="minpriceText" name="minprice">
+<input type="text" id="maxpriceText" name="maxprice">
+<input type="text" id="kindText" name="kind">
+<input type="text" id="optionText" name="option">
+<input type="text" id="usedayText" name="useday">
+</form>
 <div class="modal" id="filter_modal">
 	<div class="modal-dialog modal-l">
 		<div class="modal-content">
