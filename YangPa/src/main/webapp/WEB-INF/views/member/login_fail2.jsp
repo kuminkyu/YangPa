@@ -25,8 +25,8 @@
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-	<h1>아이디 찾기 실패</h1>
-	<h2>이름과 이메일을 확인주세요.</h2>
+	<h1>패스워드 찾기 실패</h1>
+	<h2>아이디, 이름, 이메일을 확인주세요.</h2>
 	<h2>
 		<a href="${pageContext.request.contextPath}/find">
 			ID/PWD 바로가기

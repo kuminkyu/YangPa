@@ -7,8 +7,14 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-<nav style="background-color: #3CB371">
+<style>
+#footer{
+	bottom:0;
+	width:100%;
+}
+</style>
 
+<nav id = "footer" style="background-color: #3CB371; ">
 
 	<div class="row" style="color: #FFFFFF;">
 		<div class="col-sm-5" style="margin-top: 20px">
@@ -49,7 +55,6 @@
 			</h5>
 		</div>
 	</div>
-
 
 
 

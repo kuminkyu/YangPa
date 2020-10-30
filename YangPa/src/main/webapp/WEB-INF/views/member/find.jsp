@@ -18,15 +18,16 @@
                            <script>
                                  $(document).ready(function() {
                                     $("#com").click(function() {
-                                       if( $.trim( $("#id").val() ) == "" ){
-                                          alert("아이디를 확인해 주세요.");
+                                       if( $.trim( $("#name").val() ) == "" ){
+                                          alert("이름을 확인해 주세요.");
                                           return;
-                                       }else if( $.trim( $("#emi").val() ) == ""){
+                                       }else if( $.trim( $("#email").val() ) == ""){
+                                    	   
                                           alert("이메일을 확인해 주세요.");
                                           return;
-                                       }
+                                       }                                       
                                        alert("성공");
-                                       $("com").submit();
+                                       $("#id_pwd").submit();
                                     });//click
                                  });//ready
                            
@@ -36,15 +37,17 @@
                                        if( $.trim( $("#id2").val() ) == "" ){
                                           alert("아이디를 확인해 주세요.");
                                           return;
-                                       }else if( $.trim( $("#name").val() ) == ""){
+                                       }else if( $.trim( $("#name2").val() ) == ""){
                                           alert("이름을 확인해 주세요.");
                                           return;
-                                       }else if( $.trim( $("#emi2").val() ) == ""){
+                                       }else if( $.trim( $("#email2").val() ) == ""){
                                           alert("이메일을 확인해 주세요.");
                                           return;
                                        }
                                        alert("성공");
-                                       $("com2").submit();
+                                       //$("#id_pwd").attr("action","${root}/findPwd");
+//                                        id_pwd.action = ${root}/find/idfind;
+                                       $("#id_pwd2").submit();
                                     });//click
                                  });//ready
                               </script>
@@ -62,7 +65,9 @@
                   <td></td>
                   <td width=650><div id='AB_contents'
                         style="padding: 0 30px; background-color: #ffffff;">
-                        <form>
+                        
+                        
+                        
                            <div class="ABA-content-box pageMember"
                               style="padding-bottom: 0;">
                               <div class="container p-3 my-3 border" style="width: 100%;">
@@ -73,9 +78,10 @@
                                     <li><a data-toggle="tab" class = "ml-3" href="#menu1">비밀번호찾기</a></li>
                                     
                                  </ul>
-
+					
                                  <div class="tab-content">
                                     <div id="home" class="tab-pane in active ">
+                                 	<form id= "id_pwd" method="post" action="${root}/find/">
                                        <div
                                           style="font-family: NanumGothic; padding: 30px 20px 20px 20px;">
                                           <div
@@ -86,20 +92,20 @@
                                           </div>
                                           <div style="margin-bottom: 20px;">
                                              <div>
-                                                <input type="text" id="id"
+                                                <input type="text" id="name" name="find_name"
                                                    style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
-                                                   placeholder="아이디" maxlength="50" />
+                                                   placeholder="이름" maxlength="50" />
                                              </div>
                                              <div>
-                                                <input type="password" id="emi"
+                                                <input type="text" id="email" name="find_email"
                                                    style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
                                                    placeholder="이메일" maxlength="50" />
                                              </div>
                                           </div>
                                           <div>
                                              <div>
-                                                <input type="submit" value="입력완료" id="com"
-                                                   style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff" />
+                                                <button type="button" value="입력완료" id="com"
+                                                   style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff">입력완료</button>
                                              </div>
 
                                           </div>
@@ -108,8 +114,11 @@
                                                 0507-1412-7235</div>
                                           </div>
                                        </div>
+                                    </form>
                                     </div>
+                                    
                                     <div id="menu1" class="tab-pane fade">
+                                    <form id= "id_pwd2" method="post" action="${root}/findpwd/">
                                        <div
                                           style="font-family: NanumGothic; padding: 30px 20px 20px 20px;">
                                           <div
@@ -123,17 +132,17 @@
                                           </div>
                                           <div style="margin-bottom: 20px;">
                                              <div>
-                                                <input type="text" id="id2"
+                                                <input type="text" id="id2" name="find_id2"
                                                    style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
                                                    placeholder="아이디" maxlength="50" />
                                              </div>
                                              <div>
-                                                <input type="text" id="name"
+                                                <input type="text" id="name2" name="find_name2"
                                                    style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
                                                    placeholder="이름" maxlength="50" />
                                              </div>
                                              <div >
-                                                <input type="password" id="emi2" 
+                                                <input type="text" id="email2" name="find_email2"
                                                    style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
                                                    placeholder="이메일" maxlength="50" />
                                              </div>
@@ -143,9 +152,9 @@
                                           </div>
                                           <div>
                                              <div>
-                                                <input type="submit" value="입력완료"  id="com2"
+                                                <button type="button" value="입력완료"  id="com2"
                                                    style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
-                                                   tabindex="3" />
+                                                   tabindex="3" >입력완료</button>
                                              </div>
                                           </div>
                                           <div style="text-align: center; padding-top: 16px;">
@@ -154,14 +163,14 @@
                                           </div>
                                        </div>
 
+									</form>
                                     </div>
-
                                  </div>
                               </div>
 
                            </div>
                            
-                        </form>
+                        
                      </div></td>
                   <td></td>
                </tr>

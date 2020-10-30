@@ -59,6 +59,12 @@
                 LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode ;
 	</select>
+	
+	<select id="getOption" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+         SELECT tcode as option_code, tname as option_name 
+         FROM type
+         WHERE tcode LIKE CONCAT( #{typeno} ,'%')
+	</select>
 </mapper>
 
 

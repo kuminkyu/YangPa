@@ -35,4 +35,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return successCnt;
 	}
 
+	
+
 }

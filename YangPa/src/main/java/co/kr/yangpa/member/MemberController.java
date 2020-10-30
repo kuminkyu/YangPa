@@ -35,6 +35,14 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String myPage(HttpSession session, Model model, String bno) {
+		
+		
+		
+		return "user/mypage";
+	} //myPage
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MbrDTO inDto, Model model, HttpSession session) {

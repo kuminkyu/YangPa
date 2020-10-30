@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,8 +23,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <style type="text/css">
@@ -93,7 +92,7 @@
 	<br>
 	<!--     중간 링크 아이콘 넣을곳 -->
 
-	<div class="container">
+	<div class="container" id = "div-1"><h5>
 		<a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/wo.png" width="160" height="160">
 		</a> <a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
@@ -103,6 +102,7 @@
 		</a> <a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/rest.png" width="160" height="160">
 		</a>
+		</h5>
 	</div>
 
 	<br>

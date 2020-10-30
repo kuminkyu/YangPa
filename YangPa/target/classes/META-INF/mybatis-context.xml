@@ -11,6 +11,8 @@
 		<mapper resource="META-INF/page-mapper.xml" />
 		<mapper resource="META-INF/customer-mapper.xml" />
 		<mapper resource="META-INF/member-mapper.xml"/>
+		<mapper resource="META-INF/find-mapper.xml"/>
+		<mapper resource="META-INF/join-mapper.xml"/>
 	</mappers>
 
 </configuration>

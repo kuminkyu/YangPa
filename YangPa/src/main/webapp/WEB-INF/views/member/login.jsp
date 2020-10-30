@@ -28,7 +28,7 @@
                                           alert("패스워드를 입력주세요.");
                                           return;
                                        }
-                                       alert("성공");
+                                       
                                        $("#loginForm").submit();
                                     });//click
                                  });//ready
@@ -48,6 +48,7 @@
 						
 						<td width=550><div id='AB_contents'
 								style="padding: 0 30px; background-color: #ffffff;">
+								
 								<form id = "loginForm" method = "post" action="${pageContext.request.contextPath}/login">
 
 									<div class="ABA-content-box pageMember"
@@ -118,6 +119,7 @@
 										</div>
 									</div>
 								</form>
+								
 								<div style="text-align: center;">
 									<div style="letter-spacing: -0.6px;"></div>
 									<div style="padding-bottom: 30px;">

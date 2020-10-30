@@ -6,4 +6,5 @@ public interface MemberService {
 
 	int login(MbrDTO inDto);
 
+	
 }

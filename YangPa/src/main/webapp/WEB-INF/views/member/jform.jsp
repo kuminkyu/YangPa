@@ -12,6 +12,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+
+</style>
+
 </head>
 <body>
 <%@ include file="../header.jsp"%>
@@ -30,17 +35,21 @@
 
 									<div class="ABA-content-box pageMember"
 										style="padding-bottom: 0;">
-										<div class="container p-3 my-3 border"
-											style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
-											
+								
+		</div>
 	
-	<div class="container">
+	
 		<h1 class="text-center mb-4">Yang Pa</h1>
-    
 	<form id="jform" method="post" action="">
 	 		<h5 class="text-center mb-3">회원가입 정보입력</h5>
+	 		
+	 			
 	 		<script type="text/javascript">
-			$(document).ready(function() {
+			  
+	 	
+	 		
+	 		
+	 		
 				$("#btn_join").click(function() {
 					if( $.trim( $("#id").val() ) == "" ){
 						alert("아이디를 확인해 주세요.");
@@ -81,23 +90,52 @@
 					}
 	
 					$("#jform").submit();
-				});//click
-			});//ready : 현재 페이지 로딩 완료.
+				});
+				
+				$(document).ready(function() {
+					$("#id").blur(function() {
+						$.get(
+							 "${root}/idchk"
+							,{id:$("#id").val()}
+							,function(data, status){
+								if(status == "success"){
+									if(data == 0){
+										$("#user_id").text("사용 가능한 아이디 입니다.");
+										$("#user_id").css("color","blue");
+										$("#id_chk_yn").val("0");
+									} else {
+										$("#user_id").text("이미 사용 중인 아이디 입니다.");
+										$("#user_id").css("color","red");
+										$("#id_chk_yn").val("1");
+									}
+								} else {
+									alert("잠시 후 다시 시도해 주세요.");
+								}
+							}//function
+						);//get
+					});//click
+				});//ready
+               				
+			
+			
 		</script>	
 	 	
 	 </form>
 	 	
-	 	<form id="jform" method="post"
-				action="${pageContext.request.contextPath}/join">
+	
 			<table class="table">
 				<tr>
 					<td style = "text-align:left">ID</td>
 					<td>
-					<div class="form-inline ml-2">
-						<input type="text" class="form-control inputEng mr-1" style="width: 40%;" 
-									id="id" name="id" maxlength="30"  placeholder="아이디">
-									
-							<button type="button" id="btn_idchk" class="btn btn-warning ml-2" >중복확인</button>
+				<div class="form-group">
+	<label for="id">아이디 <span id="user_id"></span></label>
+			<input type="text" class="form-control inputEng mr-1"
+				id="id" name="id" maxlength="20">
+			<input type="hidden" id="id_chk_yn" value="0">
+	</div>
+							   
+					
+							
 							<div class="ml-1" style="font-size: 11px;color: #767b86;letter-spacing: -0.6px;padding-top: 6px;padding-left: 3px;float: left;">
 						최소 6자이상, 최대 12자이내에서 영문/숫자를 사용해주세요.
 						</div>
@@ -162,10 +200,6 @@
 	
 </div>	
 
-</div>
-</div>
-</form>
-</div>
 </td>
 <td></td>
 </tr>
