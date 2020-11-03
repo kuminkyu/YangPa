@@ -23,5 +23,16 @@ public class JoinRestController {
 		logger.info("idchk : "+idCount);
 		return ""+idCount;
 	}//idCheck
+	
+	@RequestMapping(value="/emchk", method=RequestMethod.GET)
+	public String emailCheck(String em) {
+		logger.info("emchk");
+		int emailCount = service.emailCheck(em);
+		logger.info("emchk : "+emailCount);
+		return ""+emailCount;
+	}//idCheck
+	
+	
+
 
 }//class

@@ -93,13 +93,13 @@
 	<!--     중간 링크 아이콘 넣을곳 -->
 
 	<div class="container" id = "div-1"><h5>
-		<a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
+		<a href="${root}/board/mainlist?maintype=1"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/wo.png" width="160" height="160">
-		</a> <a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=2"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/tr.png" width="160" height="160">
-		</a> <a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=3"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/tk.png" width="160" height="160">
-		</a> <a href="#"> <img class="ml-5 mr-5" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=4"> <img class="ml-5 mr-5" alt="W3Schools"
 			src="${root}/resources/img/main/rest.png" width="160" height="160">
 		</a>
 		</h5>

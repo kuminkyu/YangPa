@@ -17,6 +17,13 @@ public class JoinDAOImpl implements JoinDAO {
 		return idCount;
 	}//idCheck
 
+	@Override
+	public int emailCheck(String em) {
+        int emailCount
+           =  sqlSession.selectOne("JoinMapper.emailCheck", em);
+		return emailCount;
+	}
+
 	
 
 }//class

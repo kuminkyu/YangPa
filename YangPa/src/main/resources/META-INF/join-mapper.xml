@@ -12,6 +12,14 @@
 		from mbr
 		where id = #{id}
 	</select>
+	
+	<select id="emailCheck"
+			parameterType="java.lang.String"
+			resultType="int">
+		select count(email) cnt
+		from mbr
+		where email = #{em}
+	</select>
 
    
    

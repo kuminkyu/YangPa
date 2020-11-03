@@ -19,4 +19,13 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+
+	@Override
+	public List<BoardDTO> getOption(String typeno) {
+		
+		List<BoardDTO> list = dao.getOption(typeno);
+		
+		return list;
+	}
+
 }

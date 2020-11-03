@@ -43,13 +43,9 @@ public class FilterController {
 		List<BoardDTO> list = service.filterList(inDTO);
 		
 		model.addAttribute("filter_list", list);
-		return "board/list";
+		
+		return "board/filter_list";
 	}
 	
-	@RequestMapping(value = "/test" , method= RequestMethod.GET)
-	public String test() {
-		
-		return "board/list";
-	}
 	
 }

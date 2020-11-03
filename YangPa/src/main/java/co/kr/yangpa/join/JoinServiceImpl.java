@@ -17,4 +17,11 @@ public class JoinServiceImpl implements JoinService {
 		return idCount;
 	}
 
+
+	@Override
+	public int emailCheck(String em) {
+         int emailCount = dao.emailCheck(em);
+		return emailCount;
+	}
+
 }

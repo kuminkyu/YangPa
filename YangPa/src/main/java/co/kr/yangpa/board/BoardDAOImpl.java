@@ -28,4 +28,12 @@ public class BoardDAOImpl implements BoardDAO {
 		return list;
 	}
 
+
+	@Override
+	public List<BoardDTO> getOption(String typeno) {
+		
+		List<BoardDTO> list = sqlSession.selectList("BoardMapper.getOption",typeno);
+		return list;
+	}
+
 }

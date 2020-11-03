@@ -6,4 +6,6 @@ public interface BoardDAO {
 
 	public List<BoardDTO> searchAll(String typeno, String reqNum);
 
+	public List<BoardDTO> getOption(String typeno);
+
 }

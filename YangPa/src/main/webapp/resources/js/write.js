@@ -1,81 +1,65 @@
+
 $(document).ready(function() {
-   let in_bunryu;
-   let in_kind;
-   //유형별로 판매 정보를 바꿈
-   $("#in_kind").change(function() {
-      in_bunryu = $("#in_kind").val();
-      
-      //이 부분은 유형을 새로 선택시 그에 맞응 세부유형을 가져오는곳
-      $.get(
-            "boardRest/getOption"
-            ,{ typeno : in_bunryu }
-            ,function(data , status){
-               $("#in_kind_option").empty();
-               $("#in_kind_option").append(
-                '<option value="0" class="">세부유형</option>'   
-               );
-               $.each(data , function(index , dto) {
-                  $("#in_kind_option").append(
-                        "<option value='"+dto.option_code+"'>"
-                        + dto.option_name
-                        + "</option>"   
-                  );
-               });
-            }
-         );
-      
-      //이 부분은 유형을 선택시 새로운 판매 양식을 띄우는 곳
-      $("#sell_info").empty();
-      switch (in_bunryu){
-         case "1" :
-            in_bunryu = 1;
-            in_kind = $("input:radio[name='in_kind']:checked").val();
-              $("#sell_info").append(
-                  '<div class="form-inline mt-1 mb-1 ml-3">'
-                  +'<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매타입 : </b></h6></label>'
-                  +'<label><input type="radio" name="ex_kind" checked value="0">기간제</label>'
-                  +'<label><input type="radio" name="ex_kind" class="ml-2" value="1">횟수제</label></div>'
-               +'<div class="form-inline mt-1 mb-1 ml-3">'
-               +   '<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>'
-               +   '</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>'
-               +'<div class="form-inline mt-1 mb-1 ml-3">'
-               +'<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>잔여기간 : </b>'
-               +'</h6></label> <input class="form-control col-4" type="text"> 월/회</div>'
-            );
-             break;
-         case "2" :
-            in_bunryu = 2;
-              $("#sell_info").append(
-               '<div class="form-inline mt-1 mb-1 ml-3">'
-               +   '<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>'
-               +   '</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>'
-               +'<div class="form-inline mt-1 mb-1 ml-3">'
-               +'<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>체크인 날짜 : </b>'
-               +'</h6></label> <input class="form-control col-4" type="text"> ex)2020-12-12</div>'
-            );
-             break;
-         case "3" :
-             in_bunryu = 3;
-              $("#sell_info").append(
-                  '<div class="form-inline mt-1 mb-1 ml-3">'
-                  +   '<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>'
-                  +   '</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>'
-                  +'<div class="form-inline mt-1 mb-1 ml-3">'
-                  +'<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>사용 날짜 : </b>'
-                  +'</h6></label> <input class="form-control col-4" type="text"> ex)2020-12-12</div>'
-               );
-             break;
-         default :
-            in_bunryu = 4;
-           $("#sell_info").append(
-               '<div class="form-inline mt-1 mb-1 ml-3">'
-               +   '<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>'
-               +   '</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>'
-         );
-       }
-   });//유형별로 판매 정보를 바꿈
-   
-   $("#insert_button").click(function() {
-      
-   });
+	let in_bunryu;
+	let in_kind;
+	//유형별로 판매 정보를 바꿈
+	$("#in_kind").change(function() {
+		in_bunryu = $("#in_kind").val();
+		
+		//이 부분은 유형을 새로 선택시 그에 맞응 세부유형을 가져오는곳
+		$.get(
+				"boardRest/getOption"
+				,{ typeno : in_bunryu }
+				,function(data , status){
+					$("#in_kind_option").empty();
+					$("#in_kind_option").append(
+					 '<option value="0" class="">세부유형</option>'	
+					);
+					$.each(data , function(index , dto) {
+						$("#in_kind_option").append(
+								"<option value='"+dto.option_code+"'>"
+								+ dto.option_name
+								+ "</option>"	
+						);
+					});
+				}
+			);
+		
+		if(in_bunryu == "1"){
+			$("#limitdate").show();
+			$("#useday").hide();
+		}else if(in_bunryu == "4"){
+			$("#limitdate").hide();
+			$("#useday").hide();
+		}else{
+			$("#limitdate").hide();
+			$("#useday").show();
+		}
+		
+		
+	});//유형별로 판매 정보를 바꿈
+	
+   $(function() {
+       //모든 datepicker에 대한 공통 옵션 설정
+       $.datepicker.setDefaults({
+           dateFormat: 'yy-mm-dd' //Input Display Format 변경
+           ,showOtherMonths: false //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+           ,showMonthAfterYear:false//년도 먼저 나오고, 뒤에 월 표시
+           ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+           ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+           ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+           ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+           ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+           ,minDate: "+1D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+           ,maxDate: "+3Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+       });
+
+       //input을 datepicker로 선언
+       $("#in_datepicker").datepicker();                    
+       
+   });//datepicker
 });

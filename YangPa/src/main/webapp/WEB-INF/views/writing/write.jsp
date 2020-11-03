@@ -27,6 +27,13 @@ a1 {
 <script type="text/javascript" src="${root}/resources/js/write.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	// 처음엔 사용날짜 , 잔여기간을 숨김
+	$("#limitdate").hide();
+	$("#useday").hide();
+	
+	
+	
+	//시,도 를 db 에서 가져옴 // 
 	$.get(
 		"${pageContext.request.contextPath}/filterRest/selectLarge"
 		,{}
@@ -66,18 +73,8 @@ $(document).ready(function() {
 		);//get
 	});//change	
 	
-	//유형이 바뀌면 유형별 상세유형을 부름
-	$("#in_kind").change(function() {
-		$.get(
-			"${root}/"
-			,{}
-			,function(data , status){
-				
-			}
-		);
-	});
-	var mapword
 });
+
 </script>
 <body>
 	<%@ include file="../header.jsp"%>
@@ -126,7 +123,6 @@ $(document).ready(function() {
 											  		<option value="4">   기 타   </option>
 												</select> 
 												<select class="form-control" id="in_kind_option">
-												
 												</select>
 											</div>
 										</div>
@@ -135,7 +131,17 @@ $(document).ready(function() {
 									<div class="container p-3 my-3 border">
 										<p style="text-align: left;">판매정보</p>
 										<div class="row" id="sell_info">
-										<!-- js로 이부분에 판매정보 추가해줌 -->
+											<div class="form-inline mt-1 mb-1 ml-3">
+											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>
+											</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>
+											<div class="form-inline mt-1 mb-1 ml-3" id="useday">
+											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>사용날짜 : </b>
+											</h6></label> <input id="in_datepicker" readonly="readonly" class="form-control col-6 mr-2" type="text" name="useday">
+											</div>
+											<div class="form-inline mt-1 mb-1 ml-3" id="limitdate">
+											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>잔여기간 : </b>
+											</h6></label> <input id="in_datepicker" class="form-control col-4" type="text" name="useday">
+											<small class="ml-2">숫자만 입력하십시요(일단위)</small></div>
 										</div>
 									</div>
 									<!-- 위치정보 -->
@@ -159,13 +165,14 @@ $(document).ready(function() {
 											<div class="form-inline mt-1 mb-1 ml-3">
 												<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3">
 														<b> 지 도  : </b></h6></label>
-														<input type="text" class="form-control" id="mapdetail" name="mapdetail">
+														<input type="text" class="form-control" id="addrdetail" name="addrdetail">
+														</div>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7e42e5969ccb79f90d06c6f07a63f1d9&libraries=services"></script>
-														<div id="map" style="width:350px;height:350px;"></div>
+														<div id="map" style="width:450px;height:350px;"></div>
 														<script>
-														$("#mapdetail").blur(function() {
+														$("#addrdetail").blur(function() {
 														 	 mapword =  $("#in_largelist option:checked").text()+" "+$("#in_middlelist option:checked").text()
-														 	 			+" "+$("#mapdetail").val();
+														 	 			+" "+$("#addrdetail").val();
 														 	 alert(mapword);
 														// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 														var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -217,14 +224,18 @@ $(document).ready(function() {
 														    kakao.maps.event.addListener(marker, 'click', function() {
 														        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
 														        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+														        $("#addrdetail").val(place.place_name);
+														        var latlng = new kakao.maps.LatLng(37, 127);
+														       	let gps = marker.getPosition();
+														       	$("#addrgps").val(gps.getLat()+","+gps.getLng())
 														        infowindow.open(map, marker);
-														        alert(marker.get);
 														        alert(cluster.getClusterMarker());
 														    });
 														}
 														});
 														
-														</script>			 
+														</script>	
+													<input type="text" id="addrgps" name="addrgps" >			 
 											</div>
 										</div>
 									</div>
@@ -245,9 +256,14 @@ $(document).ready(function() {
 										<input type="text" class="form-control">
 										<textarea class="form-control mt-3" rows="5" id="comment"></textarea>
 									</div>
-									<button type="button" class="btn btn-primary" id="insert_button">
-										글 등록하기
-									</button>
+									<div class="text-right">
+										<button type="button" class="btn btn-primary text-right" id="insert_button">
+											글 등록하기
+										</button>
+									</div>
+									<div>
+									${login_id_session} 
+									</div>
 						</form>
 					</div>
 				</td>

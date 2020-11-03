@@ -18,11 +18,5 @@ public class JoinController {
 	@Autowired
 	private JoinService service;
 
-	@RequestMapping(value = "/joinform", method = RequestMethod.GET)
-	public String jform() {
-		
-		return "member/jform";
-		
-	} //joinForm
 
 }//class

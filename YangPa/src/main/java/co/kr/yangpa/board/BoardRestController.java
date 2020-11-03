@@ -23,4 +23,12 @@ public class BoardRestController {
 		
 		return list;
 	}
+	
+	@RequestMapping(value = "/getOption" , method = RequestMethod.GET)
+	public List<BoardDTO> getOption(String typeno) {
+		
+		List<BoardDTO> list = service.getOption(typeno);
+		
+		return list ;
+	}
 }

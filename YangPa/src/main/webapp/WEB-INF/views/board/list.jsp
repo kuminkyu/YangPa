@@ -17,13 +17,30 @@
 <script type="text/javascript" src="${root}/resources/js/paging.js"></script>
 
 <script type="text/javascript">
-
+let typeno = "";
 $(document).ready(function() {
-   let typeno;
+	if(1 == ${maintype}){
+		typeno = "운동";
+		test();
+	}else if(2 == ${maintype}){
+		typeno = "여행";
+		test();
+	}else if(3 == ${maintype}){
+		typeno = "티켓";
+		test();
+	}else if(4 == ${maintype}){
+		typeno = "기타";
+		test();
+	}
+	
    $(".tablesearch").click(function() {
-      $(".board-title").empty();
       typeno = $(this).text();
+	   test();
+/*
+	   alert();
+      $(".board-title").empty();
       reqNum = 1;
+     
       switch (typeno){
          case "운동" :
             typeno = 1;
@@ -79,9 +96,70 @@ $(document).ready(function() {
       //리스트 뽑아오기 // 
       
       list(1,typeno);
+*/
    });//click
 });//ready
-
+function test() {
+	      $(".board-title").empty();
+	      reqNum = 1;
+	      //typeno = $(this).text();
+	     
+	      switch (typeno){
+	         case "운동" :
+	            typeno = 1;
+	            $(".board-title").append(
+	               "<i class='fas fa-dumbbell mr-2'></i>"  
+	               +"<span style='color: red' class='mr-2'>"
+	               + "운동</span>판매목록"      
+	            );
+	             break;
+	         case "여행" :
+	            typeno = 2;
+	            $(".board-title").append(
+	               "<i class='fas fa-umbrella-beach mr-2'></i>"
+	               +"<span style='color: blue' class='mr-2'>"
+	               +"여행</span>판매목록"      
+	            );
+	             break;
+	         case "티켓" :
+	            typeno = 3;
+	            $(".board-title").append(
+	               "<i class='fas fa-ticket-alt mr-2'></i>"
+	               +"<span style='color: brown' class='mr-2'>티켓</span>판매목록"      
+	            );
+	             break;
+	         case "기타" :
+	            typeno = 4;
+	            $(".board-title").append(
+	               "<i class='fas fa-plus mr-2'></i>"   
+	               +"<span style='color: gray' class='mr-2'>기타</span>판매목록"      
+	            );
+	             break;
+	         case "전체" :
+	            typeno = 0;
+	            $(".board-title").append(
+	               "<i class='fas fa-seedling mr-2'></i>"   
+	               +"<span style='color: green' class='mr-2'>양파</span>판매목록"      
+	            );
+	             break;
+	         default :
+	            alert("리스트 로딩중 오류 다시 시도해 주십시요");
+	              return;
+	       }
+	      //페이징 //
+	      $.ajax({
+	         contentType : "application/json"
+	         , url : "${root}/pageRest/pageCount/"+typeno
+	         ,success: function(totresult, status){
+	            totCnt = totresult;
+	            paging(totCnt,1,10,typeno);
+	         }
+	      });//ajax
+	      
+	      //리스트 뽑아오기 // 
+	      
+	      list(1,typeno);
+}
 </script>
 </head>
 <body>

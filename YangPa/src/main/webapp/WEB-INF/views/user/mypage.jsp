@@ -18,6 +18,80 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
+<script type="text/javascript">
+$(document).ready(
+		function() {
+			$("#btn_edit").click(
+					function() {
+						if ($.trim($("#id").val()) == "") {
+							alert("아이디를 확인해 주세요.");
+							return;
+						}
+						if ($.trim($("#pwd").val()) == "") {
+							alert("비밀번호를 확인해 주세요.");
+							return;
+						}
+						if ($.trim($("#pwdre").val()) == "") {
+							alert("비밀번호 재입력을 입력해 주세요.");
+							return;
+						}
+
+						if ($("#pwd").val() != $("#pwdre").val()) {
+							alert("비밀번호와 재입력이 다릅니다.\n"
+									+ "비밀번호를 다시 확인해 주세요.");
+							return;
+						}
+						if ($.trim($("#name").val()) == "") {
+							alert("이름을 확인해 주세요.");
+							return;
+						}
+
+						if ($.trim($("#tel1").val()) == ""
+								|| $.trim($("#tel2").val()) == ""
+								|| $.trim($("#tel3").val()) == "") {
+							alert("전화번호를 확인해 주세요.");
+							return;
+						}
+
+						let tel = $("#tel1").val() + $("#tel3").val()
+								+ $("#tel3").val();
+
+						$("#tel").val(tel);
+
+						if ($.trim($("#email").val()) == "") {
+							alert("이메일을 확인해 주세요.");
+							return;
+						}
+
+						$("#update").submit();
+					});
+		});
+	$(document).ready(function() {
+		$("#id").blur(function() {
+			$.get("${root}/idchk", {
+				id : $("#id").val()
+			}, function(data, status) {
+				if (status == "success") {
+					if (data == 0) {
+						$("#user_id").text("사용 가능한 아이디 입니다.");
+						$("#user_id").css("color", "blue");
+						$("#id_chk_yn").val("0");
+					} else {
+						$("#user_id").text("이미 사용 중인 아이디 입니다.");
+						$("#user_id").css("color", "red");
+						$("#id_chk_yn").val("1");
+					}
+				} else {
+					alert("잠시 후 다시 시도해 주세요.");
+				}
+			}//function
+			);//get
+		});//click
+	});
+	
+	   
+</script>
 <body>
 	<%@ include file="../header.jsp"%>
 	<div class="container">
@@ -96,33 +170,35 @@
 												style="font-family: NanumGothic; text-align: center; padding: 30px 20px 20px 20px;">
 
 												<form id="update" method="post"
-													action="${pageContext.request.contextPath}/mypage">
-
+													action="${pageContext.request.contextPath}/update">
+													<input type="hidden" name="mno" value="${login_mno_session}">
+													
 													<table class"=text-center " style="width: 100;" id="MyInfo">
 														<thead>
-															<th><h1 class="text-center mt-3 mb-3">
-																	Yang Pa
-																	
-																	<h6 class="text-center mb-3">회원정보수정</h6></h1></th>
+															<h1 class="text-center mt-3 mb-3">
+																	회원정보수정</h1>
+															
 														</thead>
 														<tbody>
 															<table class="table">
+
 																<tr>
 																	<td style="text-align: left">ID</td>
 																	<td>
 																		<div class="form-inline ml-2">
 																			<input type="text" class="form-control inputEng mr-1"
 																				style="width: 40%;" id="id" name="id" maxlength="30"
-																				value="${login_id_session}">
+																				value="${login_id_session}"> <label for="id"><span
+																				id="user_id"></span></label><input type="hidden"
+																				id="id_chk_yn" value="0">
 
-																			<button type="button" id="btn_idchk"
-																				class="btn btn-warning ml-2">중복확인</button>
 																			<div class="ml-1"
 																				style="font-size: 11px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
 																				최소 6자이상, 최대 12자이내에서 영문/숫자를 사용해주세요.</div>
 																		</div>
 																	</td>
 																</tr>
+
 																<tr>
 																	<td style="text-align: left">PWD</td>
 																	<td>
@@ -158,6 +234,7 @@
 																		</div>
 																	</td>
 																</tr>
+
 																<tr>
 																	<td style="width: 20%; text-align: left">TEL</td>
 																	<td class="form-inline"><input type="text"
@@ -172,26 +249,31 @@
 																		placeholder="5678"> <input type="text"
 																		style="display: none;" name="tel" id="tel"></td>
 																</tr>
+
 																<tr>
 																	<td style="text-align: left">EMAIL</td>
 																	<td class="form-inline ml-1"><input type="text"
 																		class="form-control ml-1 inputEmail inputEng"
 																		id="email" name="email" size="20" value=""
-																		maxlength="40" placeholder="yangpa@help.com">
+																		maxlength="40" placeholder="yangpa@help.com"></td>
 																	</td>
 																</tr>
+
 															</table>
 														</tbody>
 													</table>
-												<div class="text-center mb-3">
-													<button type="button" id="btn_edit" class="btn btn-danger"
-														style="margin-top: 25px;">수정하기</button>
-												</div>
-							</form>
-							</div>
-							</div>
-							</div>
-							</td>
+													<div class="text-center mb-3">
+														<button type="button" id="btn_edit" class="btn btn-danger"
+															style="margin-top: 25px;">수정하기</button>
+													</div>
+												</form>
+											</div>
+											
+										</div>
+										
+									</div>
+									
+								</td>
 
 							</tr>
 

@@ -19,22 +19,18 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int login(MbrDTO inDto) {
-
+	public MbrDTO login(MbrDTO inDto) {
 		int successCnt = sqlSession.selectOne("MemberMapper.login", inDto);
-
-		return successCnt;
+		
+		if(successCnt > 0) {
+			inDto = sqlSession.selectOne("MemberMapper.getinfo",inDto);
+		}else {
+			return null;
+		}
+		
+		return inDto;
 
 	}
-
-	@Override
-	public int idCheck(MbrDTO inDto) {
-
-		int successCnt = sqlSession.selectOne("MemberMapper.idCheck", inDto);
-
-		return successCnt;
-	}
-
 	
 
 }

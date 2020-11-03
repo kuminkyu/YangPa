@@ -11,6 +11,13 @@
 		FROM board
         where type LIKE CONCAT(#{typeno} ,'%')
 	</select>
+	
+	<update id = "update" parameterType="co.kr.yangpa.member.MbrDTO">
+		update mbr
+		set id = #{id}, pwd = #{pwd}, name = #{name}, tel = #{tel}, email = #{email}
+		where mno = #{mno}
+	</update>
+	
 </mapper>
 
 

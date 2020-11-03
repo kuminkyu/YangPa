@@ -24,12 +24,5 @@ $(document).ready(function() {
            $("#datepicker2").datepicker();
            
        });
-	
-	   
-   //					'검색'버튼 클릭 관련 			//
-   $("#filter_search_btn").click(function() {
-		
-		   
-	});
 }); 
 

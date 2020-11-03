@@ -16,6 +16,22 @@ public class BoardDTO {
 	private String useday;// 사용일 , 남은사용회수
 	private String buy_type;
 	
+	private String option_name;//option을 db에서 받아오기위한 변수(게시판이랑 상관이 없음)
+	private String option_code;//option_code을 db에서 받아오기위한 변수(게시판이랑 상관이 없음)
+	
+	public String getOption_code() {
+		return option_code;
+	}
+	public void setOption_code(String option_code) {
+		this.option_code = option_code;
+	}
+	
+	public String getOption_name() {
+		return option_name;
+	}
+	public void setOption_name(String option_name) {
+		this.option_name = option_name;
+	}
 	public String getBuy_type() {
 		return buy_type;
 	}

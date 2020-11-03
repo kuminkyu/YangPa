@@ -1,6 +1,7 @@
 package co.kr.yangpa.board;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,6 +11,14 @@ public class BoardController {
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search() {
+		
+		
+		return "board/list";
+	}
+	
+	@RequestMapping(value = "/mainlist", method = RequestMethod.GET)
+	public String search(String maintype, Model model) {
+		model.addAttribute("maintype",maintype);
 		
 		
 		return "board/list";
