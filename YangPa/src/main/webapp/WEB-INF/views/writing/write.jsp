@@ -18,6 +18,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="${root}/resources/ckeditor/ckeditor.js"></script>
 </head>
 <style>
 a1 {
@@ -30,8 +31,8 @@ $(document).ready(function() {
 	// 처음엔 사용날짜 , 잔여기간을 숨김
 	$("#limitdate").hide();
 	$("#useday").hide();
-	
-	
+	$(".mapinfo").hide();
+	$("#in_ex_kind").css("display","none");
 	
 	//시,도 를 db 에서 가져옴 // 
 	$.get(
@@ -73,6 +74,10 @@ $(document).ready(function() {
 		);//get
 	});//change	
 	
+	$("#insert_button").click(function() {
+		
+	});
+	
 });
 
 </script>
@@ -86,7 +91,7 @@ $(document).ready(function() {
 				<td width=550>
 					<div id='AB_contents'
 						style="padding: 50px 30px; background-color: #ffffff;">
-						<form>
+						<form method="post">
 
 							<div class="ABA-content-box pageMember"
 								style="padding-bottom: 0;">
@@ -131,6 +136,12 @@ $(document).ready(function() {
 									<div class="container p-3 my-3 border">
 										<p style="text-align: left;">판매정보</p>
 										<div class="row" id="sell_info">
+											<div class="form-inline mt-1 mb-1 ml-3" id="in_ex_kind">
+												<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매권 종류 : </b>
+												</h6>					    	  	  	  
+									      		<label><input type="radio" name="in_ex_kind" class="ml-2" value="0">기간제</label>
+									     		 <label><input type="radio" name="in_ex_kind" class="ml-2" value="1">횟수제</label>
+											</div>
 											<div class="form-inline mt-1 mb-1 ml-3">
 											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>
 											</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>
@@ -167,10 +178,12 @@ $(document).ready(function() {
 														<b> 지 도  : </b></h6></label>
 														<input type="text" class="form-control" id="addrdetail" name="addrdetail">
 														</div>
+														<small class="mapinfo"><b class="mt-2 ml-2">클릭한 한개의 마커가 주소로 표시됩니다.</b></small>
 														<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7e42e5969ccb79f90d06c6f07a63f1d9&libraries=services"></script>
-														<div id="map" style="width:450px;height:350px;"></div>
+														<div id="map" style="width:550px;height:350px;"></div>
 														<script>
 														$("#addrdetail").blur(function() {
+															$(".mapinfo").show();
 														 	 mapword =  $("#in_largelist option:checked").text()+" "+$("#in_middlelist option:checked").text()
 														 	 			+" "+$("#addrdetail").val();
 														 	 alert(mapword);
@@ -200,7 +213,6 @@ $(document).ready(function() {
 														        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 														        // LatLngBounds 객체에 좌표를 추가합니다
 														        var bounds = new kakao.maps.LatLngBounds();
-														
 														        for (var i=0; i<data.length; i++) {
 														            displayMarker(data[i]);    
 														            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
@@ -239,30 +251,20 @@ $(document).ready(function() {
 											</div>
 										</div>
 									</div>
-
-									<div class="container p-3 my-3 border">
-										<p style="text-align: left;">사진첨부</p>
-										<div class="row">
-											<div class="form-inline mt-1 mb-1 ml-3">
-												<label for="sel1" class="mr-3">
-													<b><input type="file" class="form-control-file"
-														id="exampleFormControlFile1"></b>
-												</label>
-											</div>
-										</div>
-									</div>
 									<div class="container p-3 my-3 border">
 										<p style="text-align: left;">제목 /내용</p>
-										<input type="text" class="form-control">
-										<textarea class="form-control mt-3" rows="5" id="comment"></textarea>
+										<input type="text" class="form-control mb-3">
+										<textarea class="form-control mt-3" rows="10" cols="80" id="comment"></textarea>
+										<script>
+										CKEDITOR.replace('comment',{
+											filebrowserUploadUrl:'${root}/ckfileup'
+										});
+										</script>
 									</div>
 									<div class="text-right">
 										<button type="button" class="btn btn-primary text-right" id="insert_button">
 											글 등록하기
 										</button>
-									</div>
-									<div>
-									${login_id_session} 
 									</div>
 						</form>
 					</div>

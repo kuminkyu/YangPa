@@ -84,6 +84,8 @@ function list(reqNum,typeno){
 				}
 				if(dto.buy_type == "1"){
 					dto.useday = dto.useday + "회";
+				}else{
+					dto.useday = dto.useday + "일";
 				}
 				
 				$("tbody").append(
@@ -101,6 +103,8 @@ function list(reqNum,typeno){
 						+"<td>"+dto.write_date+"</td>"
 						+"</tr>"
 					);//append
+				
+				
 			});//each
 		}//function
 	});//ajax

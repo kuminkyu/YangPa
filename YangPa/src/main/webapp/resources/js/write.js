@@ -26,14 +26,17 @@ $(document).ready(function() {
 			);
 		
 		if(in_bunryu == "1"){
+			$("#in_ex_kind").css("display","block");
 			$("#limitdate").show();
 			$("#useday").hide();
 		}else if(in_bunryu == "4"){
 			$("#limitdate").hide();
 			$("#useday").hide();
+			$("#in_ex_kind").hide();
 		}else{
 			$("#limitdate").hide();
 			$("#useday").show();
+			$("#in_ex_kind").hide();
 		}
 		
 		
