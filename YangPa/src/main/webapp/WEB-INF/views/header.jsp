@@ -17,14 +17,12 @@
 				<c:when
 					test="${login_id_session != null && login_id_session.length()>0 }">
 					
-					
 					<div class="navbar-header">
 						<a class="navbar-brand" href="${root}/"> <img
 							src="${root}/resources/img/yangpa5.jpg" src="${root}/" alt="logo"
 							title="546" style="width: 40px;">
 						</a> <a class="navbar-brand text-white font-weight-bold"
 							style="font-size: 33px;" href="${root}/">YangPa</a>
-			
 					</div>
 					<img src="${root}/resources/img/filter.jpg" id="filterlink"
 						data-toggle="modal" data-target="#filter_modal" src="${root}/"

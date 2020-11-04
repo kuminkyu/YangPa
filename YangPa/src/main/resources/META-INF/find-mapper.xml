@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FindMapper">
+
+	<select id="idFind" parameterType="co.kr.yangpa.find.FindDTO" resultType="int">
+		select count(*)
+		from mbr
+		where name = #{find_name} and email = #{find_email}
+	</select>
+	
+	<select id="idFind2" parameterType="co.kr.yangpa.find.FindDTO" resultType="co.kr.yangpa.member.MbrDTO">
+		select id 
+		from mbr
+		where name = #{find_name} and email = #{find_email}
+	</select>
+	
+	<select id="findPwd" parameterType="co.kr.yangpa.find.FindDTO" resultType="int">
+		select count(*)
+		from mbr
+		where id = #{find_id2} and name = #{find_name2} and email = #{find_email2}
+	</select>
+	
+	<select id="findPwd2" parameterType="co.kr.yangpa.find.FindDTO" resultType="co.kr.yangpa.member.MbrDTO">
+		select pwd
+		from mbr
+		where id = #{find_id2} and name = #{find_name2} and email = #{find_email2}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+

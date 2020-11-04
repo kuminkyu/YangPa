@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<mappers>
+		<mapper resource="META-INF/filter-mapper.xml" />
+		<mapper resource="META-INF/board-mapper.xml" />
+		<mapper resource="META-INF/page-mapper.xml" />
+		<mapper resource="META-INF/customer-mapper.xml" />
+		<mapper resource="META-INF/member-mapper.xml"/>
+		<mapper resource="META-INF/find-mapper.xml"/>
+		<mapper resource="META-INF/join-mapper.xml"/>
+	</mappers>
+
+</configuration>
