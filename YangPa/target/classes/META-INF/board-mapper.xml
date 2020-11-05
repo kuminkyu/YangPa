@@ -65,6 +65,45 @@
          FROM type
          WHERE tcode LIKE CONCAT( #{typeno} ,'%')
 	</select>
+	
+	<insert id="boardInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into board(writer, type ,title, contents, price , addrcode , 
+				addrdetail , addrgps)
+		values(#{writer} , #{type} , #{title} , #{contents} , #{price} , #{addrcode}
+		      , #{addrdetail} , #{addrgps})		
+	</insert>
+	
+	<insert id="exInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into excercise(bno, tcode, buy_type 
+		<choose>
+			<when test='buy_type.equals("0")'>
+			, limit_date)
+			</when>
+			<when test='buy_type.equals("1")'>
+			, limit_cnt)
+			</when>
+			<otherwise>,"insert 오류")</otherwise>
+		</choose> 
+		values(LAST_INSERT_ID() , #{type} , #{buy_type} ,#{useday})		
+	</insert>
+	
+	<insert id="trInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into travel(bno, tcode, checkin_date) 
+		values(LAST_INSERT_ID() , #{type} ,#{useday})		
+	</insert>
+	
+	<insert id="tiInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into ticket(bno, tcode, ticket_date) 
+		values(LAST_INSERT_ID() , #{type} ,#{useday})		
+	</insert>
+	
+	<insert id="etcInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into etc(bno, type) 
+		values(LAST_INSERT_ID() , #{type})		
+	</insert>
+	
+
+	
 </mapper>
 
 

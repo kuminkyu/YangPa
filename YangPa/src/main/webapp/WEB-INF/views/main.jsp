@@ -35,6 +35,8 @@
 
 * {
 	font-family: 'Nanum Pen Script', cursive;
+	font-size: 20px;
+	font-weight: bold;
 } 
 
 #div-1>h5 {
@@ -110,7 +112,7 @@
 		<div class="wrap col-lg-2 mb-5">
 			<h3 class="mb-2 text-center">분류</h3>
 			<div class="list-group">
-				<b><h3>
+				<b>
 						<a href="#" class="list-group-item text-dark tablesearch"><i
 							class="fas fa-seedling mr-2"></i>전체</a></b> <b><a href="#"
 					class="list-group-item text-dark tablesearch">
@@ -123,7 +125,7 @@
 						class="fas fa-ticket-alt mr-2"></i>티켓</a></b> <b><a href="#"
 					class="list-group-item text-dark tablesearch"><i
 						class="fas fa-plus mr-2"></i>기타</a>
-					</h3></b>
+					</b>
 			</div>
 		</div>
 

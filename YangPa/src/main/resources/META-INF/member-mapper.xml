@@ -14,8 +14,9 @@
 		select count(id), mno cnt from mbr where id = #{login_id} and pwd = #{login_pwd}
 	</select>
 	
-	<select id = "idCheck" parameterType="co.kr.yangpa.member.MbrDTO" resultType="int">
-		select count(id) cnt from mbr where id = #{login_id}
+	<select id = "getinfo" parameterType="co.kr.yangpa.member.MbrDTO"  resultType="co.kr.yangpa.member.MbrDTO">
+		select mno , id , name , tel , email, mbr_role
+		 from mbr where id = #{login_id} and pwd = #{login_pwd}
 	</select>
 	
 	

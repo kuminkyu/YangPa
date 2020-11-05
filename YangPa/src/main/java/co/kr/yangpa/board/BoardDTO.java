@@ -13,6 +13,29 @@ public class BoardDTO {
 	private String view_cnt;//조회수
 	private String addrcode;// 지역코드
 	private String addrname;// 지역 이름
+	private String addrdetail;// 지역 이름
+	private String addrgps;// 지역 좌표
+	
+	private String in_tel;
+	
+	public String getIn_tel() {
+		return in_tel;
+	}
+	public void setIn_tel(String in_tel) {
+		this.in_tel = in_tel;
+	}
+	public String getAddrdetail() {
+		return addrdetail;
+	}
+	public void setAddrdetail(String addrdetail) {
+		this.addrdetail = addrdetail;
+	}
+	public String getAddrgps() {
+		return addrgps;
+	}
+	public void setAddrgps(String addrgps) {
+		this.addrgps = addrgps;
+	}
 	private String useday;// 사용일 , 남은사용회수
 	private String buy_type;
 	

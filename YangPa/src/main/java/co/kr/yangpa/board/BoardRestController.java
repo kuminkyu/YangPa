@@ -31,4 +31,28 @@ public class BoardRestController {
 		
 		return list ;
 	}
+	
+	@RequestMapping(value = "/boardInsert" , method = RequestMethod.GET)
+	public int boardInsert(BoardDTO inDTO) {
+		
+		System.out.println(inDTO.getWriter());
+		System.out.println(inDTO.getType());
+		System.out.println(inDTO.getTitle());
+		System.out.println(inDTO.getContents());
+		System.out.println(inDTO.getPrice());
+		System.out.println(inDTO.getAddrcode());
+		System.out.println(inDTO.getAddrdetail());
+		System.out.println(inDTO.getAddrgps());
+		System.out.println(inDTO.getUseday());
+		System.out.println(inDTO.getBuy_type());
+		
+		int successCnt = service.boardInsert(inDTO);
+		
+		if(successCnt > 0) {
+			return Integer.parseInt(inDTO.getType().substring(0,1));
+		}else {
+			return -1;
+		}
+		
+	}
 }

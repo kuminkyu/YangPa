@@ -84,8 +84,10 @@ function list(reqNum,typeno){
 				}
 				if(dto.buy_type == "1"){
 					dto.useday = dto.useday + "회";
-				}else{
+				}else if(dto.buy_type == "0"){
 					dto.useday = dto.useday + "일";
+				}else if(dto.useday == undefined){
+					dto.useday = "내용참조";
 				}
 				
 				$("tbody").append(
@@ -95,7 +97,7 @@ function list(reqNum,typeno){
 						+"<td><b>"+dto.addrname+"</b></td>"
 						+"<td>"+dto.type+"</td>"
 						+"<td>"
-						+"<a href='${pageContext.request.contextPath}/free/detail?bno="
+						+"<a href='/yangpa/board/detail?bno="
 						+dto.bno+"'>"+dto.title+"</a>"
 						+"</td>"
 						+"<td><b>"+dto.useday+"</b></td>"

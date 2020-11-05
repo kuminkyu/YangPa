@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Type;
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 
@@ -34,6 +36,33 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		List<BoardDTO> list = sqlSession.selectList("BoardMapper.getOption",typeno);
 		return list;
+	}
+
+
+	@Override
+	public int boardInsert(BoardDTO inDTO) {
+		
+		int successCnt = sqlSession.insert("BoardMapper.boardInsert",inDTO);
+		int typeInsert = 0;
+		
+		if(successCnt == 1) {
+			String type = inDTO.getType();
+			if(type.startsWith("1")) {
+				typeInsert = sqlSession.insert("BoardMapper.exInsert",inDTO);
+			}else if(type.startsWith("2")) {
+				typeInsert = sqlSession.insert("BoardMapper.trInsert",inDTO);
+			}else if(type.startsWith("3")) {
+				typeInsert = sqlSession.insert("BoardMapper.tiInsert",inDTO);
+			}else if(type.startsWith("4")) {
+				typeInsert = sqlSession.insert("BoardMapper.etcInsert",inDTO);
+			}else {
+				return -1;
+			}
+		}else {
+			return -1;
+		}
+		
+		return typeInsert;
 	}
 
 }

@@ -24,4 +24,12 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String name(String bno) {
+		
+		System.out.println(bno);
+		
+		return "board/detail";
+	}
+	
 }

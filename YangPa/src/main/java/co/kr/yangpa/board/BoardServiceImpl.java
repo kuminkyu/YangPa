@@ -28,4 +28,12 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+
+	@Override
+	public int boardInsert(BoardDTO inDTO) {
+		int successCnt = dao.boardInsert(inDTO);
+		
+		return successCnt;
+	}
+
 }

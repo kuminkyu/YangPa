@@ -18,18 +18,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int login(MbrDTO inDto) {
+	public MbrDTO login(MbrDTO inDto) {
 
-		int successCnt = dao.idCheck(inDto);
-
-		if (successCnt > 0) {
-			successCnt = dao.login(inDto);
-
-			return successCnt;
-		} else {
-			return -1;
-
-		}
+		inDto = dao.login(inDto);
+		
+		return inDto;
 	}
 
 	

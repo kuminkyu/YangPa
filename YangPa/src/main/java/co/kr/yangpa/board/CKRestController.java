@@ -49,7 +49,6 @@ public class CKRestController {
 		
 		in.close();
 		out.close();
-		
 		JsonObject jsonObj = new JsonObject();
 		jsonObj.addProperty("uploaded", 1);
 		jsonObj.addProperty("fileName", fileNm);

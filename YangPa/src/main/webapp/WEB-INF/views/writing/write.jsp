@@ -75,19 +75,99 @@ $(document).ready(function() {
 	});//change	
 	
 	$("#insert_button").click(function() {
+		let typeno = $("#in_kind").val(); // 유형 종류 저장
+		//validation 체크(공통) // 
+		let cntsData = CKEDITOR.instances.comment.getData();
+		if($.trim( $("#in_tel").val() ) == ""){
+			alert("전화번호를 입력하세요!!");
+			 $('#textbox').focus();
+			return;
+		}else if($("#in_kind").val() == "0" || $("#in_kind_option").val() == "0"){
+			alert("유형을 두개다 선택해주세요!!");
+			return;
+		}else if($.trim( $("#in_price").val() ) == ""){
+			alert("가격을 입력해 주세요!!");
+			return;
+		}else if($.trim( $("#in_price").val() ) == ""){
+			alert("가격을 입력해 주세요!!");
+			return;
+		}else if($("#in_largelist").val() == "0" || $("#in_middlelist").val() == "0"){
+			alert("사용위치를 선택해 주세요!!");
+			return;
+		}else if($.trim( $("#addrdetail").val() ) == ""){
+			alert("지도검색 키워드를 입력해주세요!!");
+			return;
+		}else if($.trim( $("#in_title").val() ) == ""){
+			alert("제목을 입력하세요!!");
+			return;
+		}else if($.trim(cntsData) == ""){
+			alert("내용을 입력하세요!!");
+			return;
+		}
 		
-	});
+		let inUseDay;
+		if(typeno == "1"){
+			if($("input:radio[name='in_ex_kind']:checked").val() == undefined){
+				alert("판매권 종류를 선택해주세요!!");
+				return;
+			}else if($.trim( $("#ex_useday").val() ) == ""){
+				alert("남은잔여기간(월,회) 를 입력하세요!!");
+				return;
+			}
+			inUseDay = $("#ex_useday").val();
+		}else if(typeno == "2" || typeno == "3"){
+			if($("#in_datepicker").val() == ""){
+				alert("사용날짜를 선택해주세요!!");
+				return;
+			}
+			inUseDay = $("#in_datepicker").val();
+		}
+		
+		alert("여기까진 완료");
+		
+		$.get(
+			"${root}/boardRest/boardInsert"
+			,{
+				  writer : $("#in_mno").val()
+				, in_tel : $("#in_tel").val()
+				, type : $("#in_kind_option").val()
+				, title : $("#in_title").val()
+				, contents : cntsData
+				, price : $("#in_price").val()
+				, addrcode : $("#in_middlelist").val()
+				, addrdetail : $("#addrdetail").val()
+				, addrgps : $("#addrgps").val()
+				, useday : inUseDay
+				, buy_type : $("input:radio[name='in_ex_kind']:checked").val()
+			}
+			,function(data , status){
+				if(status == "success"){
+					if(data > 0){
+						alert("글 등록을 완료했습니다!!");
+						location.href="${root}/board/mainlist?maintype="+data;
+					}else{
+						alert("글 등록에 실패했습니다.....");
+					}
+				}else{
+					alert("통신문제 계속될시 관리자에게 연락하세요!!");
+				}
+			}
+			
+		);//get
+		
+	});//click
 	
-});
+});//ready
 
 </script>
 <body>
 	<%@ include file="../header.jsp"%>
 	<div class="ABA-container-box-1080">
+		<input type="text" id="in_mno" name="in_mno" value="${login_mno_session}">
 		<table width=100% cellpadding=0 cellspacing=0 border=0>
 			<tr>
 				<td></td>
-
+				
 				<td width=550>
 					<div id='AB_contents'
 						style="padding: 50px 30px; background-color: #ffffff;">
@@ -106,7 +186,7 @@ $(document).ready(function() {
 									<div class="container p-3 my-3 border">
 										<p style="text-align: left;">구매자에게 연락 받을 번호</p>
 
-										<input type="text" id="tel"
+										<input type="text" id="in_tel" name="in_tel" value="${login_tel_session}"
 											style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
 											placeholder="전화번호" maxlength="50" tabindex="2" />
 									</div>
@@ -144,14 +224,14 @@ $(document).ready(function() {
 											</div>
 											<div class="form-inline mt-1 mb-1 ml-3">
 											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>판매금액 : </b>
-											</h6></label> <input class="form-control col-6 mr-1" type="text"> 원</div>
+											</h6></label> <input class="form-control col-6 mr-1" id="in_price" type="text"> 원</div>
 											<div class="form-inline mt-1 mb-1 ml-3" id="useday">
 											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>사용날짜 : </b>
 											</h6></label> <input id="in_datepicker" readonly="readonly" class="form-control col-6 mr-2" type="text" name="useday">
 											</div>
 											<div class="form-inline mt-1 mb-1 ml-3" id="limitdate">
 											<label for="sel1" class="mr-3"><h6 class="mt-3 ml-3"><b>잔여기간 : </b>
-											</h6></label> <input id="in_datepicker" class="form-control col-4" type="text" name="useday">
+											</h6></label> <input id="ex_useday" class="form-control col-4" type="text" name="useday">
 											<small class="ml-2">숫자만 입력하십시요(일단위)</small></div>
 										</div>
 									</div>
@@ -253,7 +333,7 @@ $(document).ready(function() {
 									</div>
 									<div class="container p-3 my-3 border">
 										<p style="text-align: left;">제목 /내용</p>
-										<input type="text" class="form-control mb-3">
+										<input type="text" class="form-control mb-3" id="in_title">
 										<textarea class="form-control mt-3" rows="10" cols="80" id="comment"></textarea>
 										<script>
 										CKEDITOR.replace('comment',{

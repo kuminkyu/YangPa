@@ -8,4 +8,6 @@ public interface BoardService {
 
 	public List<BoardDTO> getOption(String typeno);
 
+	public int boardInsert(BoardDTO inDTO);
+
 }

@@ -47,25 +47,20 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MbrDTO inDto, Model model, HttpSession session) {
 
-		int successCnt = service.login(inDto);
-
-		if (successCnt == 1) { // 로그인 성공
-			
-			session.setAttribute("login_id_session", inDto.getLogin_id());
-			System.out.println(inDto.getMno() + " mno ");
-			session.setAttribute("login_mno", inDto.getMno());
-			return "main";
-
-		} else { // 로그인 실패
-
-			if (successCnt == -1) { // id없음
-				model.addAttribute("fail_msg", "id가 없습니다. 회원가입 해주세요.");
-			} else {
-				model.addAttribute("fail_msg", "pwd를 확인해 주세요.<br>" + "계속 로그인 안될경우 관리자에게 문의해주세요.");
-			}
-
+		inDto = service.login(inDto);
+		
+		if(inDto == null) {
 			return "member/login_fail";
+		}else {
+			session.setAttribute("login_id_session", inDto.getId());
+			session.setAttribute("login_mno_session", inDto.getMno());
+			session.setAttribute("login_tel_session", inDto.getTel());
+			
+			model.addAttribute("userinfo",inDto);
+			
+			return "main";
 		}
+		
 
 	}// login
 
