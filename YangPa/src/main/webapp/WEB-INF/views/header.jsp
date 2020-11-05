@@ -30,10 +30,19 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<!-- 로그인 여부 묻고 되었을 때만 -->
-					<li><a class="nav-link text-white font-weight-bold"
-						style="font-size: 30px;" href="${root}/mypage"> My페이지</a></li>
+					
+					<li class="nav-item dropdown"><a href="#"
+						class="nav-link dropdown-toggle text-white font-weight-bold"
+						style="font-size: 30px;" data-toggle="dropdown">My페이지</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="${root}/basket"> 관심목록 </a> 
+							<a class="dropdown-item" href="${root}/mypage?mno=${login_mno_session}"> 내가쓴글 </a>
+							<a class="dropdown-item" href="${root}/change"> 회원정보수정 </a>
+						</div></li>
+						
 					<li><a class="nav-link text-white font-weight-bold"
 						style="font-size: 30px;" href="${root}/logout"> 로그아웃</a></li>
+						
 					<li class="nav-item dropdown"><a href="#"
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">고객센터</a>

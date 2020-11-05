@@ -4,11 +4,97 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="BoardMapper">
+	
+	<select id="getTel" parameterType="java.lang.String"
+	resultType="java.lang.String">
+	SELECT tel
+	FROM mbr
+	WHERE id = #{id}
+	</select>
+	
+	<update id="viewCnt" parameterType="java.lang.String">
+	UPDATE board
+	SET view_cnt = view_cnt + 1
+	WHERE bno = #{bno}
+	</update>
+	
+	<select id="exdetail" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
+		board.contents, board.price, board.state, 
+		date_format(write_date, '%Y/%c/%d') as write_date,
+				board.view_cnt , addrmiddle.addrname, 
+				excercise.buy_type,
+			IF(excercise.buy_type = 0 , limit_date, limit_cnt) as useday
+            , addrname ,addrdetail , addrgps
+		FROM board
+		INNER JOIN excercise
+		ON board.bno = excercise.bno
+		LEFT OUTER JOIN mbr
+        on board.writer = mbr.mno
+        LEFT OUTER JOIN type
+        on board.type = type.tcode
+        LEFT OUTER JOIN addrmiddle
+        ON board.addrcode = addrmiddle.addrcode
+		WHERE board.bno = #{bno} 
+	</select>
+	
+	<select id="trdetail" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
+		board.contents, board.price, board.state, 
+		date_format(write_date, '%Y/%c/%d') as write_date,
+				board.view_cnt , addrmiddle.addrname, 
+           checkin_date , addrname ,addrdetail , addrgps
+		FROM board
+		INNER JOIN travel
+		ON board.bno = travel.bno
+		LEFT OUTER JOIN mbr
+        on board.writer = mbr.mno
+        LEFT OUTER JOIN type
+        on board.type = type.tcode
+        LEFT OUTER JOIN addrmiddle
+        ON board.addrcode = addrmiddle.addrcode
+		WHERE board.bno = #{bno} 
+	</select>
+	
+	<select id="tidetail" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
+		board.contents, board.price, board.state, 
+		date_format(write_date, '%Y/%c/%d') as write_date,
+				board.view_cnt , addrmiddle.addrname, 
+           ticket_date , addrname ,addrdetail , addrgps
+		FROM board
+		INNER JOIN ticket
+		ON board.bno = ticket.bno
+		LEFT OUTER JOIN mbr
+        on board.writer = mbr.mno
+        LEFT OUTER JOIN type
+        on board.type = type.tcode
+        LEFT OUTER JOIN addrmiddle
+        ON board.addrcode = addrmiddle.addrcode
+		WHERE board.bno = #{bno} 
+	</select>
+	<select id="etcdetail" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
+		board.contents, board.price, board.state, 
+		date_format(write_date, '%Y/%c/%d') as write_date,
+				board.view_cnt , addrmiddle.addrname, 
+				 addrname ,addrdetail , addrgps
+		FROM board
+		INNER JOIN etc
+		ON board.bno = etc.bno
+		LEFT OUTER JOIN mbr
+        on board.writer = mbr.mno
+        LEFT OUTER JOIN type
+        on board.type = type.tcode
+        LEFT OUTER JOIN addrmiddle
+        ON board.addrcode = addrmiddle.addrcode
+		WHERE board.bno = #{bno} 
+	</select>
+
 
 	<select id="searchAll" parameterType="co.kr.yangpa.board.SearchDTO"
 		resultType="co.kr.yangpa.board.BoardDTO">
-		SELECT board.bno, board.writer, type.tname as type, board.title,
-		board.contents, board.price, board.state, 
+		SELECT board.bno, board.writer, type.tname as type, board.title, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
 				board.view_cnt , addrmiddle.addrname,
 		<choose>

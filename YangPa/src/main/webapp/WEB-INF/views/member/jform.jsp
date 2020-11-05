@@ -100,16 +100,16 @@
 	<div class="ABA-wrap-box AB-cr ABA-layout-align" id="ABA-column-wrap"
 		style="padding: 50px 0 30px 0;">
 
-		<div class="ABA-container-box-1080">
+		<div class="ABA-container-box-1080 ">
 			<table width=100% cellpadding=0 cellspacing=0 border=0>
 				<tr>
 					<td></td>
 
-					<td width=550><div id='AB_contents'
+					<td width=550><div class = "border" id='AB_contents'
 							style="padding: 0 30px; background-color: #ffffff;">
 
 
-							<div class="ABA-content-box pageMember"
+							<div class="ABA-content-box pageMember "
 								style="padding-bottom: 0;"></div>
 
 

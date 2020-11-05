@@ -19,7 +19,7 @@
 	<select id="filterList" parameterType="co.kr.yangpa.filter.FilterDTO"
 	resultType="co.kr.yangpa.board.BoardDTO">
 		SELECT board.bno, board.writer, type.tname as type, board.title,
-		board.contents, board.price, board.state, 
+		board.contents, board.price, board.state, substr(board.type,1,1) as in_tel,
 		date_format(write_date, '%Y/%c/%d') as write_date,
 				board.view_cnt , addrmiddle.addrname ,
 		<choose>

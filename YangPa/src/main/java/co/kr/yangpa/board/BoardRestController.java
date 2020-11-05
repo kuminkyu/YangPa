@@ -32,6 +32,14 @@ public class BoardRestController {
 		return list ;
 	}
 	
+	@RequestMapping(value = "/getTel" , method = RequestMethod.GET)
+	public String getTel(String id) {
+		
+		String tel = service.getTel(id);
+		
+		return tel ;
+	}
+	
 	@RequestMapping(value = "/boardInsert" , method = RequestMethod.GET)
 	public int boardInsert(BoardDTO inDTO) {
 		

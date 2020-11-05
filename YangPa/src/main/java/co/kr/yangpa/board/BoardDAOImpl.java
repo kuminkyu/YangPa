@@ -65,4 +65,31 @@ public class BoardDAOImpl implements BoardDAO {
 		return typeInsert;
 	}
 
+
+	@Override
+	public BoardDTO detail(String bno,String typeno) {
+		BoardDTO dto = null;
+		sqlSession.update("BoardMapper.viewCnt",bno);
+		if(typeno.equals("1")) {
+			dto = sqlSession.selectOne("BoardMapper.exdetail", bno);
+		}else if(typeno.equals("2")){
+			dto = sqlSession.selectOne("BoardMapper.trdetail", bno);
+		}else if(typeno.equals("3")){
+			dto = sqlSession.selectOne("BoardMapper.tidetail", bno);
+		}else if(typeno.equals("4")){
+			dto = sqlSession.selectOne("BoardMapper.etcdetail", bno);
+		}
+		
+		return dto;
+	}
+
+
+	@Override
+	public String getTel(String id) {
+		
+		String tel = sqlSession.selectOne("BoardMapper.getTel",id);
+		
+		return tel;
+	}
+
 }

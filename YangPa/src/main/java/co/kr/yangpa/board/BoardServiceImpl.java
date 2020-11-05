@@ -36,4 +36,22 @@ public class BoardServiceImpl implements BoardService {
 		return successCnt;
 	}
 
+
+	@Override
+	public BoardDTO detail(String bno,String typeno) {
+		
+		BoardDTO dto = dao.detail(bno,typeno);
+		
+		return dto;
+	}
+
+
+	@Override
+	public String getTel(String id) {
+		
+		String tel = dao.getTel(id);
+		
+		return tel;
+	}
+
 }

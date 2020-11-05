@@ -13,6 +13,7 @@
 		<mapper resource="META-INF/member-mapper.xml"/>
 		<mapper resource="META-INF/find-mapper.xml"/>
 		<mapper resource="META-INF/join-mapper.xml"/>
+		<mapper resource="META-INF/mypage-mapper.xml"/>
 	</mappers>
 
 </configuration>

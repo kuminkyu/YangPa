@@ -64,7 +64,7 @@
                      <td><b>${dto.addrname}</b></td>
                      <td>${dto.type}</td>
                      <td>
-                        <a href="${pageContext.request.contextPath}/detail?bno=${dto.bno}">
+                        <a href="${pageContext.request.contextPath}/board/detail?bno=${dto.bno}&typeno=${dto.in_tel}">
                            ${dto.title}
                         </a>
                      </td>

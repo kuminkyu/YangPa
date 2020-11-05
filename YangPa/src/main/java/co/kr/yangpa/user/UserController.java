@@ -15,7 +15,7 @@ public class UserController {
 	public String main() {
 		
 		return "main";
-	}	
+	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write() {

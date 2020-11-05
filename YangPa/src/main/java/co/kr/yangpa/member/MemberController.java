@@ -18,31 +18,23 @@ public class MemberController {
 	public String find() {
 
 		return "member/find";
-	}// find
+	}// ID/PWD찾기
 
 	@RequestMapping(value = "/allow", method = RequestMethod.GET)
 	public String aform() {
 		return "member/allow";
-	} // allow
+	} // 회원약관동의
 
 	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
-	public String login() {
+	public String login2() {
 		return "member/login";
-	} // login
+	} // 로그인창
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String myPage(HttpSession session, Model model, String bno) {
-		
-		
-		
-		return "user/mypage";
-	} //myPage
+	} // 로그아웃
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MbrDTO inDto, Model model, HttpSession session) {
@@ -50,7 +42,7 @@ public class MemberController {
 		inDto = service.login(inDto);
 		
 		if(inDto == null) {
-			return "member/login_fail";
+			return "member/fail";
 		}else {
 			session.setAttribute("login_id_session", inDto.getId());
 			session.setAttribute("login_mno_session", inDto.getMno());
@@ -62,7 +54,7 @@ public class MemberController {
 		}
 		
 
-	}// login
+	}// 로그인
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(MbrDTO inDto) {
@@ -74,13 +66,13 @@ public class MemberController {
 		} else {
 			return "member/jfail";
 		}
-	}
+	} // 회원가입
 
 	@RequestMapping(value = "/joinform", method = RequestMethod.GET)
 	public String jform() {
 
 		return "member/jform";
 
-	} // joinForm
+	} // 회원가입창
 
 }

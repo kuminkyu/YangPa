@@ -10,4 +10,8 @@ public interface BoardService {
 
 	public int boardInsert(BoardDTO inDTO);
 
+	public BoardDTO detail(String bno, String typeno);
+
+	public String getTel(String id);
+
 }

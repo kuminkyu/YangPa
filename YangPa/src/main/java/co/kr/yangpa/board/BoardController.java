@@ -1,5 +1,8 @@
 package co.kr.yangpa.board;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
+	
+	@Autowired
+	private BoardService service;
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search() {
@@ -25,9 +31,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String name(String bno) {
+	public String name(String bno, String typeno,Model model) {
 		
-		System.out.println(bno);
+		BoardDTO dto = service.detail(bno,typeno);
+		model.addAttribute("detail_dto",dto);
 		
 		return "board/detail";
 	}

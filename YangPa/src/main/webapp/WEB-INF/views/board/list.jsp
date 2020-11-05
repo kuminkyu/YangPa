@@ -179,7 +179,7 @@ function test() {
          <div class="col-lg-10 mt-2 mb-2">
             <div class="cotainer mt-2 mb-2">
                <a href="${root}/write"><button class="btn btn-primary float-right"><b>판매등록</b></button></a>
-               <a><button class="btn btn-warning float-right mr-2"><b>내 판매 서비스로 이동</b></button></a>
+               <a href="${root}/mypage?mno=${login_mno_session}"><button class="btn btn-warning float-right mr-2"><b>내 판매 서비스로 이동</b></button></a>
                <h4 class="ml-5">
                <b class="board-title">
                <i class="fas fa-seedling mr-2"></i><span style="color: green" class="mr-2">양파</span>판매목록</b>

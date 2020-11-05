@@ -14,7 +14,7 @@ public class PageController {
 	@Autowired
 	private PageService service;
 	
-	@RequestMapping(value = "/update",method = RequestMethod.POST)
+	@RequestMapping(value = "/changeid",method = RequestMethod.POST)
 	public String update(MbrDTO inDto,Model model) {
 		
 		int successCnt = service.update(inDto);
@@ -22,7 +22,7 @@ public class PageController {
 		if(successCnt > 0) {
 			return "main";
 		}else {
-			return "user/update_fail";
+			return "user/change_fail";
 		}
-	}
+	}//회원정보수정 - POST (GET은 MypageController에)
 }

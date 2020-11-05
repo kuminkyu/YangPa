@@ -67,7 +67,6 @@ function movepage(num , typeno) {
 }
 
 function list(reqNum,typeno){
-	
 	$(".nowpage").removeClass('active nowpage');
 	$("#gbh"+reqNum).addClass('page-item active nowpage');
 	
@@ -89,7 +88,6 @@ function list(reqNum,typeno){
 				}else if(dto.useday == undefined){
 					dto.useday = "내용참조";
 				}
-				
 				$("tbody").append(
 						"<tr class='text-center'>"
 						+"<td><b>"+dto.bno+"</b></td>"
@@ -98,10 +96,10 @@ function list(reqNum,typeno){
 						+"<td>"+dto.type+"</td>"
 						+"<td>"
 						+"<a href='/yangpa/board/detail?bno="
-						+dto.bno+"'>"+dto.title+"</a>"
+						+dto.bno+"&typeno="+typeno+"'>"+dto.title+"</a>"
 						+"</td>"
 						+"<td><b>"+dto.useday+"</b></td>"
-						+"<td>"+dto.price+"</td>"
+						+"<td>"+dto.price+"원</td>"
 						+"<td>"+dto.write_date+"</td>"
 						+"</tr>"
 					);//append
