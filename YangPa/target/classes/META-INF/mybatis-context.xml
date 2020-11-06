@@ -14,6 +14,8 @@
 		<mapper resource="META-INF/find-mapper.xml"/>
 		<mapper resource="META-INF/join-mapper.xml"/>
 		<mapper resource="META-INF/mypage-mapper.xml"/>
+		<mapper resource="META-INF/batch-mapper.xml"/>
+		<mapper resource="META-INF/main-mapper.xml"/>
 	</mappers>
 
 </configuration>

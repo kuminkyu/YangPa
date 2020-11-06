@@ -102,13 +102,13 @@
                                     <div class="-inputWrap" >
                                        <input type="text"  value=""
                                           class="hs_txtline1" id = "login_id" name="login_id"
-                                          style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
+                                          style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold;"
                                           placeholder="아이디" maxlength="50" tabindex="1" />
                                     </div>
                                     <div class="-inputWrap" >
                                        <input type="password" value=""
                                           class="hs_txtline1" id="login_pwd" name="login_pwd"
-                                          style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
+                                          style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold;"
                                           placeholder="비밀번호" maxlength="50" tabindex="2" />
                                     </div>
                                  </div>
@@ -117,7 +117,7 @@
                                        <button type="button" value="로그인"
                                           id = "btn_login"
                                           
-                                          style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
+                                          style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 25px; color: #fff"
                                           tabindex="3" >로그인</button>
                                     </div>
                                     
@@ -129,7 +129,7 @@
                                              <td style="text-align: right;">&nbsp;<a
                                                 href="insiter.php?design_file=find_id_pw.php"><span
                                                    class="btn-tpl" id = "id_pwd"
-                                                   style="font-size: 11px; color: #757c8a; padding: 3px 8px; letter-spacing: -1px; border: 1px solid #dbe0e5; border-radius: 30px;">ID/PW
+                                                   style="font-size: 20px; color: #757c8a; padding: 3px 8px; letter-spacing: -1px; border: 1px solid #dbe0e5; border-radius: 30px;">ID/PW
                                                       찾기</span></a></td>
                                           </tr>
                                        </table>
@@ -146,7 +146,7 @@
                            <div style="padding-bottom: 30px;">
                               <a href="insiter.php?design_file=MemJoinChs.php"><span
                                  class="btn-tpl" id = "join_form"
-                                 style="font-size: 14px; color: #757c8a; padding: 3px 5px; letter-spacing: -1px; border-bottom: 1px solid #9b9da4;">회원가입</span></a>
+                                 style="font-size: 20px; color: #757c8a; padding: 3px 5px; letter-spacing: -1px; border-bottom: 1px solid #9b9da4;">회원가입</span></a>
                            </div>
                         </div>
                         

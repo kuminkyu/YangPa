@@ -113,16 +113,16 @@
 								style="padding-bottom: 0;"></div>
 
 
-							<h1 class="text-center mb-4">Yang Pa</h1>
+							<h1 style="font-size: 70px; font-weight: bold;" class="text-center mt-2 mb-1">YangPa</h1>
 							<form id="jform" method="post" action="${root}/join">
-								<h5 class="text-center mb-3">회원가입 정보입력</h5>
+								<h5 class="text-center mb-3">정보입력</h5>
 								<table class="table">
 									<tr>
 										<td style="text-align: left">ID</td>
 										<td>
 											<div class="ml-2 form-group">
 												<a><input
-													style = "width: 40%;" type="text" class="form-control inputEng mr-1" placeholder="아이디" id="id"
+													style = "width: 40%; font-size: 20px; font-weight: bold;" type="text" class="form-control inputEng mr-1" placeholder="아이디" id="id"
 													name="id" maxlength="10">
 												<span id="user_id"></span></a>
 												<input type="hidden"
@@ -130,7 +130,7 @@
 											</div>
 
 											<div class="ml-1"
-												style="font-size: 11px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
+												style="font-size: 17px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
 												최소 6자이상, 최대 12자이내에서 영문/숫자를 사용해주세요.</div>
 											</div>
 										</td>
@@ -140,14 +140,14 @@
 										<td>
 											<div class="form-inline ml-2">
 												<input type="password" class="form-control inputEng mr-3"
-													style="width: 40%;" id="pwd" name="pwd" maxlength="30"
+													style="width: 40%; font-size: 20px; font-weight: bold;" id="pwd" name="pwd" maxlength="30"
 													value="" placeholder="비밀번호"> <input type="password"
-													class="form-control inputEng" style="width: 50%;"
+													class="form-control inputEng" style="width: 50%; font-size: 20px; font-weight: bold;"
 													id="pwdre" name="pwdre" maxlength="20" value=""
 													placeholder="비밀번호 재입력"><br>
 											</div>
 											<div class="ml-2"
-												style="font-size: 11px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
+												style="font-size: 17px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
 												8~15자내에서&nbsp;<span style="color: rgb(255, 102, 51);">영문+숫자+특수문자
 													모두사용</span>&nbsp;하여 만들어주세요.
 											</div>
@@ -161,10 +161,10 @@
 
 												<input type="text" class="form-control inputEng ml-2"
 													id="name" name="name" maxlength="5" value=""
-													placeholder="이름" style="width: 30%;">
+													placeholder="이름" style="width: 30%; font-size: 20px; font-weight: bold;">
 
 												<div class="ml-2"
-													style="font-size: 11px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
+													style="font-size: 17px; color: #767b86; letter-spacing: -0.6px; padding-top: 6px; padding-left: 3px; float: left;">
 													커뮤니티 활동등에 사용, 언제든 변경/수정 가능</div>
 											</div>
 										</td>
@@ -173,12 +173,12 @@
 										<td style="width: 20%; text-align: left">TEL</td>
 										<td class="form-inline"><input type="text"
 											class="form-control ml-2 mr-1 inputNum" id="tel1" name="tel1"
-											value="" size="3" maxlength="3" placeholder="010"> -<input
+											value="" size="3" style = "font-size: 20px; font-weight: bold;" maxlength="3" placeholder="010"> -<input
 											type="text" class="form-control ml-2 mr-1 inputNum" id="tel2"
-											name="tel2" value="" size="4" maxlength="4"
+											name="tel2" value="" size="4" style = "font-size: 20px; font-weight: bold;" maxlength="4"
 											placeholder="1234"> -<input type="text"
 											class="form-control ml-2 mr-1 inputNum" id="tel3" name="tel3"
-											value="" size="4" maxlength="4" placeholder="5678"> <input
+											value="" size="4" style = "font-size: 20px; font-weight: bold;" maxlength="4" placeholder="5678"> <input
 											type="text" style="display: none;" name="tel" id="tel">
 										</td>
 									</tr>
@@ -186,7 +186,7 @@
 										<td style="text-align: left">EMAIL</td>
 										<td class="form-inline ml-1"><input type="text"
 											class="form-control ml-1 inputEmail inputEng" id="email"
-											name="email" size="20" value="" maxlength="40"
+											name="email" size="20" style = "font-size: 20px; font-weight: bold;" value="" maxlength="40"
 											placeholder="yangpa@help.com"></td>
 									</tr>
 								</table>

@@ -24,6 +24,7 @@
 				board.view_cnt , addrmiddle.addrname ,
 		<choose>
 			<when test='bun.equals("1")'>
+				buy_type,
 				<if test='kind.equals("0")'>limit_date as useday</if>
 				<if test='kind.equals("1")'>limit_cnt as useday</if>
 			</when>
@@ -36,7 +37,7 @@
 		<choose>
 			<when test='bun.equals("1")'>
 	        	INNER JOIN excercise
-		 		<if test='kind.equals("0")'>on board.bno = excercise.bno and limit_date</if>
+		 		<if test='kind.equals("0")'>on board.bno = excercise.bno and limit_date >= 0 </if>
 				<if test='kind.equals("1")'>on board.bno = excercise.bno and limit_cnt</if>
 			</when>
 			<when test='bun.equals("2")'>

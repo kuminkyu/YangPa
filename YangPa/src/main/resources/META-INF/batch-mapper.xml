@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BatchMapper">
+
+	<update id="exUpdateLimitDate">
+		UPDATE excercise
+		SET limit_date = limit_date - if(limit_date > 0 , -1 , 0)
+		WHERE limit_date is not null
+	</update>
+	
+	<update id="exUpdateState">
+		UPDATE board INNER JOIN excercise
+		ON board.bno = excercise.bno
+		SET state = if(limit_date >= 1 , 0 , 3)
+		WHERE limit_date is not null
+		
+	</update>
+	
+	<update id="trUpdateState">
+		UPDATE board INNER JOIN travel
+		ON board.bno = travel.bno
+		SET state = 
+		CASE 
+		WHEN datediff(checkin_date , now()) > 0 and datediff(checkin_date , now()) <![CDATA[<]]> 8
+		THEN   2
+		WHEN datediff(checkin_date , now()) <![CDATA[<]]> 1 
+		THEN  3
+		ELSE 0
+		END
+	</update>
+	
+	<update id="tiUpdateState">
+		update board inner join ticket
+		on board.bno = ticket.bno
+		set state = 
+		CASE 
+		WHEN datediff(ticket_date , now()) > 0 and datediff(ticket_date , now()) <![CDATA[<]]> 8
+		THEN   2
+		WHEN datediff(ticket_date , now()) <![CDATA[<]]> 1 
+		THEN  3
+		ELSE 0
+		END
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+

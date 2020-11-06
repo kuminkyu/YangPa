@@ -60,6 +60,12 @@
                      <c:when test="${dto.state == 1}">
                      <td><span class='badge badge-pill badge-light'>판매완료</span></td>
                      </c:when>
+                     <c:when test="${dto.state == 2}">
+                     <td><span class='badge badge-pill badge-danger'>마감임박!!</span></td>
+                     </c:when>
+                     <c:when test="${dto.state == 3}">
+                     <td><span class='badge badge-pill badge-dark'>마감</span></td>
+                     </c:when>
                   </c:choose>
                      <td><b>${dto.addrname}</b></td>
                      <td>${dto.type}</td>
@@ -68,8 +74,18 @@
                            ${dto.title}
                         </a>
                      </td>
-                     <td>${dto.useday}</td>
-                     <td>${dto.price}</td>
+                     <c:choose>
+                     	<c:when test="${dto.buy_type == 0}">
+                     		<td>${dto.useday}일</td>
+                     	</c:when>
+                     	<c:when test="${dto.buy_type == 1}">
+                     		<td>${dto.useday}회</td>
+                     	</c:when>
+                     	<c:otherwise>
+		                     <td>${dto.useday}</td>
+                     	</c:otherwise>
+                     </c:choose>
+                     <td>${dto.price}원</td>
                      <td>${dto.write_date}</td>
                   </tr>
                </c:forEach>

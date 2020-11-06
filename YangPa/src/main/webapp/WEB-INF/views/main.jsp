@@ -52,8 +52,90 @@
 	height: 100%;
 }
 </style>
-
 <body>
+<script type="text/javascript">
+$(document).ready(function() {
+	let type = 1;
+	$.get(
+		"${root}/hot"
+		,{
+			typeno : 1
+		}
+		, function(data , status){
+			if(status == "success"){
+				$("#hotcard").empty();
+				$.each(data , function(index , dto) {
+					$("#hotcard").append(
+						'<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">'
+							+'<img class="card-img-top"  style="width: 100%; height : 250px;"' 
+								+'src="'+dto.in_tel+'"'
+								+'alt="Card image cap">'
+							+'<div class="card-body" id="div-1"><h5 class="card-title">'
+							+'<a href="${root}/board/detail?bno='+dto.bno+'&typeno='+type+'">'
+									+dto.title
+								+'</a></h5>'
+								+'<p class="card-text">'+dto.contents+'</p>'
+								+'<h4>'
+								+ dto.price+'원</h4></div></div>'
+					);
+				});//each
+			}else{
+				alert("목록 불러오기 오류....");
+			}
+		}
+	);//get
+	
+	$(".hotsearch").click(function() {
+		type = $(this).text();
+	      switch (type){
+	         case "운동" :
+	            type = 1;
+	             break;
+	         case "여행" :
+	            type = 2;
+	             break;
+	         case "티켓" :
+	            type = 3;
+	             break;
+	         case "기타" :
+	            type = 4;
+	             break;
+	         default :
+	            alert("리스트 로딩중 오류 다시 시도해 주십시요");
+	              return;
+	       }
+		$.get(
+				"${root}/hot"
+				,{
+					typeno : type
+				}
+				, function(data , status){
+					if(status == "success"){
+						$("#hotcard").empty();
+						$.each(data , function(index , dto) {
+							$("#hotcard").append(
+								'<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">'
+									+'<img class="card-img-top"  style="width: 100%; height : 250px;"' 
+										+'src="'+dto.in_tel+'"'
+										+'alt="Card image cap">'
+									+'<div class="card-body" id="div-1"><h5 class="card-title">'
+									+ '<a href="${root}/board/detail?bno='+dto.bno+'&typeno='+type+'">'
+											+dto.title
+										+'</a></h5>'
+										+'<p class="card-text">'+dto.contents+'</p>'
+										+'<h4>'
+										+ dto.price+'원</h4></div></div>'
+							);
+						});//each
+					}else{
+						alert("목록 불러오기 오류....");
+					}
+				}
+			);//get
+	});//click
+	
+});//ready
+</script>
 	<%@ include file="./header.jsp"%>
 
 	<div class="container">
@@ -96,13 +178,13 @@
 
 	<div class="container" id = "div-1"><h5>
 		<a href="${root}/board/mainlist?maintype=1"> <img class="ml-5 mr-5" alt="W3Schools"
-			src="${root}/resources/img/main/wo.png" width="160" height="160">
+			src="${root}/resources/img/main/health.PNG" width="160" height="160">
 		</a> <a href="${root}/board/mainlist?maintype=2"> <img class="ml-5 mr-5" alt="W3Schools"
-			src="${root}/resources/img/main/tr.png" width="160" height="160">
+			src="${root}/resources/img/main/travel.PNG" width="160" height="160">
 		</a> <a href="${root}/board/mainlist?maintype=3"> <img class="ml-5 mr-5" alt="W3Schools"
-			src="${root}/resources/img/main/tk.png" width="160" height="160">
+			src="${root}/resources/img/main/ticket.PNG" width="160" height="160">
 		</a> <a href="${root}/board/mainlist?maintype=4"> <img class="ml-5 mr-5" alt="W3Schools"
-			src="${root}/resources/img/main/rest.png" width="160" height="160">
+			src="${root}/resources/img/main/etc.PNG" width="160" height="160">
 		</a>
 		</h5>
 	</div>
@@ -112,27 +194,47 @@
 		<div class="wrap col-lg-2 mb-5">
 			<h3 class="mb-2 text-center">분류</h3>
 			<div class="list-group">
-				<b>
-						<a href="#" class="list-group-item text-dark tablesearch"><i
-							class="fas fa-seedling mr-2"></i>전체</a></b> <b><a href="#"
-					class="list-group-item text-dark tablesearch">
-					
-					<i
-						class="fas fa-dumbbell mr-2"></i>운동</a></b> <b><a href="#"
-					class="list-group-item text-dark tablesearch"><i
-						class="fas fa-umbrella-beach mr-2"></i>여행</a></b> <b><a href="#"
-					class="list-group-item text-dark tablesearch"><i
-						class="fas fa-ticket-alt mr-2"></i>티켓</a></b> <b><a href="#"
-					class="list-group-item text-dark tablesearch"><i
+				   <b><a 
+					class="list-group-item text-dark hotsearch"><i 
+					class="fas fa-dumbbell mr-2"></i>운동</a>
+					</b>
+				   <b><a 
+					class="list-group-item text-dark hotsearch"><i
+						class="fas fa-umbrella-beach mr-2"></i>여행</a>
+					</b>
+				   <b><a 
+					class="list-group-item text-dark hotsearch"><i
+						class="fas fa-ticket-alt mr-2"></i>티켓</a>
+					</b>
+				   <b><a 
+					class="list-group-item text-dark hotsearch"><i
 						class="fas fa-plus mr-2"></i>기타</a>
 					</b>
 			</div>
 		</div>
 
 		<div class="wrap col-lg-10">
-			<div class="card-columns">
+			<div class="card-columns" id="hotcard">
+				<!-- 이부분은 카드의 시작 점  -->
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
+					<img class="card-img-top" style="width:100%"
+						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
+						alt="Card image cap">
+					<div class="card-body" id="div-1">
+						<h5 class="card-title">
+							<a>여기에 기사 제목이 들어가죠</a>
+						</h5>
+						<p class="card-text">This is a longer card with supporting
+							text below as a natural lead-in to additional content. This
+							content is a little bit longer.</p>
+						<h4>
+							<a>여기에 코멘트가 들어갑니다.</a>
+						</h4>
+					</div>
+				</div>
+				
+				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
+					<img class="card-img-top" style="width:100%"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
 					<div class="card-body" id="div-1">
@@ -149,7 +251,7 @@
 				</div>
 
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
+					<img class="card-img-top" style="width:100%"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
 					<div class="card-body" id="div-1">
@@ -166,7 +268,7 @@
 				</div>
 
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
+					<img class="card-img-top" style="width:100%"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
 					<div class="card-body" id="div-1">
@@ -183,7 +285,7 @@
 				</div>
 
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
+					<img class="card-img-top" style="width:100%"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
 					<div class="card-body" id="div-1">
@@ -200,24 +302,7 @@
 				</div>
 
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
-						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
-						alt="Card image cap">
-					<div class="card-body" id="div-1">
-						<h5 class="card-title">
-							<a>여기에 기사 제목이 들어가죠</a>
-						</h5>
-						<p class="card-text">This is a longer card with supporting
-							text below as a natural lead-in to additional content. This
-							content is a little bit longer.</p>
-						<h4>
-							<a>여기에 코멘트가 들어갑니다.</a>
-						</h4>
-					</div>
-				</div>
-
-				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">
-					<img class="card-img-top"
+					<img class="card-img-top" style="width:100%"
 						src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg"
 						alt="Card image cap">
 					<div class="card-body" id="div-1">

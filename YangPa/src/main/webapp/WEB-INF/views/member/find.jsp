@@ -93,19 +93,19 @@
                                           <div style="margin-bottom: 20px;">
                                              <div>
                                                 <input type="text" id="name" name="find_name"
-                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
+                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold;"
                                                    placeholder="이름" maxlength="50" />
                                              </div>
                                              <div>
                                                 <input type="text" id="email" name="find_email"
-                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold;"
+                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold;"
                                                    placeholder="이메일" maxlength="50" />
                                              </div>
                                           </div>
                                           <div>
                                              <div>
                                                 <button type="button" value="입력완료" id="com"
-                                                   style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff">입력완료</button>
+                                                   style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 23px; color: #fff">입력완료</button>
                                              </div>
 
                                           </div>
@@ -133,17 +133,17 @@
                                           <div style="margin-bottom: 20px;">
                                              <div>
                                                 <input type="text" id="id2" name="find_id2"
-                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
+                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold; border-radius:;"
                                                    placeholder="아이디" maxlength="50" />
                                              </div>
                                              <div>
                                                 <input type="text" id="name2" name="find_name2"
-                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
+                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold; border-radius:;"
                                                    placeholder="이름" maxlength="50" />
                                              </div>
                                              <div >
                                                 <input type="text" id="email2" name="find_email2"
-                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 13px; font-weight: bold; border-radius:;"
+                                                   style="width: 100%; color: #; padding: 15px 10px; font-size: 20px; font-weight: bold; border-radius:;"
                                                    placeholder="이메일" maxlength="50" />
                                              </div>
                                           </div>
@@ -153,7 +153,7 @@
                                           <div>
                                              <div>
                                                 <button type="button" value="입력완료"  id="com2"
-                                                   style="padding: 15px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
+                                                   style="padding: 23px 0; width: 100%; background-color: #FF9900; font-size: 16px; color: #fff"
                                                    tabindex="3" >입력완료</button>
                                              </div>
                                           </div>

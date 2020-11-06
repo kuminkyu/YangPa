@@ -66,7 +66,6 @@ $(document).ready(function () {
 	//탭 넘어갈시 체크박스와 라디오박스를 해제하는 부분
    $(".bun").click(function() {
 	   $("input:checkbox[name='check']").attr("checked", false);
-	   $("input:radio[name='ex_kind']").attr("checked", false);
 	   $("#datepicker1").val(null);
 	    $("#datepicker2").val(null);
 	});

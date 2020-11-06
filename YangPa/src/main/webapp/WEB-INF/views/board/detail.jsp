@@ -59,6 +59,16 @@ $(document).ready(function() {
 							<span class="badge badge-pill badge-success">판매중</span>
 						</h2>
 					</c:when>
+					<c:when test="${detail_dto.state == '2'}">
+						<h2>
+							<span class="badge badge-pill badge-danger">마감임박!!!</span>
+						</h2>
+					</c:when>
+					<c:when test="${detail_dto.state == '3'}">
+						<h2>
+							<span class="badge badge-pill badge-dark">마감</span>
+						</h2>
+					</c:when>
 					<c:otherwise>
 						<h2>
 							<span class="badge badge-pill badge-light">판매완료</span>
@@ -103,9 +113,9 @@ $(document).ready(function() {
 
 			<div class="col-lg-8 mt-2 mb-2 border">
 
-				
+				<div>
 					${detail_dto.contents}
-				
+				</div>
 			</div>
 
 			<div class="col-lg-4 mt-2 mb-2 border">

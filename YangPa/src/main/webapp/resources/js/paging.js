@@ -76,17 +76,21 @@ function list(reqNum,typeno){
 		, success : function(data, status) {
 			$("tbody").empty();
 			$.each(data, function(index, dto){
-				if(dto.state == "0"){
-					dto.state = "<span class='badge badge-pill badge-success'>판매중</span>";
-				}else if(dto.state == "1"){
-					dto.state = "<span class='badge badge-pill badge-light'>판매완료</span>";
-				}
 				if(dto.buy_type == "1"){
 					dto.useday = dto.useday + "회";
 				}else if(dto.buy_type == "0"){
 					dto.useday = dto.useday + "일";
 				}else if(dto.useday == undefined){
 					dto.useday = "내용참조";
+				}
+				if(dto.state == "0"){
+					dto.state = "<span class='badge badge-pill badge-success'>판매중</span>";
+				}else if(dto.state == "1"){
+					dto.state = "<span class='badge badge-pill badge-light'>판매완료</span>";
+				}else if(dto.state == "2"){
+					dto.state = "<span class='badge badge-pill badge-danger'>마감임박!!</span>";
+				}else if(dto.state == "3"){
+					dto.state = "<span class='badge badge-pill badge-dark'>마감</span>";
 				}
 				$("tbody").append(
 						"<tr class='text-center'>"
