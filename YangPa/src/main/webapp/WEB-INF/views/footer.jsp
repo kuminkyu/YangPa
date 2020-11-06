@@ -32,13 +32,18 @@
          <div style="margin-top: 40px">
             <h2>
                <p style="color: #FFFFFF;">Social :</p>
-               <a class="navbar-brand" href="https://www.youtube.com" target = "_blank"> <img
-                  src="${root}/resources/img/youtube.jpg" alt="logo" title="546"
+               
+               <a class="navbar-brand" href="https://www.youtube.com" target = "_blank"> 
+               
+               <img src="${root}/resources/img/youtube.jpg" alt="logo" title="546"
                   style="width: 40px;"> <a class="navbar-brand"
-                  href="https://www.facebook.com" target = "_blank"> <img src="${root}/resources/img/facebook.jpg"
+                  href="https://www.facebook.com" target = "_blank"> 
+                  
+                  <img src="${root}/resources/img/facebook.jpg"
                      alt="logo" title="546" style="width: 40px;"> <a
-                     class="navbar-brand" href="https://www.instagram.com" target = "_blank"> <img
-                        src="${root}/resources/img/insta.jpg" alt="logo" title="546"
+                     class="navbar-brand" href="https://www.instagram.com" target = "_blank"> 
+                     
+                  <img src="${root}/resources/img/insta.jpg" alt="logo" title="546"
                         style="width: 40px;">
             </h2>
          </div>

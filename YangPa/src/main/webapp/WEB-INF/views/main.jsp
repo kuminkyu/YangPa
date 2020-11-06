@@ -176,17 +176,22 @@ $(document).ready(function() {
 	<br>
 	<!--     중간 링크 아이콘 넣을곳 -->
 
-	<div class="container" id = "div-1"><h5>
-		<a href="${root}/board/mainlist?maintype=1"> <img class="ml-5 mr-5" alt="W3Schools"
+	<div class="container" id = "div-1">
+	<h3>
+		<a href="${root}/board/mainlist?maintype=1"> <img class="ml-5 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/health.PNG" width="160" height="160">
-		</a> <a href="${root}/board/mainlist?maintype=2"> <img class="ml-5 mr-5" alt="W3Schools"
+		운동
+		</a> <a href="${root}/board/mainlist?maintype=2"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/travel.PNG" width="160" height="160">
-		</a> <a href="${root}/board/mainlist?maintype=3"> <img class="ml-5 mr-5" alt="W3Schools"
+		여행	
+		</a> <a href="${root}/board/mainlist?maintype=3"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/ticket.PNG" width="160" height="160">
-		</a> <a href="${root}/board/mainlist?maintype=4"> <img class="ml-5 mr-5" alt="W3Schools"
+		티켓
+		</a> <a href="${root}/board/mainlist?maintype=4"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/etc.PNG" width="160" height="160">
+		기타
 		</a>
-		</h5>
+		</h3>
 	</div>
 
 	<br>
