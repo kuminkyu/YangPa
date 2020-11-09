@@ -21,7 +21,7 @@
 		SELECT board.bno, board.writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, substr(board.type,1,1) as in_tel,
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname ,
+				board.view_cnt , addrmiddle.addrname ,addrlarge.addrname as addrname2,
 		<choose>
 			<when test='bun.equals("1")'>
 				buy_type,
@@ -57,6 +57,8 @@
         ON board.type = type.tcode 
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode 
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
         <where>
         <if test="option != null">
         	AND type IN
@@ -96,6 +98,7 @@
 			</if>
 		</if>
         </where>
+         ORDER BY bno DESC
          LIMIT 0 , 15 
         
 	</select>

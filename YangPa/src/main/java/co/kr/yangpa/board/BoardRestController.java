@@ -61,6 +61,18 @@ public class BoardRestController {
 		}else {
 			return -1;
 		}
+	}
+	
+	@RequestMapping(value = "/cmtInsert" , method = RequestMethod.POST)
+	public int cmtInsert(BoardDTO inDTO) {
+		int successCnt = service.cmtInsert(inDTO);
+		if(successCnt == 0) {
+			System.out.println("실패");
+		}else {
+			
+			System.out.println("성공");
+		}
 		
+		return successCnt;
 	}
 }

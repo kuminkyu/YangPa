@@ -67,7 +67,7 @@
                      <td><span class='badge badge-pill badge-dark'>마감</span></td>
                      </c:when>
                   </c:choose>
-                     <td><b>${dto.addrname}</b></td>
+                     <td><b>${dto.addrname2} ${dto.addrname}</b></td>
                      <td>${dto.type}</td>
                      <td>
                         <a href="${pageContext.request.contextPath}/board/detail?bno=${dto.bno}&typeno=${dto.in_tel}">

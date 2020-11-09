@@ -96,7 +96,7 @@ function list(reqNum,typeno){
 						"<tr class='text-center'>"
 						+"<td><b>"+dto.bno+"</b></td>"
 						+"<td><b>"+dto.state+"</b></td>"
-						+"<td><b>"+dto.addrname+"</b></td>"
+						+"<td><b>"+dto.addrname2 +" "+dto.addrname+"</b></td>"
 						+"<td>"+dto.type+"</td>"
 						+"<td>"
 						+"<a href='/yangpa/board/detail?bno="

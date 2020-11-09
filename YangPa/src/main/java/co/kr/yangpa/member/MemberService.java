@@ -6,5 +6,7 @@ public interface MemberService {
 
 	MbrDTO login(MbrDTO inDto);
 
-	
+	public int basket(MbrDTO inDTO);
+
+	public int isBasket(MbrDTO inDTO);
 }

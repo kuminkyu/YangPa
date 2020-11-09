@@ -12,7 +12,15 @@ public class BoardDTO {
 	private String write_date;//작성일
 	private String view_cnt;//조회수
 	private String addrcode;// 지역코드
-	private String addrname;// 지역 이름
+	private String addrname;// 지역 이름 구 군
+	private String addrname2;// 지역 이름 시  이름
+	
+	public String getAddrname2() {
+		return addrname2;
+	}
+	public void setAddrname2(String addrname2) {
+		this.addrname2 = addrname2;
+	}
 	private String addrdetail;// 지역 이름
 	private String addrgps;// 지역 좌표
 	

@@ -54,4 +54,22 @@ public class BoardServiceImpl implements BoardService {
 		return tel;
 	}
 
+
+	@Override
+	public int cmtInsert(BoardDTO inDTO) {
+		
+		int successCnt = dao.cmtInsert(inDTO);
+		
+		return successCnt;
+	}
+
+
+	@Override
+	public List<BoardDTO> cmtList(String bno) {
+		
+		List<BoardDTO> cmtList = dao.cmtList(bno);
+		
+		return cmtList;
+	}
+
 }

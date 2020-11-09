@@ -92,4 +92,22 @@ public class BoardDAOImpl implements BoardDAO {
 		return tel;
 	}
 
+
+	@Override
+	public int cmtInsert(BoardDTO inDTO) {
+		
+		int successCnt = sqlSession.insert("BoardMapper.cmtInsert",inDTO);
+		
+		return successCnt;
+	}
+
+
+	@Override
+	public List<BoardDTO> cmtList(String bno) {
+		
+		List<BoardDTO> cmtList = sqlSession.selectList("BoardMapper.cmtList",bno);
+		
+		return cmtList;
+	}
+
 }

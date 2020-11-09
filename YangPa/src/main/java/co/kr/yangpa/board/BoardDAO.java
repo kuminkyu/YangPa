@@ -14,4 +14,8 @@ public interface BoardDAO {
 
 	public String getTel(String id);
 
+	public int cmtInsert(BoardDTO inDTO);
+
+	public List<BoardDTO> cmtList(String bno);
+
 }

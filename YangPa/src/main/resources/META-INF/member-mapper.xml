@@ -19,6 +19,23 @@
 		 from mbr where id = #{login_id} and pwd = #{login_pwd}
 	</select>
 	
+	<update id="basket" parameterType="co.kr.yangpa.member.MbrDTO">
+	 UPDATE mbr_util
+	 SET basket = IF(basket = 1 , 0 , 1)
+	 WHERE bno = #{name} AND mno = #{mno}
+	</update>
+	
+	<insert id="basketFirst" parameterType="co.kr.yangpa.member.MbrDTO">
+	INSERT into mbr_util(bno , mno , basket)
+	VALUES(#{name} , #{mno} , 1)
+	</insert>
+	
+	<select id="isBasket"  parameterType="co.kr.yangpa.member.MbrDTO"
+	resultType="int">
+	SELECT if(count(basket) = 0,0,basket)
+	FROM mbr_util
+	WHERE mno = #{mno} AND bno = #{name}
+	</select>
 	
 </mapper>
 

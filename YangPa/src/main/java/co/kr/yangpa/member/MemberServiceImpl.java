@@ -24,7 +24,20 @@ public class MemberServiceImpl implements MemberService {
 		
 		return inDto;
 	}
-
 	
+	@Override
+	public int basket(MbrDTO inDTO) {
+		
+		int successCnt = dao.basket(inDTO);
+		return successCnt;
+	}
+
+	@Override
+	public int isBasket(MbrDTO inDTO) {
+		
+		int basket = dao.isBasket(inDTO);
+				
+		return basket;
+	}
 
 }

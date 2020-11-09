@@ -33,8 +33,10 @@ public class BoardController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String name(String bno, String typeno,Model model) {
 		
-		BoardDTO dto = service.detail(bno,typeno);
+		BoardDTO dto = service.detail(bno,typeno);//매물정보 
 		model.addAttribute("detail_dto",dto);
+		List<BoardDTO> cmtList = service.cmtList(bno);//댓글리스트
+		model.addAttribute("cmtList",cmtList);
 		
 		return "board/detail";
 	}

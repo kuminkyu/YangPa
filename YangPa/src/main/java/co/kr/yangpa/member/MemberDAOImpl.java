@@ -31,6 +31,22 @@ public class MemberDAOImpl implements MemberDAO {
 		return inDto;
 
 	}
-	
+	@Override
+	public int basket(MbrDTO inDTO) {
+		int successCnt = sqlSession.update("MemberMapper.basket", inDTO);
+		if(successCnt == 0) {
+			successCnt = sqlSession.insert("MemberMapper.basketFirst" , inDTO);
+		}
+		
+		return successCnt;
+	}
+
+	@Override
+	public int isBasket(MbrDTO inDTO) {
+		
+		int basket = sqlSession.selectOne("MemberMapper.isBasket" , inDTO);
+		System.out.println("basket : " + basket);
+		return basket;
+	}
 
 }

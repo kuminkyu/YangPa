@@ -36,12 +36,73 @@ $(document).ready(function() {
    $(".tablesearch").click(function() {
       typeno = $(this).text();
 	   test();
-
+/*
+	   alert();
+      $(".board-title").empty();
+      reqNum = 1;
+     
+      switch (typeno){
+         case "운동" :
+            typeno = 1;
+            $(".board-title").append(
+               "<i class='fas fa-dumbbell mr-2'></i>"  
+               +"<span style='color: red' class='mr-2'>"
+               + "운동</span>판매목록"      
+            );
+             break;
+         case "여행" :
+            typeno = 2;
+            $(".board-title").append(
+               "<i class='fas fa-umbrella-beach mr-2'></i>"
+               +"<span style='color: blue' class='mr-2'>"
+               +"여행</span>판매목록"      
+            );
+             break;
+         case "티켓" :
+            typeno = 3;
+            $(".board-title").append(
+               "<i class='fas fa-ticket-alt mr-2'></i>"
+               +"<span style='color: brown' class='mr-2'>티켓</span>판매목록"      
+            );
+             break;
+         case "기타" :
+            typeno = 4;
+            $(".board-title").append(
+               "<i class='fas fa-plus mr-2'></i>"   
+               +"<span style='color: gray' class='mr-2'>기타</span>판매목록"      
+            );
+             break;
+         case "전체" :
+            typeno = 0;
+            $(".board-title").append(
+               "<i class='fas fa-seedling mr-2'></i>"   
+               +"<span style='color: green' class='mr-2'>양파</span>판매목록"      
+            );
+             break;
+         default :
+            alert("리스트 로딩중 오류 다시 시도해 주십시요");
+              return;
+       }
+      //페이징 //
+      $.ajax({
+         contentType : "application/json"
+         , url : "${root}/pageRest/pageCount/"+typeno
+         ,success: function(totresult, status){
+            totCnt = totresult;
+            paging(totCnt,1,10,typeno);
+         }
+      });//ajax
+      
+      //리스트 뽑아오기 // 
+      
+      list(1,typeno);
+*/
    });//click
 });//ready
 function test() {
 	      $(".board-title").empty();
 	      reqNum = 1;
+	      //typeno = $(this).text();
 	     
 	      switch (typeno){
 	         case "운동" :
@@ -118,7 +179,7 @@ function test() {
          <div class="col-lg-10 mt-2 mb-2">
             <div class="cotainer mt-2 mb-2">
                <a href="${root}/write"><button class="btn btn-primary float-right"><b>판매등록</b></button></a>
-               <a href="${root}/mypage?mno=${login_mno_session}"><button class="btn btn-warning float-right mr-2"><b>내 판매 서비스로 이동</b></button></a>
+               <a><button class="btn btn-warning float-right mr-2"><b>내 판매 서비스로 이동</b></button></a>
                <h4 class="ml-5">
                <b class="board-title">
                <i class="fas fa-seedling mr-2"></i><span style="color: green" class="mr-2">양파</span>판매목록</b>
@@ -160,7 +221,7 @@ function test() {
                      <td><span class='badge badge-pill badge-light'>판매완료</span></td>
                      </c:when>
                   </c:choose>
-                     <td><b>${dto.addrname}</b></td>
+                     <td><b>${dto.addrname2} ${dto.addrname}</b></td>
                      <td>${dto.type}</td>
                      <td>
                         <a href="${pageContext.request.contextPath}/detail?bno=${dto.bno}">
@@ -175,6 +236,7 @@ function test() {
             </tbody>
          </table>
             <ul class="pagination justify-content-center">
+            <!-- 이부분에 자바스크립트로 페이징이 들어감 -->
             </ul>
          </div>
       </div>

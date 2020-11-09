@@ -43,7 +43,7 @@
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
 				board.view_cnt , addrmiddle.addrname, 
-           checkin_date , addrname ,addrdetail , addrgps
+           checkin_date as useday , addrname ,addrdetail , addrgps
 		FROM board
 		INNER JOIN travel
 		ON board.bno = travel.bno
@@ -61,7 +61,7 @@
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
 				board.view_cnt , addrmiddle.addrname, 
-           ticket_date , addrname ,addrdetail , addrgps
+           ticket_date as useday , addrname ,addrdetail , addrgps
 		FROM board
 		INNER JOIN ticket
 		ON board.bno = ticket.bno
@@ -96,7 +96,7 @@
 		resultType="co.kr.yangpa.board.BoardDTO">
 		SELECT board.bno, board.writer, type.tname as type, board.title, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname,
+				board.view_cnt , addrmiddle.addrname, addrlarge.addrname as addrname2,
 		<choose>
 			<when test='typeno.equals("1")'>
 			buy_type, 
@@ -130,7 +130,11 @@
         on board.type = type.tcode
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode
-        LIMIT #{reqNum} , 15   
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
+        ORDER BY bno DESC
+        LIMIT #{reqNum} , 15  
+         
 	</select>
 	
 	<select id="searchEvery">
@@ -188,7 +192,19 @@
 		values(LAST_INSERT_ID() , #{type})		
 	</insert>
 	
-
+	<select id="cmtList" parameterType="java.lang.String"
+		resultType="co.kr.yangpa.board.BoardDTO">
+	    SELECT mbr.mno as state , id as writer, bno , cnts as contents , write_date
+	    FROM cmt
+	    INNER JOIN mbr
+	    ON cmt.mno = mbr.mno
+	    WHERE bno = #{bno}
+	</select>
+	
+	<insert id="cmtInsert" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into cmt(mno , bno , cnts)
+		values(#{writer} , #{bno} , #{contents})
+	</insert>
 	
 </mapper>
 
