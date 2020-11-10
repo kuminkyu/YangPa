@@ -77,6 +77,7 @@ $(document).ready(function() {
 			   , name : $("#bnofield").val()
 			   //변수명은 name 이지만 bno를 담고잇음
 			}
+			
 			,function(data , status){
 				if(status == "success"){
 					if(data == 1){
@@ -93,6 +94,7 @@ $(document).ready(function() {
 				}else{
 					alert("관심목록 로딩중 오류....");
 				}
+				
 				$("#basket").on("click" , function() {
 					if($("#mnofield").val() == ""){
 						//로그인해야만 관심목록 등록 가능

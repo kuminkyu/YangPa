@@ -62,6 +62,28 @@ public class BoardRestController {
 			return -1;
 		}
 	}
+	@RequestMapping(value = "/boardUpdate" , method = RequestMethod.POST)
+	public int boardUpdate(BoardDTO inDTO) {
+		
+		System.out.println(inDTO.getWriter());
+		System.out.println(inDTO.getType());
+		System.out.println(inDTO.getTitle());
+		System.out.println(inDTO.getContents());
+		System.out.println(inDTO.getPrice());
+		System.out.println(inDTO.getAddrcode());
+		System.out.println(inDTO.getAddrdetail());
+		System.out.println(inDTO.getAddrgps());
+		System.out.println(inDTO.getUseday());
+		System.out.println(inDTO.getBuy_type());
+		
+		int successCnt = service.boardUpdate(inDTO);
+		
+		if(successCnt > 0) {
+			return Integer.parseInt(inDTO.getType().substring(0,1));
+		}else {
+			return -1;
+		}
+	}
 	
 	@RequestMapping(value = "/cmtInsert" , method = RequestMethod.POST)
 	public int cmtInsert(BoardDTO inDTO) {
@@ -74,5 +96,13 @@ public class BoardRestController {
 		}
 		
 		return successCnt;
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public int delete(String bno) {
+		
+		int delCnt = service.delete(bno);
+		
+		return delCnt;
 	}
 }

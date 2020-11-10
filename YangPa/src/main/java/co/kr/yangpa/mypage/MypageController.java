@@ -18,7 +18,10 @@ public class MypageController {
 	private MypageService service;
 	
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
-	public String basket() {
+	public String basket_list(String mno,Model model) {
+		
+		List<BoardDTO> list = service.basket_list(mno);
+		model.addAttribute("mybasket",list);
 		
 		return "user/basket";
 	}//장바구니
@@ -41,7 +44,5 @@ public class MypageController {
 		return "user/change";
 	}//회원정보수정 - GET (POST은 PageController에)
 	
-	
-
 	
 }

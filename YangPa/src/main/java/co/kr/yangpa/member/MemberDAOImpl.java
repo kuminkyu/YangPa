@@ -37,7 +37,6 @@ public class MemberDAOImpl implements MemberDAO {
 		if(successCnt == 0) {
 			successCnt = sqlSession.insert("MemberMapper.basketFirst" , inDTO);
 		}
-		
 		return successCnt;
 	}
 

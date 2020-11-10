@@ -44,7 +44,7 @@
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">My페이지</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${root}/basket"> 관심목록 </a> 
+							<a class="dropdown-item" href="${root}/basket?mno=${login_mno_session}"> 관심목록 </a> 
 							<a class="dropdown-item" href="${root}/mypage?mno=${login_mno_session}"> 내가쓴글 </a>
 							<a class="dropdown-item" href="${root}/change"> 회원정보수정 </a>
 						</div></li>

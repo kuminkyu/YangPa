@@ -20,4 +20,11 @@ public class MypageServiceImpl implements MypageService {
 		return list;
 	}
 
+	@Override
+	public List<BoardDTO> basket_list(String mno) {
+		
+		List<BoardDTO> list = dao.basket_list(mno);
+		return list;
+	}
+
 }

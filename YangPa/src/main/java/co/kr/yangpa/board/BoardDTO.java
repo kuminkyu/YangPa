@@ -14,6 +14,30 @@ public class BoardDTO {
 	private String addrcode;// 지역코드
 	private String addrname;// 지역 이름 구 군
 	private String addrname2;// 지역 이름 시  이름
+	private String typename;
+	
+	public String getTypename() {
+		return typename;
+	}
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+	public String getChangeBf() {
+		return changeBf;
+	}
+	public void setChangeBf(String changeBf) {
+		this.changeBf = changeBf;
+	}
+	public String getChangeAf() {
+		return changeAf;
+	}
+	public void setChangeAf(String changeAf) {
+		this.changeAf = changeAf;
+	}
+	
+	//업데이트시 바뀌기전 유형 바뀐 유형 체크
+	private String changeBf;
+	private String changeAf;
 	
 	public String getAddrname2() {
 		return addrname2;

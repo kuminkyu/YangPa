@@ -22,4 +22,12 @@ public class MypageDAOImpl implements MypageDAO {
 		return list;
 	}
 
+	@Override
+	public List<BoardDTO> basket_list(String mno) {
+		
+		List<BoardDTO> list = sqlSession.selectList("MypageMapper.mybasket",mno);
+		
+		return list;
+	}
+
 }

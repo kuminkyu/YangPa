@@ -30,17 +30,45 @@
 			<table class="table table-hover" id="basket">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th class="text-center">제목</th>
-						<th class="text-right">작성일</th>
+						<th width="10%" class="text-center">번호</th>
+						<th width="15%" class="text-center">판매상태</th>
+						<th width="15%" class="text-center">분류</th>
+						<th width="40%" class="text-center">제목</th>
+						<th width="20%"class="text-center">작성일</th>
+						
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td width="5%">bno</td>
-						<td width="50%" class="text-center">title</td>
-						<td width="10%" class="text-right">2020-10-27</td>
-					</tr>
+					<c:forEach var="dto" items="${mybasket}" varStatus="status">
+						<tr>
+							<td width="10%" class="text-center">
+								<b>${dto.bno}</b>
+							</td>
+							
+							<td width="15%" class="text-center">
+								<c:choose>
+				                     <c:when test="${dto.state == 0}">
+				                     <span class='badge badge-pill badge-success'>판매중</span>
+				                     </c:when>
+				                     <c:when test="${dto.state == 1}">
+				                     <span class='badge badge-pill badge-light'>판매완료</span>
+				                     </c:when>
+			                  	</c:choose>
+							</td>
+							<td width="15%" class="text-center">
+								<b>${dto.typename}</b>
+							</td>
+							
+							<td width="40%" class="text-center">
+							<a href="${pageContext.request.contextPath}/board/detail?bno=${dto.bno}&typeno=${dto.type}">
+	                           ${dto.title}
+	                        </a>
+							</td>
+							
+							<td width="20%" class="text-center">${dto.write_date}</td>
+							
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

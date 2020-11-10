@@ -41,4 +41,13 @@ public class BoardController {
 		return "board/detail";
 	}
 	
+	@RequestMapping(value = "/uform" , method = RequestMethod.GET)
+	public String uform(String bno, Model model) {
+		
+		//update.jsp 에 원래 썻던 게시글의 정보를 셋팅함
+		BoardDTO dto = service.uform(bno);
+		model.addAttribute("uform",dto);
+		
+		return "writing/update";
+	}
 }

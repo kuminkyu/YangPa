@@ -18,4 +18,10 @@ public interface BoardService {
 
 	public List<BoardDTO> cmtList(String bno);
 
+	public BoardDTO uform(String bno);
+
+	public int boardUpdate(BoardDTO inDTO);
+
+	public int delete(String bno);
+
 }

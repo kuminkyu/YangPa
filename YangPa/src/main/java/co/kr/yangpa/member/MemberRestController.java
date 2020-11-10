@@ -12,6 +12,7 @@ public class MemberRestController {
 	@Autowired
 	private MemberService service;
 	
+	//관심목록 여부
 	@RequestMapping(value = "/basket" , method = RequestMethod.GET)
 	public int basket(MbrDTO inDTO) {
 		
@@ -20,6 +21,7 @@ public class MemberRestController {
 		return successCnt;
 	}
 	
+	//로딩시 관심목록
 	@RequestMapping(value = "/isBasket" , method = RequestMethod.GET)
 	public int isBasket(MbrDTO inDTO) {
 		

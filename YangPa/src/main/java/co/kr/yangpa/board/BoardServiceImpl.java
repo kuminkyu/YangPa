@@ -72,4 +72,31 @@ public class BoardServiceImpl implements BoardService {
 		return cmtList;
 	}
 
+
+	@Override
+	public BoardDTO uform(String bno) {
+		
+		BoardDTO dto = dao.uform(bno);
+		
+		return dto;
+	}
+
+
+	@Override
+	public int boardUpdate(BoardDTO inDTO) {
+		
+		int successCnt = dao.boardUpdate(inDTO);
+		
+		return successCnt;
+	}
+
+
+	@Override
+	public int delete(String bno) {
+		
+		int delCnt = dao.delete(bno);
+		
+		return delCnt;
+	}
+
 }

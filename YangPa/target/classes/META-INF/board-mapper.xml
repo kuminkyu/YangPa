@@ -156,6 +156,7 @@
          WHERE tcode LIKE CONCAT( #{typeno} ,'%')
 	</select>
 	
+	<!-- 글등록 시작 -->
 	<insert id="boardInsert" parameterType="co.kr.yangpa.board.BoardDTO">
 		insert into board(writer, type ,title, contents, price , addrcode , 
 				addrdetail , addrgps)
@@ -174,24 +175,64 @@
 			</when>
 			<otherwise>,"insert 오류")</otherwise>
 		</choose> 
-		values(LAST_INSERT_ID() , #{type} , #{buy_type} ,#{useday})		
+		values(
+		<choose>
+			<when test="changeAf != null">
+				#{bno}
+			</when>
+			<otherwise>
+				LAST_INSERT_ID() 
+			</otherwise>
+		</choose>
+		, #{type} ,#{useday})
+		 , #{type} , #{buy_type} ,#{useday})		
 	</insert>
 	
 	<insert id="trInsert" parameterType="co.kr.yangpa.board.BoardDTO">
 		insert into travel(bno, tcode, checkin_date) 
-		values(LAST_INSERT_ID() , #{type} ,#{useday})		
+		values(
+		<choose>
+			<when test="changeAf != null">
+				#{bno}
+			</when>
+			<otherwise>
+				LAST_INSERT_ID() 
+			</otherwise>
+		</choose>
+		, #{type} ,#{useday})		
 	</insert>
 	
 	<insert id="tiInsert" parameterType="co.kr.yangpa.board.BoardDTO">
 		insert into ticket(bno, tcode, ticket_date) 
-		values(LAST_INSERT_ID() , #{type} ,#{useday})		
+		values(
+		<choose>
+			<when test="changeAf != null">
+				#{bno}
+			</when>
+			<otherwise>
+				LAST_INSERT_ID() 
+			</otherwise>
+		</choose>
+		 , #{type} ,#{useday})		
 	</insert>
 	
 	<insert id="etcInsert" parameterType="co.kr.yangpa.board.BoardDTO">
 		insert into etc(bno, type) 
-		values(LAST_INSERT_ID() , #{type})		
+		values(
+		<choose>
+			<when test="changeAf != null">
+				#{bno}
+			</when>
+			<otherwise>
+				LAST_INSERT_ID() 
+			</otherwise>
+		</choose>
+		 , #{type})		
 	</insert>
+	<!-- 글등록 끝 -->
 	
+	
+	<!-- 댓글불러오기 -->
 	<select id="cmtList" parameterType="java.lang.String"
 		resultType="co.kr.yangpa.board.BoardDTO">
 	    SELECT mbr.mno as state , id as writer, bno , cnts as contents , write_date
@@ -201,11 +242,80 @@
 	    WHERE bno = #{bno}
 	</select>
 	
+	<!-- 댓글달기 -->
 	<insert id="cmtInsert" parameterType="co.kr.yangpa.board.BoardDTO">
 		insert into cmt(mno , bno , cnts)
 		values(#{writer} , #{bno} , #{contents})
 	</insert>
 	
+	<!-- 수정폼에 가져올 데이터 -->
+	<select id="uform" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+		SELECT bno, writer , type, price , addrcode , addrdetail , addrgps ,  title , contents
+		FROM board
+		WHERE bno = #{bno}
+	</select>
+	
+	<!--  업데이트 부분 시작  -->
+	<update id="boardUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+		UPDATE board
+		SET type = #{type} , title = #{title} , contents = #{contents} , price = #{price}
+			, addrcode = #{addrcode} , addrdetail = #{addrdetail} , addrgps = #{addrgps}
+		WHERE bno = #{bno}	
+	</update>
+	
+	<update id="exUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+		update excercise
+		set tcode = #{type} , buy_type = #{buy_type}
+		<choose>
+			<when test='buy_type.equals("0")'>
+			, limit_date = #{useday}
+			</when>
+			<when test='buy_type.equals("1")'>
+			, limit_cnt = #{useday}
+			</when>
+			<otherwise>,"Update 오류"</otherwise>
+		</choose>
+		where bno = #{bno}
+	</update>
+		
+	<update id="trUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+		UPDATE travel
+		SET tcode = #{type} , checkin_date = #{useday}
+		WHERE bno = #{bno}
+	</update>
+	
+	<update id="tiUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+		UPDATE ticket
+		SET tcode = #{type} , ticket_date = #{useday}
+		WHERE bno = #{bno}
+	</update>
+	
+	<update id="etcUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+		UPDATE etc
+		SET tcode = #{type} 
+		WHERE bno = #{bno}
+	</update>
+	
+	<delete id="deleteUpdate" parameterType="co.kr.yangpa.board.BoardDTO">
+	DELETE
+	FROM
+	<choose>
+		<when test='changeBf.equals("1")'> excercise</when>
+		<when test='changeBf.equals("2")'> travel</when>
+		<when test='changeBf.equals("3")'> ticket</when>
+		<when test='changeBf.equals("4")'> etc</when>
+	</choose>
+	WHERE bno = #{bno}
+	</delete>
+	<!--  업데이트 부분 끝  -->
+	
+	
+	<!-- 글삭제 -->
+	<delete id="delete" parameterType="java.lang.String">
+	DELETE 
+	FROM board
+	WHERE bno = #{bno}
+	</delete>
 </mapper>
 
 

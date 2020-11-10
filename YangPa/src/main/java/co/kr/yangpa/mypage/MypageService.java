@@ -8,4 +8,6 @@ public interface MypageService {
 
 	List<BoardDTO> mypage(String mno);
 
+	List<BoardDTO> basket_list(String mno);
+
 }
