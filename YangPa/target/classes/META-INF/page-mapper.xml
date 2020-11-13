@@ -18,6 +18,17 @@
 		where mno = #{mno}
 	</update>
 	
+	<select id = "basketCnt" parameterType = "java.lang.String" resultType = "int">
+		select count(*) cnt
+		from mbr_util
+		where basket=1 and mno = #{mno}
+	</select>
+	
+	<select id = "myListCnt" parameterType = "java.lang.String" resultType = "int">
+		select count(*) cnt
+		from board
+		where writer = #{mno}		
+	</select>
 </mapper>
 
 

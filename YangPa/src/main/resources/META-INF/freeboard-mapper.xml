@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="freeboard-mapper">
+
+	<select id="detail"
+			parameterType="java.lang.String"
+			resultType="co.kr.yangpa.freeboard.FreeBoardDTO">
+		SELECT bno, title, writer, cnts
+			, view_cnt, write_date
+		FROM free_board
+		WHERE bno = #{bno}
+	</select>
+
+	<insert id="writer"
+			parameterType="co.kr.yangpa.freeboard.FreeBoardDTO">
+		insert into free_board (title, writer, pwd, cnts, write_date)
+		values (#{title}, #{writer}, #{pwd}, #{cnts}, now()) 
+	</insert>
+
+	<select id="list" resultType="co.kr.yangpa.freeboard.FreeBoardDTO">
+		select bno, title, writer, pwd, cnts
+			, view_cnt, write_date
+		from free_board
+		order by bno desc
+	</select>
+	
+	<delete id="delete" parameterType="co.kr.yangpa.freeboard.FreeBoardDTO" >
+	    DELETE FROM free_board
+		WHERE bno = #{bno}
+		AND pwd = #{pwd} 
+	</delete>
+	
+	
+	<update id="update"
+			 parameterType="co.kr.yangpa.freeboard.FreeBoardDTO" >
+		UPDATE free_board
+		SET title = #{title}
+			, writer = #{writer}
+			, cnts = #{cnts}
+			,pwd = #{pwd}
+		WHERE bno = #{bno}
+		
+	</update>
+	
+    <select id="uform" parameterType="java.lang.String"  resultType="co.kr.yangpa.freeboard.FreeBoardDTO">
+         SELECT bno, title,pwd, writer, cnts
+		FROM free_board
+		WHERE  bno = #{bno}
+    </select>
+    
+    <select id="updateck"  parameterType="co.kr.yangpa.freeboard.FreeBoardDTO" resultType="int">
+       SELECT COUNT(*)
+		FROM free_board
+		WHERE  bno = #{bno}
+		AND    pwd = #{pwd}
+    </select>
+    
+
+</mapper>

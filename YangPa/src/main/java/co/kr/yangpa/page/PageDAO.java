@@ -8,4 +8,8 @@ public interface PageDAO {
 
 	public int update(MbrDTO inDto);
 
+	public int myPageCount(String mno);
+
+	public int myList(String mno);
+
 }

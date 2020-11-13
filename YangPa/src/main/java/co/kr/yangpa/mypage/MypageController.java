@@ -18,18 +18,23 @@ public class MypageController {
 	private MypageService service;
 	
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
-	public String basket_list(String mno,Model model) {
+	public String basket_list(Model model,BoardDTO inDto) {
 		
-		List<BoardDTO> list = service.basket_list(mno);
+		
+		model.addAttribute("reqNum",inDto.getReqNum());
+		List<BoardDTO> list = service.basket_list(inDto);
+		
 		model.addAttribute("mybasket",list);
 		
 		return "user/basket";
 	}//장바구니
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(String mno,Model model) {
+	public String mypage(BoardDTO inDto, Model model) {
 		
-		List<BoardDTO> list = service.mypage(mno);
+		model.addAttribute("reqNum",inDto.getReqNum());
+		
+		List<BoardDTO> list = service.mypage(inDto);
 		model.addAttribute("mylist",list);
 		
 		return "user/mypage";

@@ -44,8 +44,8 @@
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">My페이지</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${root}/basket?mno=${login_mno_session}"> 관심목록 </a> 
-							<a class="dropdown-item" href="${root}/mypage?mno=${login_mno_session}"> 내가쓴글 </a>
+							<a class="dropdown-item" href="${root}/basket?bno=${login_mno_session}&reqNum=1"> 관심목록 </a> 
+							<a class="dropdown-item" href="${root}/mypage?bno=${login_mno_session}&reqNum=1"> 내가쓴글 </a>
 							<a class="dropdown-item" href="${root}/change"> 회원정보수정 </a>
 						</div></li>
 						
@@ -56,8 +56,8 @@
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">고객센터</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${root}/board/list"> 공지사항 </a> <a
-								class="dropdown-item" href="${root}/board/list_search">
+							<a class="dropdown-item" href="${root}/notice"> 공지사항 </a> 
+							<a class="dropdown-item" href="${root}/free_board/list">
 								자유게시판 </a>
 						</div></li>
 				</ul>
@@ -80,14 +80,12 @@
 						style="font-size: 30px;" href="${root}/allow"> 회원가입</a></li>
 					<li><a class="nav-link text-white font-weight-bold"
 						style="font-size: 30px;" href="${root}/loginform"> 로그인</a></li>
-					<li><a class="nav-link text-white font-weight-bold"
-						style="font-size: 30px;" href="${root}/board/search"> 리스트</a></li>
 					<li class="nav-item dropdown"><a href="#"
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">고객센터</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${root}/board/list"> 공지사항 </a> <a
-								class="dropdown-item" href="${root}/board/list_search">
+							<a class="dropdown-item" href="${root}/notice"> 공지사항 </a> <a
+								class="dropdown-item" href="${root}/free_board/list">
 								자유게시판 </a>
 						</div></li>
 				</ul>

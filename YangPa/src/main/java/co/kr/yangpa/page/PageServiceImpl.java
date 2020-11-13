@@ -27,4 +27,19 @@ public class PageServiceImpl implements PageService {
 		return successCnt;
 	}
 
+	@Override
+	public int myPageCount(String mno) {
+		
+		int totCnt = dao.myPageCount(mno);
+		return totCnt;
+	}
+
+	@Override
+	public int myList(String mno) {
+		
+		int totCnt = dao.myList(mno);
+		
+		return totCnt;
+	}
+
 }

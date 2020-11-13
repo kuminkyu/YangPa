@@ -16,6 +16,8 @@
 		<mapper resource="META-INF/mypage-mapper.xml"/>
 		<mapper resource="META-INF/batch-mapper.xml"/>
 		<mapper resource="META-INF/main-mapper.xml"/>
+		<mapper resource="META-INF/freeboard-mapper.xml"/>
+		<mapper resource="META-INF/notice-mapper.xml"/>
 	</mappers>
 
 </configuration>

@@ -31,4 +31,18 @@ public class PageDAOImpl implements PageDAO {
 		return successCnt;
 	}
 
+	@Override
+	public int myPageCount(String mno) {
+		
+		int totCnt = sqlSession.selectOne("PageMapper.basketCnt",mno);
+		return totCnt;
+	}
+
+	@Override
+	public int myList(String mno) {
+		
+		int totCnt = sqlSession.selectOne("PageMapper.myListCnt",mno);
+		return totCnt;
+	}
+
 }

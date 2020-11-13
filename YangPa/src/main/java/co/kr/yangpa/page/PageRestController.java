@@ -27,4 +27,20 @@ public class PageRestController {
 		model.addAttribute("maxPage", maxPage);
 		return totCnt;
 	}
+	
+	@RequestMapping(value = "/basketpageCount",method = RequestMethod.GET)
+	public int myPageCount(String mno) {
+		
+		int totCnt = service.myPageCount(mno);
+		
+		return totCnt;
+	}
+	
+	@RequestMapping(value = "/myListCount",method = RequestMethod.GET)
+	public int myList(String mno) {
+		
+		int totCnt = service.myList(mno);
+		
+		return totCnt;
+	}
 }

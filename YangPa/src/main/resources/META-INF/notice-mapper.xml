@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NoticeMapper">
+	<select id="yangpaNotice" resultType="co.kr.yangpa.notice.NoticeDTO">
+		SELECT bno, title, cnts, view_cnt, write_date
+		FROM notice
+	</select>
+	
+	<select id="noticeDetail"
+			parameterType="java.lang.String"
+			resultType="co.kr.yangpa.notice.NoticeDTO">
+		select bno, title, cnts, view_cnt, write_date
+		from notice
+		where bno = #{bno}
+	</select>
+
+	<update id="updatecnt" parameterType="java.lang.String">
+		update notice 
+		set view_cnt = view_cnt+1
+		where bno = #{bno}
+		
+	</update>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

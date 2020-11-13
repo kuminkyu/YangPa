@@ -19,6 +19,92 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
+<%-- <script type="text/javascript" src="${root}/resources/js/my_paging.js"></script> --%>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$.ajax({
+        contentType : "application/json"
+        , url : "${root}/pageRest/myListCount?mno=${login_mno_session}"
+        ,success: function(totresult, status){
+           totCnt = totresult;
+           paging(totCnt,1,10);
+        }
+     });//ajax
+});
+let totCnt;
+let beginPage ,endPage;
+
+function paging(totCnt , beginNum , endNum) {
+$(".pagination").empty();
+let maxPage ;
+beginPage = beginNum;
+endPage = endNum;
+
+if(totCnt % 15 > 0){
+	maxPage = (totCnt / 15) +  1;
+}else{
+	maxPage = totCnt/15;
+}
+
+
+if(endPage > maxPage) {endPage = maxPage}
+
+
+if(beginPage > 10){
+	$(".pagination").append(
+			'<li class="page-item"><a class="page-link movepage" href="#"'
+			+'onclick="movepage(0)" id = "prevpage"> 이전 </a></li>'		
+	);
+}else{
+	$(".pagination").append(
+			'<li class="page-item disabled"><a class="page-link" href="#" id = "prevpage"> 이전 </a></li>'		
+	);
+}
+
+//리스트 숫자 찍는 for문 부분
+for (let i = beginPage ; i <= endPage  ; i++) {
+	if(parseInt("${reqNum}") == i){
+		$(".pagination").append(
+				'<li class="page-item active nowpage" id="gbh'+i+'">'
+				+'<a class="page-link" href="${root}/basket?bno='+"${login_mno_session}"+'&reqNum='+i+'">'
+				+ i +'</a></li>'
+		);
+		
+	}else{
+		$(".pagination").append(
+			'<li class="page-item" id="gbh'+i+'">'
+			+'<a class="page-link" href="${root}/basket?bno='+"${login_mno_session}"+'&reqNum='+i+'">'
+			+ i +'</a></li>'
+		);	
+	}	
+}
+
+if(maxPage == endPage){
+	$(".pagination").append(
+			'<li class="page-item disabled"><a class="page-link" href="#" id = "nextpage"> 다음 </a></li>'		
+	);					
+}else{
+	$(".pagination").append(
+			'<li class="page-item"><a class="page-link" onclick="movepage(1)" href="#" > 다음 </a></li>'		
+	);		
+}
+}
+
+function movepage(num) {
+if(num == 0){
+	if(endPage % 10 != 0){
+		endPage = beginPage + 9;
+	}
+	paging(totCnt,beginPage-10,endPage-10);
+	list(beginPage);
+}else{
+	paging(totCnt,beginPage+10,endPage+10);
+	list(beginPage);
+}
+}
+
+</script>
 
 <body>
 	<%@ include file="../header.jsp"%>
@@ -71,6 +157,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<ul class="pagination justify-content-center">
+            <!-- 이부분에 자바스크립트로 페이징이 들어감 -->
+            </ul>
 		</div>
 	</div>
 	<!-- container -->

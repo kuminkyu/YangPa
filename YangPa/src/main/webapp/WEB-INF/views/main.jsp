@@ -152,16 +152,20 @@ $(document).ready(function() {
 			<!-- The slideshow -->
 			<div class="carousel-inner" style="width: 1100px; height: 500px">
 				<div class="carousel-item active">
-					<img src="${root}/resources/img/main/yangpa.png" width="1100px"
-						height="500">
+				<a href="#">
+					<img src="${root}/resources/img/main/event1.png" width="1100px"
+						height="500"></a>
 				</div>
 				<div class="carousel-item">
-					<img src="${root}/resources/img/main/yangpa.png" width="1100px"
-						height="500">
+				<a href="#">
+					<img src="${root}/resources/img/main/event2.png" width="1100px"
+						height="500"></a>
 				</div>
 				<div class="carousel-item">
-					<img src="${root}/resources/img/main/yangpa.png" width="1100px"
+				<a href="#">
+					<img src="${root}/resources/img/main/event3.png" width="1100px"
 						height="500">
+				</a>
 				</div>
 			</div>
 
@@ -175,19 +179,21 @@ $(document).ready(function() {
 	</div>
 	<br>
 	<!--     중간 링크 아이콘 넣을곳 -->
-
+	<div class="container text-center">
+		유형별 판매목록
+	</div>
 	<div class="container" id = "div-1">
 	<h3>
-		<a href="${root}/board/mainlist?maintype=1"> <img class="ml-5 mr-4" alt="W3Schools"
+		<a href="${root}/board/mainlist?maintype=1" style="color:#DC143C;"> <img class="ml-5 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/health.PNG" width="160" height="160">
 		운동
-		</a> <a href="${root}/board/mainlist?maintype=2"> <img class="ml-4 mr-4" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=2" style="color:#1E90FF;"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/travel.PNG" width="160" height="160">
 		여행	
-		</a> <a href="${root}/board/mainlist?maintype=3"> <img class="ml-4 mr-4" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=3" style="color:#A0522D;"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/ticket.PNG" width="160" height="160">
 		티켓
-		</a> <a href="${root}/board/mainlist?maintype=4"> <img class="ml-4 mr-4" alt="W3Schools"
+		</a> <a href="${root}/board/mainlist?maintype=4" style="color:#696969;"> <img class="ml-4 mr-4" alt="W3Schools"
 			src="${root}/resources/img/main/etc.PNG" width="160" height="160">
 		기타
 		</a>
@@ -197,22 +203,22 @@ $(document).ready(function() {
 	<br>
 	<div class="row">
 		<div class="wrap col-lg-2 mb-5">
-			<h3 class="mb-2 text-center">분류</h3>
+			<div class="mb-2 text-center">가장 핫한 상품</div>
 			<div class="list-group">
 				   <b><a 
-					class="list-group-item text-dark hotsearch"><i 
+					class="list-group-item hotsearch" style="color:#DC143C;"><i 
 					class="fas fa-dumbbell mr-2"></i>운동</a>
 					</b>
 				   <b><a 
-					class="list-group-item text-dark hotsearch"><i
+					class="list-group-item hotsearch" style="color:#1E90FF;"><i
 						class="fas fa-umbrella-beach mr-2"></i>여행</a>
 					</b>
 				   <b><a 
-					class="list-group-item text-dark hotsearch"><i
+					class="list-group-item hotsearch" style="color:#A0522D;"><i
 						class="fas fa-ticket-alt mr-2"></i>티켓</a>
 					</b>
 				   <b><a 
-					class="list-group-item text-dark hotsearch"><i
+					class="list-group-item hotsearch" style="color:#696969;"><i
 						class="fas fa-plus mr-2"></i>기타</a>
 					</b>
 			</div>

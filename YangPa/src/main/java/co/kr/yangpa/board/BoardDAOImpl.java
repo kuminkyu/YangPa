@@ -173,4 +173,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return delCnt;
 	}
 
+
+	@Override
+	public int sellComplete(String bno) {
+		
+		int sellCnt = sqlSession.update("BoardMapper.sellComplete",bno);
+		
+		return sellCnt;
+	}
+
 }

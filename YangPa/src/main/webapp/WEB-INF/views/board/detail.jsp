@@ -418,7 +418,7 @@ function loginchk() {
 		<div class="form-inline mb-3 mt-3" id="cmt_form">
 			<h4 class="ml-5 mr-2"><b>작성자 :</b></h4>
 				<input type="text" class="form-control" value="${login_id_session}" readonly="readonly"> 
-				<input type="text" class="form-control col-9 ml-3" id="cmtText" placeholder="댓글을 입력하세요">
+				<input type="text" class="form-control col-8 ml-3" id="cmtText" placeholder="댓글을 입력하세요">
 				<button class="btn btn-primary ml-3 form-control" id="cmt_button" type="button"> 등 록 </button>
 		</div>
 	<%@ include file="../footer.jsp"%>

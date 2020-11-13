@@ -6,8 +6,8 @@ import co.kr.yangpa.board.BoardDTO;
 
 public interface MypageService {
 
-	List<BoardDTO> mypage(String mno);
+	List<BoardDTO> mypage(BoardDTO inDto);
 
-	List<BoardDTO> basket_list(String mno);
+	List<BoardDTO> basket_list(BoardDTO inDto);
 
 }

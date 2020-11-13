@@ -15,7 +15,14 @@ public class BoardDTO {
 	private String addrname;// 지역 이름 구 군
 	private String addrname2;// 지역 이름 시  이름
 	private String typename;
+	private int reqNum;
 	
+	public int getReqNum() {
+		return reqNum;
+	}
+	public void setReqNum(int reqNum) {
+		this.reqNum = reqNum;
+	}
 	public String getTypename() {
 		return typename;
 	}

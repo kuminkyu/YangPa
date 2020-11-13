@@ -123,8 +123,6 @@ $(document).ready(function() {
 			inUseDay = $("#in_datepicker").val();
 		}
 		
-		alert("여기까진 완료");
-		
 		$.get(
 			"${root}/boardRest/boardInsert"
 			,{
@@ -163,7 +161,8 @@ $(document).ready(function() {
 <body>
 	<%@ include file="../header.jsp"%>
 	<div class="ABA-container-box-1080">
-		<input type="text" id="in_mno" name="in_mno" value="${login_mno_session}">
+		<input type="text" id="in_mno" name="in_mno" value="${login_mno_session}"
+		style="display: none">
 		<table width=100% cellpadding=0 cellspacing=0 border=0>
 			<tr>
 				<td></td>
@@ -327,7 +326,7 @@ $(document).ready(function() {
 														});
 														
 														</script>	
-													<input type="text" id="addrgps" name="addrgps" >			 
+													<input type="text" id="addrgps" name="addrgps" style="display: none">			 
 											</div>
 										</div>
 									</div>

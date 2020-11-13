@@ -24,4 +24,6 @@ public interface BoardService {
 
 	public int delete(String bno);
 
+	public int sellComplete(String bno);
+
 }

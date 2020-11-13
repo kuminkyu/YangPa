@@ -22,10 +22,10 @@
 	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname, 
-				excercise.buy_type,
+				board.view_cnt , addrmiddle.addrname, addrlarge.addrname as addrname2
+				,excercise.buy_type,
 			IF(excercise.buy_type = 0 , limit_date, limit_cnt) as useday
-            , addrname ,addrdetail , addrgps
+            ,addrdetail , addrgps
 		FROM board
 		INNER JOIN excercise
 		ON board.bno = excercise.bno
@@ -35,6 +35,8 @@
         on board.type = type.tcode
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
 		WHERE board.bno = #{bno} 
 	</select>
 	
@@ -42,8 +44,8 @@
 	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname, 
-           checkin_date as useday , addrname ,addrdetail , addrgps
+				board.view_cnt , addrmiddle.addrname, addrlarge.addrname as addrname2
+          , checkin_date as useday  ,addrdetail , addrgps
 		FROM board
 		INNER JOIN travel
 		ON board.bno = travel.bno
@@ -53,6 +55,8 @@
         on board.type = type.tcode
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
 		WHERE board.bno = #{bno} 
 	</select>
 	
@@ -60,8 +64,8 @@
 	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname, 
-           ticket_date as useday , addrname ,addrdetail , addrgps
+				board.view_cnt , addrmiddle.addrname, addrlarge.addrname as addrname2
+          , ticket_date as useday  ,addrdetail , addrgps
 		FROM board
 		INNER JOIN ticket
 		ON board.bno = ticket.bno
@@ -71,14 +75,16 @@
         on board.type = type.tcode
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
 		WHERE board.bno = #{bno} 
 	</select>
 	<select id="etcdetail" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
 	SELECT board.bno, mbr.id as writer, type.tname as type, board.title,
 		board.contents, board.price, board.state, 
 		date_format(write_date, '%Y/%c/%d') as write_date,
-				board.view_cnt , addrmiddle.addrname, 
-				 addrname ,addrdetail , addrgps
+				board.view_cnt , addrmiddle.addrname, addrlarge.addrname as addrname2
+				 ,addrdetail , addrgps
 		FROM board
 		INNER JOIN etc
 		ON board.bno = etc.bno
@@ -184,7 +190,6 @@
 				LAST_INSERT_ID() 
 			</otherwise>
 		</choose>
-		, #{type} ,#{useday})
 		 , #{type} , #{buy_type} ,#{useday})		
 	</insert>
 	
@@ -240,6 +245,7 @@
 	    INNER JOIN mbr
 	    ON cmt.mno = mbr.mno
 	    WHERE bno = #{bno}
+	    ORDER BY write_date
 	</select>
 	
 	<!-- 댓글달기 -->
@@ -316,6 +322,13 @@
 	FROM board
 	WHERE bno = #{bno}
 	</delete>
+	
+	<!-- 판매글 판매완료등록 -->
+	<update id="sellComplete" parameterType="java.lang.String">
+	UPDATE board
+	set state = 1
+	WHERE bno = #{bno}	
+	</update>
 </mapper>
 
 

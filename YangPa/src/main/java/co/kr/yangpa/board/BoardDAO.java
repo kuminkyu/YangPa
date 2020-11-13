@@ -24,4 +24,6 @@ public interface BoardDAO {
 
 	public int delete(String bno);
 
+	public int sellComplete(String bno);
+
 }

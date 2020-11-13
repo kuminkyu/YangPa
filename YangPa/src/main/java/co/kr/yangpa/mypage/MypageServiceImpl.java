@@ -14,16 +14,16 @@ public class MypageServiceImpl implements MypageService {
 	private MypageDAO dao;
 	
 	@Override
-	public List<BoardDTO> mypage(String mno) {
+	public List<BoardDTO> mypage(BoardDTO inDto) {
 		
-		List<BoardDTO> list = dao.mypage(mno);
+		List<BoardDTO> list = dao.mypage(inDto);
 		return list;
 	}
 
 	@Override
-	public List<BoardDTO> basket_list(String mno) {
+	public List<BoardDTO> basket_list(BoardDTO inDto) {
 		
-		List<BoardDTO> list = dao.basket_list(mno);
+		List<BoardDTO> list = dao.basket_list(inDto);
 		return list;
 	}
 

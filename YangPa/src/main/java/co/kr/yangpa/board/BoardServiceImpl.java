@@ -99,4 +99,13 @@ public class BoardServiceImpl implements BoardService {
 		return delCnt;
 	}
 
+
+	@Override
+	public int sellComplete(String bno) {
+		
+		int sellCnt = dao.sellComplete(bno);
+		
+		return sellCnt;
+	}
+
 }

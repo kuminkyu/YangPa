@@ -105,4 +105,12 @@ public class BoardRestController {
 		
 		return delCnt;
 	}
+	
+	@RequestMapping(value = "/sellComplete" , method = RequestMethod.GET)
+	public int sellComplete(String bno) {
+		
+		int sellCnt = service.sellComplete(bno);
+		
+		return sellCnt; 
+	}
 }

@@ -15,17 +15,21 @@ public class MypageDAOImpl implements MypageDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<BoardDTO> mypage(String mno) {
+	public List<BoardDTO> mypage(BoardDTO inDto) {
 		
-		List<BoardDTO> list = sqlSession.selectList("MypageMapper.mylist",mno);
+		inDto.setReqNum((inDto.getReqNum()-1)*15);
+		
+		List<BoardDTO> list = sqlSession.selectList("MypageMapper.mylist",inDto);
 				
 		return list;
 	}
 
 	@Override
-	public List<BoardDTO> basket_list(String mno) {
+	public List<BoardDTO> basket_list(BoardDTO inDto) {
 		
-		List<BoardDTO> list = sqlSession.selectList("MypageMapper.mybasket",mno);
+		inDto.setReqNum((inDto.getReqNum()-1)*15);
+		
+		List<BoardDTO> list = sqlSession.selectList("MypageMapper.mybasket",inDto);
 		
 		return list;
 	}

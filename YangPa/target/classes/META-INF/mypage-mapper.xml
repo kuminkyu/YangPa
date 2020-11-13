@@ -5,19 +5,23 @@
 
 <mapper namespace="MypageMapper">
 
-	<select id = "mylist" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	<select id = "mylist" parameterType="co.kr.yangpa.board.BoardDTO" resultType="co.kr.yangpa.board.BoardDTO">
 		select board.bno, board.state, board.title, board.write_date, substr(type,1,1) as type, tname as typename
 		from board
 		left outer join type on board.type = type.tcode
-		where writer = #{mno}
+		where writer = #{bno}
+		order by board.bno desc
+		limit #{reqNum}, 15
 	</select>
 	
-	<select id = "mybasket" parameterType="java.lang.String" resultType="co.kr.yangpa.board.BoardDTO">
+	<select id = "mybasket" parameterType="co.kr.yangpa.board.BoardDTO" resultType="co.kr.yangpa.board.BoardDTO">
 		select mbr_util.basket, mbr_util.bno, board.state, tname as typename, substr(board.type,1,1) as type, board.title, board.write_date 
 		from mbr_util 
 		inner join board on mbr_util.bno = board.bno
 		left outer join type on board.type = type.tcode 
-		where basket=1 and mno = #{mno};
+		where basket=1 and mno = #{bno}
+		order by mbr_util.bno desc
+		limit #{reqNum}, 15 
 	</select>
 	
 </mapper>
