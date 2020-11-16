@@ -17,9 +17,10 @@
 
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 	<div class="container">
 	
-		<%@ include file="../header.jsp" %>
+		
 		<h1 class="text-center mt-3 mb-3 text-muted">
 		      자유게시판 목록
 		</h1>

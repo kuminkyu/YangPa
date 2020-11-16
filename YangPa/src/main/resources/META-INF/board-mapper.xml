@@ -94,6 +94,8 @@
         on board.type = type.tcode
         LEFT OUTER JOIN addrmiddle
         ON board.addrcode = addrmiddle.addrcode
+        LEFT OUTER JOIN addrlarge
+        ON left(board.addrcode,2) = addrlarge.addrcode
 		WHERE board.bno = #{bno} 
 	</select>
 

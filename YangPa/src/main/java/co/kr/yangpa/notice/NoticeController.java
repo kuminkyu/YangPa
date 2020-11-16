@@ -45,4 +45,10 @@ public class NoticeController {
 
 		return "notice/detail_page";
 	}//noticeDetail
+	
+	@RequestMapping(value = "/notice/wform" , method = RequestMethod.GET)
+	public String wform() {
+		
+		return "notice/notice_write";
+	}
 }//class

@@ -104,8 +104,6 @@ $(document).ready(function() {
 			af = $("#in_kind").val();
 		}
 		
-		alert("bf : " + bf);
-		alert("af : " + af);
 		//validation 체크(공통) // 
 		let cntsData = CKEDITOR.instances.comment.getData();
 		if($.trim( $("#in_tel").val() ) == ""){
@@ -132,6 +130,9 @@ $(document).ready(function() {
 			return;
 		}else if($.trim(cntsData) == ""){
 			alert("내용을 입력하세요!!");
+			return;
+		}else if($.trim( $("#addrgps").val()) == ""){
+			alert("마커를 하나 선택해주세요!!");
 			return;
 		}
 		
@@ -299,6 +300,7 @@ $(document).ready(function() {
 															$(".mapinfo").show();
 														 	 mapword =  $("#in_largelist option:checked").text()+" "+$("#in_middlelist option:checked").text()
 														 	 			+" "+$("#addrdetail").val();
+														 	 $("#addrgps").val("");
 														// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 														var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 														
@@ -358,7 +360,7 @@ $(document).ready(function() {
 														});
 														$("#addrdetail").blur();
 														</script>	
-													<input type="text" id="addrgps" name="addrgps" value="${uform.addrgps}" style="display: none">			 
+													<input type="text" id="addrgps" name="addrgps" value="" style="display: none">			 
 											</div>
 										</div>
 									</div>

@@ -7,6 +7,7 @@
 	<select id="yangpaNotice" resultType="co.kr.yangpa.notice.NoticeDTO">
 		SELECT bno, title, cnts, view_cnt, write_date
 		FROM notice
+		order by bno desc
 	</select>
 	
 	<select id="noticeDetail"
@@ -21,9 +22,18 @@
 		update notice 
 		set view_cnt = view_cnt+1
 		where bno = #{bno}
-		
 	</update>
-
+	
+	<insert id="write" parameterType="co.kr.yangpa.board.BoardDTO">
+		insert into notice(title , cnts)
+		values(#{title} , #{contents})
+	</insert>
+	
+	<delete id="delete" parameterType="co.kr.yangpa.board.BoardDTO">
+		delete 
+		from notice
+		where bno = #{bno}
+	</delete>
 
 </mapper>
 

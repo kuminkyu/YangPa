@@ -31,16 +31,16 @@
 					<td>${notice_dto.title}</td>
 				</tr>
 				<tr>
-					<th class="text-right">내용</th>
-					<td>${notice_dto.cnts}</td>
-				</tr>
-				<tr>
 					<th class="text-right">조회수</th>
 					<td>${notice_dto.view_cnt}</td>
 				</tr>
 				<tr>
 					<th class="text-right">작성일</th>
 					<td>${notice_dto.write_date}</td>
+				<tr>
+					<th class="text-right">내용</th>
+					<td>${notice_dto.cnts}</td>
+				</tr>
 				</tr>
 			</table>			
 		</div>

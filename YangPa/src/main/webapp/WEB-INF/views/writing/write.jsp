@@ -103,8 +103,10 @@ $(document).ready(function() {
 		}else if($.trim(cntsData) == ""){
 			alert("내용을 입력하세요!!");
 			return;
+		}else if($.trim( $("#addrgps").val()) == ""){
+			alert("마커를 하나 선택해주세요!!");
+			return;
 		}
-		
 		let inUseDay;
 		if(typeno == "1"){
 			if($("input:radio[name='in_ex_kind']:checked").val() == undefined){
@@ -265,7 +267,8 @@ $(document).ready(function() {
 															$(".mapinfo").show();
 														 	 mapword =  $("#in_largelist option:checked").text()+" "+$("#in_middlelist option:checked").text()
 														 	 			+" "+$("#addrdetail").val();
-														 	 alert(mapword);
+														 	 alert(mapword + "로 검색합니다.");
+														 	 $("#addrgps").val("");
 														// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 														var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 														

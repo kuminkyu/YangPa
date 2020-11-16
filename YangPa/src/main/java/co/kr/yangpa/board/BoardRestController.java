@@ -78,11 +78,7 @@ public class BoardRestController {
 		
 		int successCnt = service.boardUpdate(inDTO);
 		
-		if(successCnt > 0) {
-			return Integer.parseInt(inDTO.getType().substring(0,1));
-		}else {
-			return -1;
-		}
+		return successCnt;
 	}
 	
 	@RequestMapping(value = "/cmtInsert" , method = RequestMethod.POST)

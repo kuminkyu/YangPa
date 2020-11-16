@@ -47,6 +47,7 @@ public class MemberController {
 			session.setAttribute("login_id_session", inDto.getId());
 			session.setAttribute("login_mno_session", inDto.getMno());
 			session.setAttribute("login_tel_session", inDto.getTel());
+			session.setAttribute("login_role_session", inDto.getMbr_role());
 			
 			model.addAttribute("userinfo",inDto);
 			

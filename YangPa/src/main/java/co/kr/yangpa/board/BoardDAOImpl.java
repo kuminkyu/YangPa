@@ -139,6 +139,8 @@ public class BoardDAOImpl implements BoardDAO {
 			}else {
 				return -1;
 			}
+			
+			return typeUpdate;
 		}else{
 			//다를경우엔 인서트 와 delete 동시에
 			int deleteCnt = sqlSession.delete("BoardMapper.deleteUpdate", inDTO);

@@ -202,7 +202,7 @@ $(document).ready(function() {
 
 	<br>
 	<div class="row">
-		<div class="wrap col-lg-2 mb-5">
+		<div class="wrap col-lg-2 mb-5" style="background-color: #87CEEB">
 			<div class="mb-2 text-center">가장 핫한 상품</div>
 			<div class="list-group">
 				   <b><a 
@@ -224,7 +224,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 
-		<div class="wrap col-lg-10">
+		<div class="wrap col-lg-10" style="background-color: #87CEEB">
 			<div class="card-columns" id="hotcard">
 				<!-- 이부분은 카드의 시작 점  -->
 				<div class="card ml-1 mt-1 mb-1 mr-1" style="width: 350px">

@@ -15,6 +15,35 @@
 </head>
 <body>
 <script type="text/javascript">
+$(document).ready(function() {
+	
+	$("#del_btn").click(function() {
+		if($.trim( $("#del_num").val() ) == ""){
+			alert("삭제할 게시판 번호를 입력하세요");
+			return;
+		}
+		
+		$.get(
+			"${root}/notice/delete"
+			,{bno : $("#del_num").val() }
+			,function(data , status){
+				if(status == "success"){
+					if(data == 1){
+						alert("삭제성공");
+						location.href = "${root}/notice";
+					}else{
+						alert("삭제 실패");
+					}
+					
+				}else{
+					alert("통신상태 불량");
+				}
+			}
+		);//get
+	});//click
+	
+});//ready
+
 let beginCopy = 1;
 let endCopy = 10;
 let clickedPageNum = 1;
@@ -102,6 +131,13 @@ function getList() {
 	<%@ include file="../header.jsp" %>
 	<div class="container">
 		<h1 class="text-info mt-3 mb-3">Notice Board</h1>
+		<c:if test="${login_role_session == '1'}">
+		<div class="text-right mb-2">
+			<a href="${root}/notice/wform"><button class="btn btn-primary">글 등록하기</button></a>
+			<input type="text" id="del_num" placeholder="삭제할 게시판 번호">
+			<button class="btn btn-danger" id="del_btn">글 삭제하기</button>
+		</div>
+		</c:if>
 		<table  class="table table-hover">
 			<thead>
 				<tr>

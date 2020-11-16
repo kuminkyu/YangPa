@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.kr.yangpa.board.BoardDTO;
+
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
@@ -21,6 +23,22 @@ public class NoticeServiceImpl implements NoticeService {
 	public NoticeDTO noticeDetail(String bno) {
 		NoticeDTO dto = dao.noticeDetail(bno);
 		return dto;
+	}
+
+	@Override
+	public int write(BoardDTO inDTO) {
+		
+		int successCnt = dao.write(inDTO);
+		
+		return successCnt;
+	}
+
+	@Override
+	public int delete(BoardDTO inDTO) {
+		
+		int successCnt = dao.delete(inDTO);
+		
+		return successCnt;
 	}
 
 

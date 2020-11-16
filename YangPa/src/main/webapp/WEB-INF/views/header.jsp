@@ -40,6 +40,9 @@
 
 					<!-- 로그인 여부 묻고 되었을 때만 -->
 					
+					<li><a class="nav-link text-white font-weight-bold"
+						style="font-size: 30px;"> ID : ${login_id_session}님</a></li>
+					
 					<li class="nav-item dropdown"><a href="#"
 						class="nav-link dropdown-toggle text-white font-weight-bold"
 						style="font-size: 30px;" data-toggle="dropdown">My페이지</a>
